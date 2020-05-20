@@ -68,6 +68,16 @@
 \newtheorem{example}{Example}[section]
 \numberwithin{equation}{subsection}
 
+\makeatletter
+\newenvironment{intheorem}[1][]
+  {%
+   \refstepcounter{theorem}%
+   {\the\thm@headfont Theorem \thetheorem\@ifempty{#1}{}{ (#1)}.}%
+   \the\thm@bodyfont
+  }%
+  {\par}
+\makeatother
+
 \def\dsp{\def\baselinestretch{1.35}\large
 \normalsize}
 %%%%This makes a double spacing. Use this with 11pt style. If you
@@ -83,11 +93,18 @@
 \centerline{\Large \bf Analysis Qualifying Exam}
 \centerline{Zhen Yao}
 
+\tableofcontents{}
+
+
 \bigskip
+
+
+\newpage
+
 
 \section{May 2019 Exam}
 
-\noindent{\bf Problem 1.}
+\begin{exercise}
 Let $\sigma > 0$. Let $\left\{f_k\right\}_{k\in \mathbb{N}}$ be a sequence of functions $f_k: \mathbb{R} \to \mathbb{R}$ with $f_k(0) = 0$. Moreover, let $\left\{A_k\right\}_{k\in \mathbb{N}} \subset [0,\infty)$ be a {\it bounded} sequence of real numbers such that 
 \begin{align*}
     \left|f_k(x) - f_k(y)\right| \leq A_k |x - y|^\sigma \,\, \text{for all} \,\, x, y\in \mathbb{R}.
@@ -95,12 +112,13 @@ Let $\sigma > 0$. Let $\left\{f_k\right\}_{k\in \mathbb{N}}$ be a sequence of fu
 \begin{enumerate}[label=(\alph*)]
     \item Show that there exists $f: \mathbb{R}\to \mathbb{R}$ such that a subsequence $f_{k_i}$ converges uniformly to $f$ in every interval $[-a,a], a > 0$.
     
-    \item* Show that $f$ satisfies 
+    \item {\rm *} Show that $f$ satisfies 
     \begin{align*}
         |f(x) - f(y)| \leq A|x - y|^\sigma,
     \end{align*}
     where $A = \liminf_{k\to\infty}A_k$.
 \end{enumerate}
+\end{exercise}
 \begin{proof}
 ~\begin{enumerate}[label=(\alph*)]
     \item First, since $\left\{A_k\right\}_{k\in \mathbb{N}}$ is bounded, then there exists $M > 0$ such that for all $k > 0, \left|A_k\right| < M$. For all $k > 0$ and all $x\in [-a,a]$, with $f_k(0) = 0$, we have
@@ -153,8 +171,10 @@ Let $\sigma > 0$. Let $\left\{f_k\right\}_{k\in \mathbb{N}}$ be a sequence of fu
 
 \medskip
 
-\noindent{\bf Problem 2*.}
+
+\begin{exercise}{\rm *}
 Prove that if $X$ is a metric space and $f:X \times [0,1] \to \mathbb{R}$ is a continuous function, then $g:X \to \mathbb{R}$, defined by $g(x) = \sup_{t\in [0,1]}f(x,t)$ is also continuous. 
+\end{exercise}
 \begin{proof}
 Prove by contradiction and suppose $g$ is not continuous. Then there exists $\varepsilon > 0$, for all $\delta > 0$, there exists $x_0 \in X$ such that if $d_X(x,x_0) < \delta$, then $|g(x) - g(x_0)| > \varepsilon$. 
 
@@ -180,8 +200,9 @@ Thus, $f\left(x_{n_k}, t_{n_k}\right) \to f\left(x_n, t_0\right)$, which is a co
 
 \medskip
 
-\noindent{\bf Problem 3*.}
+\begin{exercise}\label{May_2019_3}
 Prove that there is no continuous and one-to-one function $f:\mathbb{R}^2 \to \mathbb{R}$. \textbf{Hint:} \textit{Assume that such a function exists and then restrict the function to the unit circle in $\mathbb{R}^2$}.
+\end{exercise}
 \begin{proof}
 Let $S^1 = \{(x,y)| x^2 + y^2 = 1\}$. Suppose there exists continuous and one-to-one function $f: S^1 \to \mathbb{R}$. Now let $g(x) = f(x) - f(-x)$, then $g$ is also continuous. And,
 \begin{align*}
@@ -190,14 +211,15 @@ Let $S^1 = \{(x,y)| x^2 + y^2 = 1\}$. Suppose there exists continuous and one-to
 then $g$ is an odd function. If $g(x) = 0$, then $f(x) = -f(x)$. If not, then $g(x) > 0$ and $g(-x) < 0$ of $g(x) < 0$ and $g(-x) > 0$. In either case, $S^1$ is a connected subspace of $\mathbb{R}^2$, with intermediate value theorem, there exists $c$ between $x$ and $-x$ such that $g(c) = 0$. Thus, $f(c) = f(-c)$. Thus, $f$ cannot be one-to-one, which is a contradiction\cite{2}.
 \end{proof}
 
-We present another approach to prove this problem.
-\begin{proof}
+\medskip
+
+\begin{proof}[Second Proof of Exercise \ref{May_2019_3}]
 Since $S^1$ is compact, then $f$ attains maximum $a$ at some point $x_a \in S^1$ and minimum $b < a$ at some point $x_b \in S^1$. These two points separate the circle into two arcs. On each of the two arcs, the function $f$ will attain $\frac{a+b}{2}$ at some points, denoted by $x_1$ and $x_2$, since $f$ is continuous. Then $f(x_1) = f(x_2)$, which is contradicted by the fact that $f$ is one-to-one\cite{3}.
 \end{proof}
 
 \medskip
 
-\noindent{\bf Problem 4.}
+\begin{exercise}\label{May_2019_4}
 Suppose $f: \mathbb{R}^2_+ \to \mathbb{R}$ is a continuous function defined on
 \begin{align*}
     \mathbb{R}^2_+ = \{(x,y): x \in \mathbb{R}, y > 0\}.
@@ -208,6 +230,7 @@ Assume also that the limits
     h(u,v) & = \lim_{t \to 0} \frac{f(u\cos (v+t), u\sin (v+t)) - f(u\cos v, u\sin v)}{t},
 \end{align*}
 exist and define continuous functions $g, h$ on the domain $D = \{(u,v): u > 0, 0 < v < \pi\}$. Prove that the function $f$ is differentiable on $\mathbb{R}^2_+$.
+\end{exercise}
 \begin{proof}
 Define $M(u,v) = f(u\cos v, v\sin v) = f(x,y)$, where $u > 0, 0 < v < \pi$. And by assumption, $\frac{\partial M}{\partial u}$ and $\frac{\partial M}{\partial v}$ exist and are continuous. Then, for any $(u_1, v_1), (u_2, v_2) \in D$, there exist $\xi \in (u_1, u_2)$ and $\zeta \in (v_1,v_2)$ such that
 \begin{align*}
@@ -222,12 +245,9 @@ Then,
 Thus, $M(u,v)$ is differentiable in $D$. So is $f$ on $\mathbb{R}^2_+$.
 \end{proof}
 
-We present another approach to prove this problem.
-
 \medskip
 
-\noindent{\bf Method II for Problem 4:}
-\begin{proof}
+\begin{proof}[Second Proof of Problem \ref{May_2019_4}]
 For any $(x_1, y_1), (x_2, y_2) \in \mathbb{R}^2_+$, there exist $(u_1, v_1), (u_2, v_2) \in D$ such that $(x_1, y_1) = (u_1 \cos v_1, u_1 \sin v_1)$ and $(x_2, y_2) = (u_2 \cos v_2, u_2 \sin v_2)$. Then,
 \begin{align*}
     & \lim_{(x_2,y_2) \to (x_1,y_1)} \frac{\left|f(x_2,y_2) - f(x_1,y_1) - g(u_1,v_1)(u_2 - u_1) - h(u_1,v_1)(v_2 - v_1) \right|}{\sqrt{(x_2-x_1)^2 + (y_2-y_1)^2}} \\
@@ -240,7 +260,17 @@ where in the last step we used the definition of $g(u,v)$ and $h(u,v)$. Thus, $f
 
 \medskip
 
-\noindent{\bf Problem 5.}
+\begin{proof}[Third Proof of Problem \ref{May_2019_4}]
+Let $\Phi: D \to \mathbb{R}^2_+$ defined as $\Phi(u,v) = (u \cos v, u \sin v)$ is diffeomorphism, since $D\Phi(u,v) = \begin{bmatrix} \cos v & -u \sin v \\ \sin v & u \cos v \end{bmatrix} = u > 0$. Also,
+\begin{align*}
+    g(u,v) = \frac{\partial (f \circ \Phi)}{\partial u}, \quad h(u,v) = \frac{\partial (f \circ \Phi)}{\partial v}
+\end{align*}
+and partial derivatives of $f \circ \Phi$ are continuous, and then $f \circ \Phi \in C^1$. Thus, $f = (f \circ \Phi) \circ \Phi^{-1} \in C^1$.
+\end{proof}
+
+\medskip
+
+\begin{exercise}
 Let $f \in C^2(\Omega) \cap C^0(\overline{\Omega})$, where $\Omega \subset \mathbb{R}^n$ is open and bounded.
 Let $\Delta f = \sum_{i=1}^n \partial^2f/\partial x_i^2$ be the Laplace operator.
 \begin{enumerate}
@@ -250,7 +280,8 @@ Let $\Delta f = \sum_{i=1}^n \partial^2f/\partial x_i^2$ be the Laplace operator
     
     \item[(c)] Conclude that if $\Delta f(x) \geq 0$ for all $x \in \Omega$, then we have $\sup_{\Omega} f = \sup_{\partial \Omega} f$.
 \end{enumerate}
-{\bf Hint for part (c):} {\em Observe that $\Delta |x|^2 = 2n$. Use it to modify a function $f$ in (c) so that you can apply part (b).}
+{\bf Hint for part (c):} Observe that $\Delta |x|^2 = 2n$. Use it to modify a function $f$ in (c) so that you can apply part (b).
+\end{exercise}
 \begin{proof}
 ~\begin{enumerate}
     \item[(a)] Local maximum requires that $H_{x_0}(f)$ is positive semidefinitely, which means the trace $\partial^2f/\partial x_i^2, i = 1,2,\cdots,n$ of $H_{x_0}(f)$ are not positive. This is a contradiction with the fact $\Delta f(x_0) \geq \varepsilon$, then $f$ has no local maximum at $x_0$.
@@ -266,11 +297,12 @@ Let $\Delta f = \sum_{i=1}^n \partial^2f/\partial x_i^2$ be the Laplace operator
 
 \medskip
 
-\noindent{\bf Problem 6.}
+\begin{exercise}
 For $x = (x_1, x_2) \in \mathbb{R}^2$, let $|x| = \sqrt{x_1^2 + x_2^2}$. Let $D = \{x \in \mathbb{R}^2: |x| < 1\}$ and let $f: \overline{D} \to \mathbb{R}$ be continuous on $\overline{D}$. Prove that
 \begin{align*}
     \lim_{n\to\infty} \int\int_D (n + 2)|x|^n f(x)\, dA = \int^{2\pi}_0 f(\cos t, \sin t)\, dt.
 \end{align*}
+\end{exercise}
 \begin{proof}
 Since $\overline{D}$ is compact, then $f$ attains maximum on $\overline{D}$, then there exists $M$ such that $|f(x)| \leq M, \forall x \in \overline{D}$. With polar coordinates, we want to prove that 
 \begin{align*}
@@ -289,7 +321,9 @@ Thus, we complete the proof\footnote{This method comes from homework for Math153
 \newpage
 
 \section{August 2018 Exam}
-\noindent{\bf Problem 1.}
+
+
+\begin{exercise}
 For $n$ a positive integer, put:
 \begin{align*}
     t_n = \frac{1}{2n + 1} - \frac{1}{2n + 2} + \frac{1}{2n + 3} - \frac{1}{2n + 4} + \cdots + \frac{1}{4n - 1} - \frac{1}{4n},
@@ -299,6 +333,7 @@ with $2n$ terms in the right hand side. Find, with proof, the following limit $\
     \mathcal{T} = \lim_{n\to\infty} nt_n.
 \end{align*}
 {\bf Hint:} {\em Relate the given limit to suitable Riemann sums for the function $(1 + x)^{-1}$.}
+\end{exercise}
 \begin{proof}
 \begin{align*}
     \mathcal{T} & = n \left(\frac{1}{2n + 1} + \frac{1}{2n + 3} + \cdots + \frac{1}{4n - 1}\right) - n \left(\frac{1}{2n + 2} + \frac{1}{2n + 4} + \cdots +  \frac{1}{4n}\right) \\
@@ -310,11 +345,12 @@ with $2n$ terms in the right hand side. Find, with proof, the following limit $\
 
 \medskip
 
-\noindent{\bf Problem 2*.}\cite{4}
+\begin{exercise}{\rm \cite{4}*}
 Prove that if $f: [a,b] \to \mathbb{R}$ is continuous, the 
 \begin{align*}
     \lim_{n\to\infty} \sqrt[n]{\int^b_a |f(x)|^n\, dx} = \sup_{x\in[a,b]} |f(x)|.
 \end{align*}
+\end{exercise}
 \begin{proof}
 ~\begin{enumerate}[label=(\alph*)]
     \item Since $f$ is continuous on compact space $[a,b]$, then $f$ attains its maximum at some point $c \in [a,b]$ such that $|f(c)| = \sup_{x\in[a,b]} |f(x)| = M$. Then\footnote{We cannot use $\lim$ here since we could use it unless the limit exists. However, we do not know the limit exists. Thus, we use $\liminf$ and $\limsup$.},
@@ -336,7 +372,7 @@ Prove that if $f: [a,b] \to \mathbb{R}$ is continuous, the
 
 \medskip
 
-\noindent{\bf Problem 3.}
+\begin{exercise}
 Let $\mathcal{M}$ denote the space of all real $2 \times 2$ matrices, equipped with the norm $\|A\| = \sqrt{{\rm tr} \left(A^T A\right)}$, for $A \in \mathcal{M}$. Consider the map $F$ from $\mathbb{R}^2$ to $\mathcal{M}$ given by formula, for any $(s,t) \in \mathbb{R}^2$:
 \begin{align*}
     F(s,t) = \frac{1}{2} 
@@ -346,6 +382,7 @@ Let $\mathcal{M}$ denote the space of all real $2 \times 2$ matrices, equipped w
     \end{vmatrix}.
 \end{align*}
 Denote by $\mathcal{N} \subset \mathcal{M}$ the space of all real $2 \times 2$ matrices of rank one and norm one. Prove that the image of $F$ is the space $\mathcal{N}$ and that the map $F$ is a local homeomorphism to its image. 
+\end{exercise}
 \begin{proof}
 ~\begin{enumerate}[label=(\alph*)]
     \item \begin{enumerate}[label=\arabic*)]
@@ -404,13 +441,14 @@ Denote by $\mathcal{N} \subset \mathcal{M}$ the space of all real $2 \times 2$ m
 
 \medskip
 
-\noindent{\bf Problem 4*.}
+\begin{exercise}{\rm *}
 Let $\mathcal{F} \subset C^\infty[0,1]$ be a uniformly bounded and equicontinuous family of smooth functions on $[0,1]$ such that $f' \in \mathcal{F}$ whenever $f \in \mathcal{F}$. Suppose that 
 \begin{align*}
     \sup_{x\in[0,1]} \left|f'(x) - g'(x)\right| \leq \frac{1}{2} \sup_{x\in[0,1]} \left|f(x) - g(x)\right|, \,\, {\rm for all}\,\, f, g \in \mathcal{F}.
 \end{align*}
 Show that there exists a sequence $f_n$ of functions in $\mathcal{F}$ that converges uniformly to $Ce^x$ for some real value $C$.\\
-{\bf Hint:} {\em Use the contraction principle. In order to apply the the contraction principle you can use, without proof, the fact that if $X$ is a complete metric space, $A \subset X$ and $T: A \to X$ is uniformly continuous, then $T$ uniformly converges to a continuous map $\overline{T}: \overline{A} \to X$ defined on the closure $\overline{A}$.}
+{\bf Hint:} Use the contraction principle. In order to apply the the contraction principle you can use, without proof, the fact that if $X$ is a complete metric space, $A \subset X$ and $T: A \to X$ is uniformly continuous, then $T$ uniformly converges to a continuous map $\overline{T}: \overline{A} \to X$ defined on the closure $\overline{A}$.
+\end{exercise}
 \begin{proof}
 $\mathcal{F}$ is a subset of the complete metric space $\left(C([0,1]), d_\infty \right)$. Let $\overline{\mathcal{F}}$ be the closure in that space, clearly, $\left(\overline{\mathcal{F}}, d_\infty \right)$ is a complete metric space as a closed subset of a metric space\footnote{If $X$ is a complete metric space, then a subset of $X$ is closed if and only if it is complete.\cite{7}} \footnote{{\bf Theorem:} Let $A \subset X$ be a closed subspace of a complete metric space $(X, d)$, then
 $(A, d)$ is a complete metric space as well.\cite{8}}. The mapping $T: \mathcal{F} \to \mathcal{F} \subset \overline{\mathcal{F}}, Tf = f'$ satisfies
@@ -451,8 +489,9 @@ and then $f e^{-x} = C$ for some $C$. Now we proved that if $g \in \mathcal{F}$,
 
 \medskip
 
-\noindent{\bf Problem 5*.}
+\begin{exercise}{\rm *}
 Let $f: \mathbb{R}^n \to \mathbb{R}^n$ be a mapping of class $C^1$. Prove that there is an open and dense set $\Omega \subset \mathbb{R}^n$ such that the function $R(x) = \rank Df(x)$ is locally constant on $\Omega$, i.e., it is constant in a neighborhood of every point $x \in \Omega$.
+\end{exercise}
 \begin{proof}
 Let $\Omega$ be the set of points where $R(x) = \rank Df(x)$ attains a local maximum, that is
 \begin{align*}
@@ -467,13 +506,14 @@ Let $\Omega$ be the set of points where $R(x) = \rank Df(x)$ attains a local max
 
 \medskip
 
-\noindent{\bf Problem 6.}
+\begin{exercise}{\rm *}
 Let $\Phi: \mathbb{R}^2 \to \Phi\left(\mathbb{R}^2\right) \subset \mathbb{R}^2$ be a diffeomorpism. Prove that
 \begin{align*}
     \int_{B^2(0,1)} \left\|D\Phi \right\| = \int_{\Phi(B^2(0,1))} \left\|D\left(\Phi^{-1}\right) \right\|,
 \end{align*}
 where $\|A\| = \left(\sum^2_{i,j=1} a_{ij}^2\right)^{1/2}$ is the Hilbert-Schmidt norm of the matrix.\\
-{\bf Hint:} {\em Compare $\|A\|$ and $\left\|A^{-1}\right\|$ for a $2 \times 2$ matrix.}
+{\bf Hint:} Compare $\|A\|$ and $\left\|A^{-1}\right\|$ for a $2 \times 2$ matrix.
+\end{exercise}
 \begin{proof}
 For $A = \begin{pmatrix} 
     a & b \\
@@ -511,6 +551,183 @@ Then it remains to show that
 \end{align*}
 With above results, we have $\left\|A^{-1}\right\| |\det A|= \|A\|$, and the above equality follows.
 \end{proof}
+
+
+\newpage
+
+\section{May 2018 Exam}
+
+
+\begin{exercise}
+Prove that every real-valued function, continuous on the real interval $[0,1]$, is the uniform limit of continuous piecewise linear functions.
+\end{exercise}
+\begin{proof}
+For any continuous function $f:[0,1] \to \mathbb{R}$, we can separate $[0,1]$ into $n$ pieces, with step length $1/n$. Denote by $[x_j, x_{j+1}], 1 \leq j \leq n$ the interval $\left[\frac{j-1}{n}, \frac{j}{n}\right]$. We define linear function $f_j: [x_j, x_{j+1}] \to \mathbb{R}$ by
+\begin{align*}
+    f_j(x) = f(x_j) + \frac{f(x_{j+1}) - f(x_j)}{1/n} x,
+\end{align*}
+and then we can define a continuous piecewise linear function
+\begin{align*}
+    \widetilde{f}(x) = \begin{cases}
+        f_1(x), & x \in [x_1, x_2], \\
+        \quad \vdots \\
+        f_n(x), & x \in [x_n, x_{n+1}].
+    \end{cases}
+\end{align*}
+
+It remains to show that $f(x)$ converges uniformly to $\widetilde{f}(x)$. For any $\varepsilon > 0$, then for $x_j$, there exists a $\delta_j > 0$, such that if $|x - x_j| < \delta_j$, then $|f(x) - f(x_j)| < \varepsilon$. Now we can pick $N > 0$ such that $1/N < \min_{j}\{\delta_j\}$, i.e., the step length is less than $\min_{j}\{\delta_j\}$. Then, for any $n > N$, and any $x \in [0,1]$, we can find a $j$ such that $x \in [x_j, x_{j+1}]$. Then,
+\begin{align*}
+    \left|\widetilde{f}(x) - f(x)\right| & = \left|f_j(x) - f(x)\right| \\
+    & \leq \left|f_j(x) -  f_j(x_{j+1})\right| + \left|f_j(x_{j+1}) - f(x)\right| \\
+    & \leq \left|f_j(x_j) -  f_j(x_{j+1})\right| + \left|f(x_{j+1}) - f(x)\right| \\
+    & \leq 2 \varepsilon,
+\end{align*}
+where in the last step, we used the continuity of linear function $f_j(x)$ in the interval $[x_j, x_{j+1}]$. Thus, $f$ converges uniformly to a continuous piecewise linear function.
+\end{proof}
+
+\medskip
+
+\begin{exercise}
+~\begin{enumerate}[label=(\alph*)]
+    \item State a theorem that says under what considitions we can differentiate a function series term by term, i.e., $f_n:(a,b) \to \mathbb{R}$,
+    \begin{align*}
+        \left(\sum^\infty_{n=1}f_n(x) \right)' = \sum^\infty_{n=1} f_n'(x).
+    \end{align*}
+    
+    \item Prove that if $a > 1$ and $k \geq 1$, then
+    \begin{align*}
+        \sum^\infty_{n=2} \frac{(\log n)^k}{n^a} < \infty.
+    \end{align*}
+    
+    \item Prove that the function
+    \begin{align*}
+        \zeta(x) = \sum^\infty_{n=1} \frac{1}{n^x}, x > 1,
+    \end{align*}
+    is infinitely differentiable in $(1, \infty)$.
+\end{enumerate}
+{\bf Hint:} You can use part (b) to prove (c), even if you do not know how to prove (b).
+\end{exercise}
+\begin{proof}
+~\begin{enumerate}[label=(\alph*)]
+    \item Suppose that $f_n:(a,b) \to \mathbb{R}$ has continuous derivatives on $(a,b)$ and \footnote{\begin{intheorem}{\rm \cite{10}}
+    Suppose that $f_n:[a,b] \to \mathbb{R}$ has continuous derivatives on $[a,b]$ and further that
+    \begin{enumerate}[label=(\alph*)]
+        \item the series $\sum^\infty_{n=1} f_n(x)$ converges at some point $x_0 \in (a, b)$,
+        
+        \item the series of derivatives $\sum^\infty_{n=1} f_n'(x)$ converges uniformly on $[a,b]$.
+    \end{enumerate}
+    Then,
+    \begin{enumerate}[label=(\alph*)]
+        \item the series $\sum^\infty_{n=1} f_n(x)$ converges at every $x \in [a,b]$ and the sum $\sum^\infty_{n=1} f_n(x)$ is differentiable with $\left( \sum^\infty_{n=1} f_n(x) \right)' = \sum^\infty_{n=1} f_n'(x)$ for each $x \in [a,b]$,
+        
+        \item the convergence of $\sum^\infty_{n=1} f_n(x)$ is uniform on $[a,b]$.
+    \end{enumerate}
+    \end{intheorem}}
+    \begin{enumerate}[label=\arabic*)]
+        \item the series $\sum^\infty_{n=1} f_n(x)$ converges at some point $x_0 \in (a, b)$,
+        
+        \item the series of derivative $\sum^\infty_{n=1} f_n'(x)$ converges uniformly on $(a,b)$.
+    \end{enumerate}
+    Then the series $\sum^\infty_{n=1} f_n(x)$ converges at every $x \in (a,b)$ and
+    \begin{align*}
+        \left(\sum^\infty_{n=1}f_n(x) \right)' = \sum^\infty_{n=1} f_n'(x).
+    \end{align*}
+    
+    \item Since $a > 1$, then let $a = 1 + 2b > 1$, where $b > 0$. Then,
+    \begin{align*}
+        \lim_{n\to\infty} \frac{\frac{(\log n)^k}{n^{1+2b}}}{\frac{1}{n^{1+b}}} = \lim_{n\to\infty} \frac{(\log n)^k}{n^b} = 0,
+    \end{align*}
+    and to see the last step, we could assume $f(x) = \frac{(\log x)^k}{x^b}$. Since 
+    \begin{align*}
+        f'(x) = x^{-b-1} (\log x)^{k-1} (k - b \log x),
+    \end{align*}
+    then letting $x \to \infty$ gives $f'(x) < 0$, which implies that $f(x)$ is decreasing and thus $\lim_{x} f(x) = 0$, which gives $\lim_{n\to\infty} \frac{(\log n)^k}{n^b} = 0$. Now, since $\sum \frac{1}{n^{1+b}}$ converges, so does $\sum \frac{(\log n)^k}{n^a}$.
+    
+    \item For $x > 1$, 
+    \begin{align*}
+        \sum^\infty_{n=1} \frac{1}{n^x} < 1 + \sum^\infty_{n=2} \frac{(\log n)^k}{n^x} < \infty,
+    \end{align*}
+    then $\sum \frac{1}{n^x}$ converges for $x \in (1, \infty)$. Also, since $\left(\frac{1}{n^x}\right)' = - n^{-x} \log n$, then considering in $k = 1$ and $a = x > 1$ part (b) gives
+    \begin{align*}
+        \sum^\infty_{n=1} \left|\frac{\log n}{n^x} \right| < \infty.
+    \end{align*}
+    Therefore, by part (a),
+    \begin{align*}
+        \left(\sum^\infty_{n=1} \frac{1}{n^x}\right)' = \sum^\infty_{n=1} \left(\frac{1}{n^x}\right)'.
+    \end{align*}
+    
+    Now we can continue this process and have
+    \begin{align*}
+        \left(\sum^\infty_{n=1} \frac{1}{n^x}\right)^{(n)} = \sum^\infty_{n=1} \left(\frac{1}{n^x}\right)^{(n)},
+    \end{align*}
+    and since $\frac{1}{n^x}$ is infinitely differentiable, so does $\zeta(x)$.
+\end{enumerate}
+\end{proof}
+
+\medskip
+
+\begin{exercise}
+Let $f: \mathbb{Q}^n \to \mathbb{R}$ be a function defined on the set $\mathbb{Q}^n \subset \mathbb{R}^n$ consisting of points whose coordinates are rational numbers. Prove that if $f$ satisfies the inequality $|f(x) - f(y)|^{2018} \leq 2018 |x - y|$ for all $x, y \in \mathbb{Q}^n$, then there is a unique continuous function $F: \mathbb{R}^n \to \mathbb{R}$ such that $F(x) = f(x)$ for all $x \in \mathbb{Q}^n$. Provide a direct proof without referring to any deep results \footnote{This problem is similar to the following one: Let $f:A\to X$ be a mapping between a dense subset $A \subset \mathbb{R}^n$ and a complete metric space $(X,d)$. Assume that $d(f(x),f(y))\leq |x-y|$ for all $x,y\in A$. Prove that there is a mapping $F:\mathbb{R}^n\to X$ such that $d(F(x),F(y))\leq |x-y|$ for all $x,y\in \mathbb{R}^n$ and $F(x)=f(x)$ whenever $x\in A$.}.
+\end{exercise}
+\begin{proof}
+Since $\mathbb{Q}^n$ is dense in $\mathbb{R}^n$, then for any point $x$ in $\mathbb{R}^n$, we can find a sequence $\{x_n\}^\infty_{n=1}$ of points in $\mathbb{Q}^n$ such that $\lim_{n\to\infty} x_n = x$. Now we define $F(x)$ as
+\begin{align*}
+    F(x) = \begin{cases}
+        \lim_{n\to\infty} f(x_n), & x \notin \mathbb{Q}^n,  x_n \in \mathbb{Q}^n, \lim_{n\to\infty} x_n = x, \\
+        f(x), & x \in \mathbb{Q}^n.
+    \end{cases}
+\end{align*}
+Then, it is natural that $F(x) = f(x)$ for all $x \in \mathbb{Q}^n$. 
+
+It remains to show that $F(x)$ defined above is unique. Suppose that there exists another continuous function $G(x)$ such that $G(x) = f(x)$ for all $x \in \mathbb{Q}^n$, but $G(x) \neq F(x)$ for all $x \notin \mathbb{Q}^n$. However, for $x \notin \mathbb{Q}^n$,
+\begin{align*}
+    |F(x) - G(x)| \leq |F(x) - f(x_n)| + |f(x_n) - G(x)| \xrightarrow[]{n \to \infty} 0,
+\end{align*}
+where we used the fact that $G(x)$ is continuous. This is a contradiction.
+\end{proof}
+
+\medskip
+
+\medskip
+
+\begin{exercise}{\rm *}
+Let $P = \{(x_1, x_2, x_3, x_4): x_4 = 0\}$ be a hyperplane in $\mathbb{R}^4$. Let $\Phi: \mathbb{R}^4 \to \mathbb{R}^4$ be a $C^1$-diffeomorphism of $\mathbb{R}^4$ onto $\mathbb{R}^4$, and let $S = \Phi(P)$ be the image of the hyperplane $P$ under the diffeomorphism $\Phi$. Prove that for every $x \in S$, there is a neighborhood $B(x, \varepsilon) \subset \mathbb{R}^4$ such that the set $S\cap B(x, \varepsilon)$ is a graph of a $C^1$ function of one of the following forms
+\begin{align*}
+    x_1 = f(x_2, x_3, x_4), \,\,\, {\rm or} \,\,\, x_2 = f(x_1, x_3, x_4), \,\,\, {\rm or} \,\,\, x_3 = f(x_1, x_2, x_4), \,\,\, {\rm or} \,\,\, x_4 = f(x_1, x_2, x_3).
+\end{align*}
+In the proof you are allowed to use the inverse function theorem or the implicit function function theorem only.
+\end{exercise}
+\begin{proof}
+Define $\Psi = (\Psi_1, \Psi_2, \Psi_3, \Psi_4): \mathbb{R}^4 \to \mathbb{R}^4$ being inverse diffeomorphism such that $\Psi(S) = P$. Then,
+\begin{align*}
+    S & = \{(x_1, x_2, x_3, x_4): \Psi(x_1, x_2, x_3, x_4) \in P\} \\
+    & = \{(x_1, x_2, x_3, x_4): \Psi_4(x_1, x_2, x_3, x_4) = 0\}. 
+\end{align*}
+Since $\Psi$ is a diffeomorphism, then $\det D\Psi \neq 0$ everywhere. And since 
+\begin{align*}
+    D\Psi = \begin{pmatrix} 
+    \nabla \Psi_1 \\
+    \nabla \Psi_2 \\
+    \nabla \Psi_3 \\
+    \nabla \Psi_4
+    \end{pmatrix},
+\end{align*}
+then $\nabla \Psi_4 \neq 0$ everywhere and therefore, $\nabla \Psi_4 \neq 0$ on the surface $S$. Then we have
+\begin{align*}
+    \frac{\partial \Psi_4}{\partial x_i} \neq 0,
+\end{align*}
+for some $i = 1,2,3,4$. Thus, by implicit function theorem, for every $x \in S$, there is a neighborhood $B(x, \varepsilon)$ such that the set $S \cap B(x, \varepsilon)$ is a graph of a $C^1$ function of the form 
+\begin{align*}
+    x_i = f(x_1, \cdots, \hat{x}_i, \cdots, x_4),
+\end{align*}
+for some $i = 1,2,3,4$, where $\hat{x}_i$ indicates that $x_i$ is ignored.
+\end{proof}
+
+
+
+
+
+
 
 
 
