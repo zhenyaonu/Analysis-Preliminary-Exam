@@ -727,12 +727,12 @@ for some $i = 1,2,3,4$, where $\hat{x}_i$ indicates that $x_i$ is ignored.
 
 \begin{exercise}{\rm *}
 Let $n$ be a positive integer. Denote by $\mathcal{M}_n$ the space of all real $n \times n$ matrices. By $A^T \in \mathcal{M}_n$ denote the transpose of a matrix $A \in \mathcal{M}_n$ and by $tA, t \in \mathbb{R}$, the matrix where all components of $A$ are multiplied by $t$. Prove that if $A \in \mathcal{M}_n$, then there is $B \in \mathcal{M}_n$ and $\varepsilon > 0$ such that $\varepsilon A = B + B^T B$.\\
-{\bf Hint.} Differentiate the mapping $F: \mathcal{M}_n \to \mathcal{M}_n$ defined by $F(X) = X + X^TX$.
+{\bf Hint:} Differentiate the mapping $F: \mathcal{M}_n \to \mathcal{M}_n$ defined by $F(X) = X + X^TX$.
 \end{exercise}
 \begin{proof}
 Let $F(X) = X + X^TX$, and we need to find $DF(0)$. It suffices to find a map $L:\mathcal{M}_n \to \mathcal{M}_n$ such that
 \begin{align*}
-    \lim_{H \to 0} \frac{F(H) - F(0) - L(H)}{|H|} = 0.
+    \lim_{H \to 0} \frac{F(H) - F(0) - L(H)}{\|H\|} = 0.
 \end{align*}
 Taking $L(H) = H$ gives
 \begin{align*}
