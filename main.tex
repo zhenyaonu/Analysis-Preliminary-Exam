@@ -778,6 +778,172 @@ the proof is completed.
 \end{proof}
 
 
+\newpage
+
+\section{August 2017 Exam}
+
+\begin{exercise}{\rm *}\label{Aug_2017_1}
+For any real number $x$ and $y$, define
+\begin{align*}
+    I_y(x) = \int^{\pi}_{\frac{\pi}{2}} \left(e^{-t^2 x} \cos (ty) - e^{t^2 y} \sin (tx) \right)\, dt.
+\end{align*}
+Prove that there exists $\varepsilon > 0$ such that for each $y \in (-\varepsilon, \varepsilon)$, there is some $x \in (0, 1)$ (depending on $y$) with $I_y(x) = 0$.
+\end{exercise}
+\begin{proof}
+Define $F: \mathbb{R}^2 \to \mathbb{R}$ by $F(x,y) = I_y(x)$. Then, $F \in C^1$ and also we have
+\begin{align*}
+    F(0,0) & = \int^{\pi}_{\frac{\pi}{2}} \left(e^{0} \cos (0) - e^{0} \sin (0) \right)\, dt = \frac{\pi}{2} > 0, \\
+    F(1/2, 0) & = \int^{\pi}_{\frac{\pi}{2}} \left(e^{-t^2/2} \cos (0) - e^{0} \sin \left(\frac{t}{2}\right) \right)\, dt \\
+    & = \int^{\pi}_{\frac{\pi}{2}} \left(e^{-t^2/2} - \sin \left(\frac{t}{2}\right) \right)\, dt < 0.
+\end{align*}
+Indeed, to see the second inequality, let $f(t) = e^{-t^2/2} - \sin (t/2)$, and then for $t \in [\pi/2, \pi]$,
+\begin{align*}
+    f'(t) = - te^{-t^2/2} - 1/2 \cos \left(\frac{t}{2}\right) < 0,
+\end{align*}
+and since $f(\pi/2) < 0$, the result follows. 
+
+By the intermediate value theorem, for function $F(x, 0)$, there exists $x_0 \in \left(0, 1/2\right)$ such that $F(x_0, 0) = 0$. Since $tx_0 \in (0, \pi/2)$, then
+\begin{align*}
+    \frac{\partial F}{\partial x}(x_0, 0) = \int^{\pi}_{\frac{\pi}{2}} \left(- t^2 e^{-t^2 x_0} - t \cos (tx_0) \right)\, dt < 0.
+\end{align*}
+Then by implicit function theorem, there is a unique $C^1$ function $x = g(y)$ near $(x_0, 0)$ such that $F(g(y), y) = 0$, that is, there exists $\varepsilon > 0$ such that for each $y \in (-\varepsilon, \varepsilon)$, there is some $x \in (0,1)$ such that $I_y(x) = 0$.
+\end{proof}
+
+\begin{proof}[Second Proof of Exercise \ref{Aug_2017_1}]
+Since 
+\begin{align*}
+    \lim_{y \to 0} \frac{2 \cos \left(\frac{3\pi}{4}y\right) \sin \left(\frac{\pi}{4}y\right)}{y} = \frac{\pi}{2} > 0,
+\end{align*}
+then there exists $\varepsilon_1 > 0$ such that for $y \in (-\varepsilon_1, \varepsilon_1), y \neq 0$, we have
+\begin{align*}
+    \frac{2 \cos \left(\frac{3\pi}{4}y\right) \sin \left(\frac{\pi}{4}y\right)}{y} > 0.
+\end{align*}
+
+Also, we have
+\begin{align*}
+    \lim_{y \to 0} e^{-\frac{\pi^2}{4}} \cos \left(\frac{\pi}{2} y\right) - e^{t^2 y} = e^{-\frac{\pi^2}{4}} - 1 < 0,
+\end{align*}
+then there exists $\varepsilon_2 > 0$ such that for $y \in (-\varepsilon_2, \varepsilon_2), y \neq 0$, we have
+\begin{align*}
+    e^{-\frac{\pi^2}{4}} \cos \left(\frac{\pi}{2} y\right) - e^{t^2 y} < 0.
+\end{align*}
+
+Now let $\varepsilon = \min\left\{\varepsilon_1, \varepsilon_2, 1/2 \right\}$, then for $y \in (-\varepsilon, \varepsilon), y \neq 0$, we have
+\begin{align*}
+    I_y(0) = \int^{\pi}_{\frac{\pi}{2}} \cos (ty) \, dt = \frac{\sin(ty)}{y} \Bigg|^{\pi}_{\frac{\pi}{2}} = \frac{2 \cos \left(\frac{3\pi}{4}y\right) \sin \left(\frac{\pi}{4}y\right)}{y} > 0,
+\end{align*}
+also, $I_0(0) = \pi/2$. So, for $y \in (-\varepsilon, \varepsilon)$, $I_y(0) > 0$.
+
+Let 
+\begin{align*}
+    f(t) = e^{-t^2} \cos (ty) - e^{t^2 y} \sin t,
+\end{align*}
+then, when $y \in (-\varepsilon, \varepsilon)$,
+\begin{align*}
+    f\left(\frac{\pi}{2}\right) = e^{-\frac{\pi^2}{4}} \cos \left(\frac{\pi}{2} y\right) - e^{t^2 y} < 0.
+\end{align*}
+And then $t \in [\pi/2, \pi], y \in (-\varepsilon, \varepsilon)$, we have
+\begin{align*}
+    f'(t) = - 2t e^{-t^2} \cos (ty) - y e^{-t^2} \sin (ty) - ty e^{t^2y} \sin t - e^{t^2 y} \cos t < 0.
+\end{align*}
+Then $f(t)$ is monotonically decreasing on $[\pi/2, \pi]$. Then, $f(t) \leq f(\pi/2) < 0$. Therefore, 
+\begin{align*}
+    I_y(1) = \int^{\pi}_{\frac{\pi}{2}} \left( e^{-t^2} \cos (ty) - e^{t^2 y} \sin t \right)\, dt < 0.
+\end{align*}
+
+Since for any $y \in (-\varepsilon, \varepsilon)$, $I_y(x)$ is continuous on $[0,1]$, then by the intermediate value theorem, there exists $x_0 \in [0,1]$ such that $I_y(x_0) = 0$.
+\end{proof}
+
+\medskip
+
+\begin{exercise}
+For any closed subset $X$ of $\mathbb{R}^n$, prove that there is a countable subset $S$ of $X$ such that every continuous function $f: X \to \mathbb{R}$ is determined by its values on $S$.
+\end{exercise}
+\begin{proof}
+Let $\{B_k\}$ be the family of open balls, whose centers have rational numbers, with radius $1/k, k \in \mathbb{N}$. Then, $B_k$ is countable, since the set of rational numbers is countable.
+
+For certain $B \in \{B_k\}$ such that $B \cap X \neq \varnothing$, let $X_k = \{x: x \in B \cap X\}$. Then $\{X_k\}$ is countable, therefore $S = \bigcup^\infty_{k=1} X_k$ is a countable subset of $X$.
+
+Since $X$ is closed, then $\overline{S} \subset X$. Also, for any $x \in X$, there exists $k \in \mathbb{N}$, such that $x$ belongs to a certain $B \in \{B_k\}$, and $B$ contains a point $\widetilde{x}$ of $X_k$, hence of $S$. Since $k$ is arbitrary, then there exists a sequence $\{\widetilde{x}_k\} \in S$ such that $\lim_{k\to\infty} \widetilde{x}_k = x$, then $x \in \overline{S}$. Thus, $X \subset \overline{S}$. 
+
+Thus, $X = \overline{S}$, and every continuous function $f: X \to \mathbb{R}$ is determined by its values on $S$.
+\end{proof}
+
+\medskip
+
+\begin{exercise}{\rm *}
+Let $f(x) = \frac{\ln x}{x}$, defined for any real number $x > 0$.
+\begin{enumerate}[label=(\alph*)]
+    \item Find the coefficients $h_n$ of the Taylor series of $f$, centered at $x = 1$:
+    \begin{align*}
+        \mathcal{T}(f)(x) = \sum^\infty_{n = 0} h_n (x - 1)^n,
+    \end{align*}
+    and determine, with proof, all open intervals on which the series $\mathcal{T}(f)$ converges uniformly to $f$.
+    
+    \item Does $\mathcal{T}(f)(2) = \sum^\infty_{n = 0}$ converges to $\frac{\ln 2}{2}$?
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+~\begin{enumerate}[label=(\alph*)]
+    \item Since $f(x) = \frac{\ln x}{x}$, then $xf(x) = \ln x$. Then, taking derivative on both sides gives,
+    \begin{align*}
+        & xf(x) + x^2 f'(x) = 1, \\
+        & f(x) + 3x f'(x) + x^2 f''(x) = 0, \\
+        & 4f'(x) + 5x f''(x) + x^2 f^{(3)}(x) = 0,
+    \end{align*}
+    and by induction, we could conclude
+    \begin{align*}
+        n^2 f^{n-1}(x) + (2n + 1)x f^{n}(x) + x^2 f^{(n+1)}(x) = 0.
+    \end{align*}
+    Then we have equations
+    \begin{align*}
+        & f(1) + f'(1) = 1, \\
+        & f(1) + 3f'(1) + f''(1) = 0, \\
+        & 4f'(1) + 5f''(1) + f^{(3)}(1) = 0, \\
+        & \cdots \\
+        & n^2 f^{n-1}(1) + (2n + 1) f^{n}(1) + f^{(n+1)}(1) = 0.
+    \end{align*}
+    Since 
+    \begin{align*}
+        h_n = \frac{f^{(n)}(1)}{n!},
+    \end{align*}
+    we have
+    \begin{align*}
+        & h_0 = 0, \\
+        & h_0 + h_1 = 0, \\
+        & \cdots \\
+        & n^2 (n-1)! h_{n-1} + (2n + 1) n! h_n + (n + 1)! h_{n+1} = 0.
+    \end{align*}
+    Then we have
+    \begin{align*}
+        & n h_{n-1} + (2n + 1) h_n + (n + 1) h_{n+1} = 0, \\
+        \Rightarrow & n (h_{n-1} + h_n) = - (n + 1) (h_n + h_{n+1}) \\
+        \Rightarrow & n (h_{n-1} + h_n) = (-1)^{n-1} \\
+        \Rightarrow & h_n = (-1)^{n-1} \sum^n_{k=1} \frac{1}{k}.
+    \end{align*}
+    
+    Now, we have 
+    \begin{align*}
+        \mathcal{T}(f)(x) = \sum^\infty_{n = 0} \left( (-1)^{n-1} \sum^n_{k=1} \frac{1}{k} \right) (x - 1)^n.
+    \end{align*}
+    And then 
+    \begin{align*}
+        \lim_{n\to\infty} \left| \frac{h_{n-1}}{h_n} \right| & = \frac{1 + \frac{1}{2} + \cdots + \frac{1}{n-1}}{1 + \frac{1}{2} + \cdots + \frac{1}{n}} = 1, 
+    \end{align*}
+    thus the Taylor series converges on $(0,2)$.
+    
+    \item For $x = 2$, we have
+    \begin{align*}
+        \mathcal{T}(f)(2) = \sum^\infty_{n=0} h_n,
+    \end{align*}
+    and since $\lim_{n\to\infty} h_n = \infty$, then $\sum^\infty_{n=1} h_n$ does not converges. 
+\end{enumerate}
+\end{proof}
+
+
+
+
+
 
 
 
