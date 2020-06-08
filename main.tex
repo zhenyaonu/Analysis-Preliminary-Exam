@@ -793,7 +793,7 @@ Prove that there exists $\varepsilon > 0$ such that for each $y \in (-\varepsilo
 Define $F: \mathbb{R}^2 \to \mathbb{R}$ by $F(x,y) = I_y(x)$. Then, $F \in C^1$ and also we have
 \begin{align*}
     F(0,0) & = \int^{\pi}_{\frac{\pi}{2}} \left(e^{0} \cos (0) - e^{0} \sin (0) \right)\, dt = \frac{\pi}{2} > 0, \\
-    F(1/2, 0) & = \int^{\pi}_{\frac{\pi}{2}} \left(e^{-t^2/2} \cos (0) - e^{0} \sin \left(\frac{t}{2}\right) \right)\, dt \\
+    F\left(\frac{1}{2}, 0\right) & = \int^{\pi}_{\frac{\pi}{2}} \left(e^{-t^2/2} \cos (0) - e^{0} \sin \left(\frac{t}{2}\right) \right)\, dt \\
     & = \int^{\pi}_{\frac{\pi}{2}} \left(e^{-t^2/2} - \sin \left(\frac{t}{2}\right) \right)\, dt < 0.
 \end{align*}
 Indeed, to see the second inequality, let $f(t) = e^{-t^2/2} - \sin (t/2)$, and then for $t \in [\pi/2, \pi]$,
@@ -938,6 +938,151 @@ Let $f(x) = \frac{\ln x}{x}$, defined for any real number $x > 0$.
     \end{align*}
     and since $\lim_{n\to\infty} h_n = \infty$, then $\sum^\infty_{n=1} h_n$ does not converges. 
 \end{enumerate}
+\end{proof}
+
+\medskip
+
+\begin{exercise}
+Let $f(x) = \left\lfloor x \right\rfloor$ be the greatest integer function, denoted on $\mathbb{R}$ by $f(x) = n$ for all $x \in [n, n+1), n \in \mathbb{Z}$. Show that there is a sequence $\{p_k\}_{k \in \mathbb{N}}$ of polynomials converging pointwise to $f$ on $\mathbb{R}\setminus \mathbb{Z}$, such that for any compact set $K \subset \mathbb{R}$,
+\begin{align*}
+    \lim_{k\to\infty} \int_K \left| f(x) - p_k(x) \right|\, dx = 0.
+\end{align*}
+\end{exercise}
+\begin{proof}
+Define $g_k$ for any $k \in \mathbb{N}$ by
+\begin{align*}
+    g_k(x) = \begin{cases}
+        n, & x \in [n, n+1-\frac{1}{k}), \\
+        kx - (k-1)(n+1), & x \in [n+1-\frac{1}{k}, n+1],
+    \end{cases}
+\end{align*}
+and it is easy to see that $g_k(x)$ is continuous on $\mathbb{R}$. By Weierstrass theorem, for any $k \in \mathbb{N}$, there is a polynomial $p_k$ such that 
+\begin{align*}
+    \left| p_k(x) - g_k(x) \right| < \frac{1}{k}, x \in [-m, m],
+\end{align*}
+where $m > 0$ is arbitrary. These $p_k$ form a sequence $\{p_k\}$. 
+\begin{enumerate}[label=(\alph*)]
+    \item Now for any $x \in \mathbb{R}\setminus \mathbb{Z}$, then there exists $M$ such that $x \in (m, m+1)$. Then for any $\varepsilon > 0$, let $N = \max\left\{\left\lfloor 1/\varepsilon \right\rfloor + 1, 1/(n + 1 - x) \right\}$, then for all $k > N$, we have $x \in [m, m + 1 - 1/k]$, and then
+    \begin{align*}
+        \left| f(x) - p_k(x) \right| & \leq \left| f(x) - g_k(x) \right| + \left| p_k(x) - g_k(x) \right| \\
+        & \leq |m - m| + \frac{1}{k} = \frac{1}{k} < \varepsilon.
+    \end{align*}
+    Thus, $\{p_k\}$ converges pointwise to $f$ on $\mathbb{R}\setminus \mathbb{Z}$. 
+    
+    \item Since compact set is bounded and closed, then $K \subset [-M, M]$ for some $M > 0$ and $M \in \mathbb{N}$. For any $\varepsilon > 0$, let $N = \left\lfloor 3M/\varepsilon \right\rfloor + 1$, then for all $k > N$, we have
+    \begin{align*}
+        \int_K \left| f(x) - p_k(x) \right|\, dx & \leq \int^{M}_{-M} \left| f(x) - p_k(x) \right|\, dx \\
+        & \leq \int^{M}_{-M} \left| f(x) - g_k(x) \right|\, dx + \int^{M}_{-M} \left| g_k(x) - p_k(x) \right|\, dx \\
+        & \leq \sum^{M-1}_{k=-M} \frac{1}{2k} + \int^{M}_{-M} \frac{1}{k} \, dx < \frac{3M}{k} < \varepsilon.
+    \end{align*}
+    Thus, we have
+    \begin{align*}
+        \lim_{k\to\infty} \int_K \left| f(x) - p_k(x) \right|\, dx = 0.
+    \end{align*}
+\end{enumerate}
+\end{proof}
+
+\medskip
+
+\begin{exercise}
+For a fixed $k \in \mathbb{N}$, define $f_k: \mathbb{R}^2 \to \mathbb{R}$ by
+\begin{align*}
+    f_k(x,y) = \begin{cases}
+        \frac{x^2(x + y^2)}{x^2 + y^{2k}}, & {\rm if}\,\, (x,y) \neq (0,0), \\
+        0, & {\rm if}\,\, (x,y) = (0,0).
+    \end{cases}
+\end{align*}
+Prove that $f_1$ is not differentiable at $(0,0)$, but $f_k$ is differentiable at $(0,0)$ for each $k \geq 0$.\\
+{\bf Hint:} At some point it may help to separately consider the case $|x| \geq |y|^k$ and $|x| < |y|^k$.
+\end{exercise}
+\begin{proof}
+The partial derivative at $(0,0)$ is 
+\begin{align*}
+    f_{k_x}(0,0) & = \lim_{x \to 0} \frac{f_k(x,0) - f_k(0,0)}{x} = \lim_{x \to 0}\frac{x - 0}{x} = 1, \\
+    f_{k_y}(0,0) & = \lim_{y \to 0} \frac{f_k(0,y) - f_k(0,0)}{x} = \lim_{y \to 0}\frac{0 - 0}{y} =  0.
+\end{align*}
+Also, we have
+\begin{align*}
+    \left| \frac{f_k(s,t) - f_k(0,0) - f_{k_x}(0,0)s - f_{k_y}(0,0)t}{\sqrt{s^2 + t^2}} \right| = \frac{\left|s^2t^2 - st^{2k}\right|}{(s^2 + t^{2k}) \sqrt{s^2 + t^2}}.
+\end{align*}
+~\begin{enumerate}[label=(\alph*)]
+    \item For $k = 1$, when $s = mt$ for some $m \in \mathbb{R}$ and $m \neq 0$, we have
+    \begin{align*}
+        \lim_{(s,t)\to (0,0)} \frac{\left|s^2t^2 - st^2\right|}{(s^2 + t^2) \sqrt{s^2 + t^2}} & = \lim_{t\to 0} \frac{\left|m^2t^4 - mt^3\right|}{(m^2 + 1)^{\frac{3}{2}} t^3} \\
+        & = \lim_{t\to 0} \left| \frac{m^2}{(m^2 + 1)^{\frac{3}{2}}} t - \frac{m}{(m^2 + 1)^{\frac{3}{2}}} \right| \\
+        & = \frac{|m|}{(m^2 + 1)^{\frac{3}{2}}} \neq 0,
+    \end{align*}
+    thus $f_1(x,y)$ is not differentiable at $(0,0)$.
+    
+    \item For $k \geq 2$, with $|a - b| \leq \sqrt{2(a^2 + b^2)}$ and $a^2 + b^2 \geq 2ab$, we have
+    \begin{align*}
+        \frac{\left|s^2t^2 - st^{2k}\right|}{(s^2 + t^{2k}) \sqrt{s^2 + t^2}} & = \frac{\left|s^2t^2 - st^{2k}\right|}{(s^2 + t^{2k})^{\frac{3}{2}}} \\
+        & \leq \frac{\left|s^2t^2 - st^{2k}\right|}{ (2st^k)^{\frac{3}{2}}} \\
+        & \leq \frac{\left|2s^4t^4 + 2s^2t^{4k}\right| }{(2st^k)^{\frac{3}{2}}}\\
+        & \leq \frac{\left|2s^2t^4 \left( s^2 + t^{4k-4} \right) \right|}{(2st^k)^{\frac{3}{2}}} \\
+        & \leq \frac{\left|2s^2t^4 \left( 2st^{2k-2} \right) \right|}{(2st^k)^{\frac{3}{2}}} \\
+        & = \left| \sqrt{2} s^{\frac{3}{2}} t^{\frac{1}{2}k+2} \right| \xrightarrow[]{(s,t)\to(0,0)} 0,
+    \end{align*}
+    thus $f_k(x,y)$ is differentiable at $(0,0)$.
+\end{enumerate}
+\end{proof}
+
+\medskip
+
+\begin{exercise}{\rm *}
+The quaternionic square of $\mathbf{x} = (x,y,z,w) \in \mathbb{R}^4$ is 
+\begin{align*}
+    s(\mathbf{x}) = \left( x^2 - y^2 - z^2 - w^2, 2xy, 2xz, 2xw \right).
+\end{align*}
+For any $\mathbf{b} \in \mathbb{R}^4$ such that $|\mathbf{b}| \leq 1/16$, prove that the equation
+\begin{align*}
+    s(\mathbf{x}) - \mathbf{x} + \mathbf{b} = 0
+\end{align*}
+has a unique solution $\mathbf{x}$ such that $|\mathbf{x}| \leq 1/8$.
+\end{exercise}
+\begin{proof}
+If $|\mathbf{x}| \leq 1/16$  and $|\mathbf{b}| \leq 1/16$, then 
+\begin{align*}
+    |s(\mathbf{x}) + \mathbf{b}| & \leq |s(\mathbf{x})| + |\mathbf{b}| \\
+    & = \sqrt{(x^2 + y^2 + z^2 + w^2)^2 - 4(y^2z^2 + y^2w^2 + z^2w^2)} + |\mathbf{b}| \\
+    & \leq \sqrt{(x^2 + y^2 + z^2 + w^2)^2} + |\mathbf{b}| \\
+    & = |\mathbf{x}| + |\mathbf{b}| \\
+    & \leq \left(\frac{1}{8}\right)^2 + \frac{1}{16} < \frac{1}{8}.
+\end{align*}
+
+Now define $f:B(1/8) \to B(1/8)$ by
+\begin{align*}
+    f(\mathbf{x}) = s(\mathbf{x}) + b,
+\end{align*}
+where $B(1/8) = \left\{ \mathbf{x} \in \mathbb{R}^4 : |\mathbf{x}| \leq 1/8 \right\}$. And $f$ is well defined from above inequality, since $B(1/8)$ is a closed subset of $\mathbb{R}^4$ and then $(B(1/8), d)$ is complete. 
+
+For any $\mathbf{x} = (x,y,z,w) \in B(1/8)$,
+\begin{align*}
+    (Ds)(\mathbf{x}) = \begin{pmatrix}
+        2x & -2y & -2z & -2w \\
+        2y & 2x  & 0   & 0   \\
+        2z & 0   & 2x  & 0   \\
+        2w & 0   & 0   & 2x   
+    \end{pmatrix},
+\end{align*}
+and $x^2 + y^2 + z^2 + w^2 \leq 1/64$. Also, for $\mathbf{y} = (a, b, c, d), |\mathbf{y}|=1$, we have
+\begin{align*}
+    \left\|(Ds)(\mathbf{x}) \right\| = & \sup_{|\mathbf{y}|=1} \left|(Ds)(\mathbf{x}) \cdot \mathbf{y}\right| \\
+    = & \sup_{|\mathbf{y}|=1} 2 \sqrt{(ax - by - cz - dw)^2 + (ay + bx)^2 + (az + cx)^2 + (aw + dx)^2} \\
+    \leq & \sup_{|\mathbf{y}|=1} 2 \sqrt{\left(|x| + |y| + |z| + |w|\right)^2 + (x + y)^2 + (x + z)^2 + (x + w)^2} \\
+    \leq & \sup_{|\mathbf{y}|=1} 2 \sqrt{\left(x^2 + y^2 + z^2 + w^2\right) + 2 \left(|xy| + |xz| + |xw| + |yz| + |yw| + |zw|\right)} \\
+    &  + 2 \sqrt{(x + y)^2 + (x + z)^2 + (x + w)^2} \\
+    & \leq 2 \sqrt{\frac{1}{64} + 2 \times \frac{6}{64} + 3 \times \frac{3}{64}} = \frac{11}{16} < 1.
+\end{align*}
+Then, for any $\mathbf{x}, \mathbf{y} \in B(1/8)$, by mean value theorem,
+\begin{align*}
+    |f(\mathbf{x}) - f(\mathbf{y})| = |s(\mathbf{x}) - s(\mathbf{y})| \leq \sup_{\mathbf{x} \in B(1/8)} \left\|(Ds)(\mathbf{x}) \right\| \cdot |\mathbf{x} - \mathbf{y}| \leq \frac{11}{16} |\mathbf{x} - \mathbf{y}|,
+\end{align*}
+which means $f$ is a contraction. By the Banach Fixed-Point Theorem, $f(\mathbf{x}) = \mathbf{x}$ has a unique solution. That is, for any $\mathbf{b} \in \mathbb{R}^4$ such that $|\mathbf{b}| \leq 1/16$, the equation
+\begin{align*}
+    s(\mathbf{x}) - \mathbf{x} + \mathbf{b} = 0
+\end{align*}
+has a unique solution $\mathbf{x}$ such that $|\mathbf{x}| \leq 1/8$.
 \end{proof}
 
 
