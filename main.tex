@@ -1087,6 +1087,103 @@ has a unique solution $\mathbf{x}$ such that $|\mathbf{x}| \leq 1/8$.
 
 
 
+\newpage
+
+\section{May 2017 Exam}
+
+\begin{exercise}{\rm *}\label{May_2017_1}
+Suppose $f:[1, \infty) \to \mathbb{R}$ is Riemann integrable on $[1, A]$ for every $A > 1$, and $\lim_{x \to \infty} xf(x) = 1$. Prove that
+\begin{align*}
+    \lim_{t \to \infty} \frac{1}{t} \int^{e^t}_{1} f(x)\, dx = 1.
+\end{align*}
+\end{exercise}
+\begin{proof}
+Since $\lim_{x \to \infty} xf(x) = 1$, then for any $\varepsilon > 0$, there exists $x_0 > 1$ such that for $x > x_0$, $|xf(x) - 1| < \varepsilon$.
+
+Now let
+\begin{align*}
+    t = \max \left\{\ln x_0, \frac{\int^{x_0}_{1} \frac{|xf(x) - 1|}{x}\, dx}{\varepsilon} \right\} + 1,
+\end{align*}
+then we have
+\begin{align*}
+    \left|\frac{1}{t} \int^{e^t}_{1} f(x)\, dx - 1\right| & = \frac{1}{t} \left|\int^{e^t}_{1} f(x)\, dx - \int^{e^t}_{1} \frac{1}{x}\, dx \right| \\
+    & \leq \frac{1}{t} \int^{e^t}_{1} \frac{|xf(x) - 1|}{x}\, dx \\
+    & \leq \frac{1}{t} \int^{x_0}_{1} \frac{|xf(x) - 1|}{x}\, dx + \frac{1}{t} \int^{e^t}_{x_0} \frac{|xf(x) - 1|}{x}\, dx \\
+    & < \varepsilon + \frac{1}{t} \int^{e^t}_{x_0} \frac{\varepsilon}{x}\, dx \\
+    & = \varepsilon + \frac{1}{t} \varepsilon (t - \ln x_0) < 2 \varepsilon.
+\end{align*}
+Thus, we have
+\begin{align*}
+    \lim_{t \to \infty} \frac{1}{t} \int^{e^t}_{1} f(x)\, dx = 1.
+\end{align*}
+\end{proof}
+
+\medskip
+
+\begin{exercise}{\rm *}
+~\begin{enumerate}[label=(\alph*)]
+    \item If every member of s sequence $\left\{f_n\right\}$ of functions on $[0,1]$ is $K$-Lipschitz for a fixed $K > 0$, that is, if $\left|f_n(x) - f_n(y)\right| \leq K |x - y|$ for all $x , y \in [0,1]$ and all $n \in \mathbb{N}$. Show that $\left\{f_n\right\}$ converges pointwise if and only if it converges uniformly.
+    
+    \item Prove that
+    \begin{align*}
+        \lim_{n\to\infty} \int^1_0 n \log \left(1 + \frac{x}{n}\right)\, dx = \frac{1}{2}.
+    \end{align*}
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+~\begin{enumerate}[label=(\alph*)]
+    \item \begin{enumerate}[label=\arabic*)]
+        \item $\Rightarrow$ Since $\left\{f_n\right\}$ converges pointwise to a function $f$, then for any $x \in [0,1]$ and any $\varepsilon > 0$, there exists $N_{x, \varepsilon} \in \mathbb{N}$ such that for all $n > N_{x, \varepsilon}$, 
+        \begin{align*}
+            \left| f_n(x) - f(x) \right| < \frac{\varepsilon}{3}.
+        \end{align*}
+        Then for any $x, y \in [0,1]$ and $\varepsilon > 0$, there exists an $N_{x,y} = \max \left\{N_{x, \varepsilon}, N_{y, \varepsilon}\right\}$, such that, 
+        \begin{align*}
+            |f(x) - f(y)| & \leq \left|f(x) - f_{N_{x,y}}(x)\right| + \left|f_{N_{x,y}}(x) - f_{N_{x,y}}(y)\right| + \left|f_{N_{x,y}}(y) - f(y)\right| \\
+            & < \frac{\varepsilon}{3} + K |x - y| + \frac{\varepsilon}{3} = \frac{2 \varepsilon}{3} + K |x - y|.
+        \end{align*}
+        And if $y \in \left(x - \frac{\varepsilon}{3K}, x + \frac{\varepsilon}{3K} \right)$, then for $n > N_{x,y}$, we have 
+        \begin{align*}
+            |f(x) - f(y)| < \frac{2 \varepsilon}{3} + K \frac{\varepsilon}{3K} = \varepsilon.
+        \end{align*}
+    
+        Since $[0,1]$ is compact, then $[0,1]$ can be covered by finite subcoverings, that is there exists $M > 0$ and $M \in \mathbb{N}$ such that
+        \begin{align*}
+            [0,1] \subset \bigcup^M_{j=1} B \left(x_j, \frac{\varepsilon}{3K} \right),
+        \end{align*}
+        where $B \left(x_j, \frac{\varepsilon}{3K}\right) = \left(x_j - \frac{\varepsilon}{3K}, x_j + \frac{\varepsilon}{3K} \right)$ and $x_j \in [0,1]$.
+    
+        Now, for any $\varepsilon > 0$, let $N = \max \left\{ N_{x_j, \varepsilon} \right\}, j = 1, \cdots, M$, then for any $x \in [0,1]$, there exists some $i$ such that $x \in B \left(x_i, \frac{\varepsilon}{3K}\right)$. Then, for all $n > N$, we have
+        \begin{align*}
+            |f_n(x) - f(x)| & \leq |f_n(x) - f_n(x_j)| + |f_n(x_j) - f(x_j)| + |f(x_j) - f(x)| \\
+            & < K \frac{\varepsilon}{3K} + \frac{\varepsilon}{3} + \frac{\varepsilon}{3} = \varepsilon.
+        \end{align*}
+        Thus, $\left\{f_n\right\}$ converges uniformly to a function $f$.
+        
+        \item $\Leftarrow$ If $\left\{f_n\right\}$ converges uniformly to a function $f$, then it is obvious that $\left\{f_n\right\}$ converges pointwise to $f$.
+    \end{enumerate}
+    
+    \item Let $f_n(x) = n \log \left(1 + \frac{x}{n}\right)$, and for any $x \in [0,1]$,
+    \begin{align*}
+        \lim_{n \to \infty} f_n(x) = \lim_{n \to \infty} n \log \left(1 + \frac{x}{n}\right) = \lim_{n \to \infty} n \log \left(1 + \frac{x}{n}\right)^{\frac{x}{n} \cdot \frac{n}{x}} = \lim_{n \to \infty} n \frac{x}{n} = x,
+    \end{align*}
+    which implies that $f_n(x)$ converges pointwise to $f(x) = x$. 
+    
+    For all $x , y \in [0,1]$, by Mean Value Theorem, we have
+    \begin{align*}
+        |f_n(x) - f_n(y)| & = \left|n \log \left(1 + \frac{x}{n}\right) - n \log \left(1 + \frac{y}{n}\right) \right| \\
+        & = n \left| \frac{1}{n + \theta} (x - y) \right| \\
+        & = \frac{n}{n + \theta} |x - y|
+    \end{align*}
+    where $\theta \in (x,y)$ or $\theta \in (y,x)$. Then, $\left\{f_n\right\}$ is $1$-Lipschitz, and by part (a), $\left\{f_n\right\}$ converges uniformly to $f(x) = x$. Thus,
+    \begin{align*}
+        \lim_{n \to \infty} \int^1_0 n \log \left(1 + \frac{x}{n}\right)\, dx & =  \int^1_0 \lim_{n \to \infty} n \log \left(1 + \frac{x}{n}\right)\, dx = \int^1_0 x \, dx = \frac{1}{2}.
+    \end{align*}
+\end{enumerate}
+\end{proof}
+
+
+
 
 
 
