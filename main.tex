@@ -1182,6 +1182,293 @@ Thus, we have
 \end{enumerate}
 \end{proof}
 
+\medskip
+
+\begin{exercise}\label{May_2017_3}
+Show that the Hilbert cube
+\begin{align*}
+    \mathcal{H} = \left\{(x_1, x_2, \cdots) | 0 \leq x_n \leq 2^{-n}, n \in \mathbb{N} \right\}
+\end{align*}
+is compact when it is equipped with the metric $d(\mathbf{x}, \mathbf{y}) = \sup \{|x_n - y_n| | n \in \mathbb{N}\}$, where $\mathbf{x} = (x_1, x_2, \cdots)$ and $\mathbf{y} = (y_1, y_2, \cdots)$.\\
+{\bf Hint:} Use a diagonal argument.
+\end{exercise}
+\begin{proof}
+Let $\{\mathbf{x}_k\}^\infty_{k=1}$ be a sequence in $\mathcal{H}$, where $\mathbf{x}_k = \left(x^k_1, x^k_2, \cdots\right)$.
+
+Since $\{x^k_1\}^\infty_{k=1}$ is a sequence in $\left[0, 2^{-1}\right]$, which is a compact set in $\mathbb{R}$, it has convergent subsequence $\left\{x^{n_{1,k}}_1\right\}^{\infty}_{k=1}$, which converges to limit $x_1 \in \left[0, 2^{-1}\right]$. Then, $\left\{\mathbf{x}^{n_{1,k}}\right\}$ is a subsequenc of $\{\mathbf{x}_k\}$ with 
+$$\lim_{k \to \infty} x^{n_{1,k}}_1 = x_1.$$
+
+Similarly, since $\{x^k_2\}^\infty_{k=1}$ is a sequence in $\left[0, 2^{-2}\right]$, which is a compact set in $\mathbb{R}$, it has convergent subsequence $\left\{x^{n_{2,k}}_2\right\}^{\infty}_{k=1}$ with limit $x_2 \in \left[0, 2^{-2}\right]$, where $\{n_{2,k}\}$ is a subsequence of $\{n_{1,k}\}$. Then, $\left\{\mathbf{x}^{n_{2,k}}\right\}$ is a subsequence of $\left\{\mathbf{x}^{n_{1k}}\right\}$ with 
+$$\lim_{k \to \infty} x^{n_{2,k}}_2 = x_2.$$
+
+Continue this process and for every $m \in \mathbb{N}$, there is a sequence $\left\{x^{n_{m,k}}_m \right\}$ converging to $x_m \in \left[0, 2^{-m}\right]$. And then $\left\{\mathbf{x}_{n_{m,k}} \right\}$ is a sunsequence of $\{\mathbf{x}_k\}$ with the first $m$ coordinates converging to $x_m$, respectively.
+
+Now use diagonal method and let $\mathbf{y}_m = \mathbf{x}_{n_{m,m}} = \left(x^{n_{m,m}}_1, x^{n_{m,m}}_2, \cdots \right)$, then $\{\mathbf{y}_m\}$ is a subsequence of $\{\mathbf{x}_k\}$. Let $\mathbf{x} = (x_1, x_2,  \cdots)$, and then it is clear that $\mathbf{x} \in \mathcal{H}$. Also, for every $i \in \mathbb{N}$, $\{n_{i+1,k}\}^{\infty}_{k=1}$ is a subsequence of $\{n_{i,k}\}^{\infty}_{k=1}$, and then $\{n_{i,i}\}$ is a subsequence of $\{n_{i,k}\}^{\infty}_{k=1}$. Then, we have
+\begin{align*}
+    d(\mathbf{y}_m, \mathbf{x}) & = d\left(\mathbf{x}_{n_{m,m}}, \mathbf{x} \right) \\
+    & = \sup_{i \in \mathbb{N}} \left|x^{n_{m,m}}_{i} - x_i \right| \\
+    & \leq \max \left\{ \sup_{i = 1, \cdots, m-1} \left|x^{n_{m,m}}_{i} - x_i \right|, 2^{-m} \right\},
+\end{align*}
+and then 
+\begin{align*}
+    \lim_{m \to \infty} d(\mathbf{y}_m, \mathbf{x}) = 0,
+\end{align*}
+which implies $\{\mathbf{y}_m\}$ is a subsequence of $\{\mathbf{x}_k\}$ that converges to $\mathbf{x}$. Thus, every sequence in $\mathcal{H}$ has a subsequence that converges to a limit in $\mathcal{H}$, so $\mathcal{H}$ is compact with the metric defined above.
+\end{proof}
+
+\medskip
+
+\newpage
+\begin{proof}[Second Proof of Exercise \ref{May_2017_3}]{\rm *}
+It suffice to show that $\mathcal{H}$ is complete and totally bounded.
+\begin{enumerate}[label=(\alph*)]
+    \item Let $\{\mathbf{x}_k\}$ be a Cauchy sequence in $\mathcal{H}$, where $\mathbf{x}_k = \left(x^k_1, x^k_2, \cdots\right)$. 
+
+    Then, for any $\varepsilon > 0$, there exists $N \in \mathbb{N}$ such that for all $n, m > N$, we have $d(\mathbf{x}_n, \mathbf{x}_m) < \varepsilon$. Then, we have $\left|x^n_i - x^m_i \right| < \varepsilon$ for all $i = 1,2,\cdots$. Thus, for any fixed $i$, $\left\{x^k_i\right\}^{\infty}_{k=1}$ is a Cauchy sequence in $\left[0, 2^{-i}\right]$. Since $\left[0, 2^{-i}\right]$ is complete, then $\left\{x^k_i\right\}^{\infty}_{k=1}$ converges to some $x_i \in \left[0, 2^{-i}\right]$. 
+
+    Now let $\mathbf{x} = (x_1, x_2, \cdots)$, then $\mathbf{x} \in \mathcal{H}$, and we have
+    \begin{align*}
+        \lim_{k \to \infty} d(\mathbf{x}_k, \mathbf{x}) = \lim_{k \to \infty} \sup_{i \in \mathbb{N}} \left|x^k_i - x_i\right| = 0,
+    \end{align*}
+    which implies that every Cauchy sequence in $\mathcal{H}$ converges to a limit in $\mathcal{H}$. Thus, $\mathbb{H}$ is complete.
+    
+    \item For any $\varepsilon > 0$, there exists $M \in \mathbb{N}$ such that $2^{-M} < \varepsilon$. For any $n < N, n \in \mathbb{N}$,  we have 
+    \begin{align*}
+        \left[0, 2^{-n}\right] \subset \bigcup_{x \in \left[0, 2^{-i}\right]} B(x, \varepsilon),
+    \end{align*}
+    and since $\left[0, 2^{-i}\right]$ is compact, then there exist finite coverings $\bigcup^{K_n}_{i=1} B(x_{n, i}, \varepsilon)$, where $K_n \in \mathbb{N}$ such that 
+    \begin{align*}
+        \left[0, 2^{-n}\right] \subset \bigcup^{K_n}_{i=1} B \left(x^{(n)}_i, \varepsilon \right),
+    \end{align*}
+    where $x^{(n)}_i \in \left[0, 2^{-n}\right]$.
+    
+    Let $A_n = \left\{x^{(n)}_1, x^{(n)}_2, \cdots, x^{(n)}_{K_n}\right\}$, and define 
+    \begin{align*}
+        H_\varepsilon = \left\{(x_1, x_2, \cdots) | x_i \in A_i, i = 1, \cdots, M; x_i = 0, i > M \right\}.
+    \end{align*}
+    For any $\mathbf{x} = (x_1, x_2, \cdots) \in \mathcal{H}$, there exists $\mathbf{y} = \left(x^{(1)}_{k_1}, x^{(2)}_{k_2}, \cdots, x^{(M)}_{k_M}, 0, 0, \cdots \right) \in H_{\varepsilon}$, such that 
+    \begin{align*}
+        d(\mathbf{x}, \mathbf{y}) & = \max \left\{\sup_{i = 1, \cdots, M} \left|x_i - x^{(i)}_{k_i} \right|, \sup_{i > M} \left| x_i \right| \right\} \\
+        & < \max \left\{\varepsilon, 2^{-M} \right\} \leq \varepsilon.
+    \end{align*}
+    Then, $\mathcal{H}$ is covered by a finite coverings $\{B(\mathbf{x}, \varepsilon) | \mathbf{x} \in H_\varepsilon\}$, since $H_\varepsilon$ has $\prod^M_{n=1} K_n$ elements. Thus, $\mathcal{H}$ is totally bounded.
+\end{enumerate}
+Hence, since $\mathcal{H}$ is complete and totally bounded, it is compact with the metric defined above.
+\end{proof}
+
+\medskip
+
+\begin{exercise}
+~\begin{enumerate}[label=(\alph*)]
+    \item Prove that the series below 
+    \begin{align*}
+        f(x) = \sum^\infty_{n=0} \frac{nx}{1 + n^4x^2}
+    \end{align*}
+    converges uniformly on $[a, \infty)$ for any $a > 0$.
+    
+    \item Now for a square $N$(i.e. with $\sqrt{N} \in \mathbb{N}$), show that 
+    \begin{align*}
+        f\left(\frac{1}{N}\right) \geq \frac{N}{2} \sum_{n \geq \sqrt{N}} \frac{1}{n^3},
+    \end{align*}
+    and using an integral to estimate the sum, show that $f\left(1/N\right) \geq 1/4$. Conclude that the series does not converge uniformly on $\mathbb{R}$.
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+~\begin{enumerate}[label=(\alph*)]
+    \item For $x \geq a$ and $n \geq 0$, we have
+    \begin{align*}
+        \left|\frac{nx}{1 + n^4x^2}\right| \leq \frac{nx}{n^4x^2} = \frac{1}{n^3x} \leq \frac{1}{an^3},
+    \end{align*}
+    and by Weierstrass $M$-test\footnote{{\bf Weierstrass $M$-test:} Suppose that $f_n: A \to \mathbb{R}$, $A \subset \mathbb{R}$, is a sequence of function such that $|f_n(x)| \leq a_n$ for all $x \in A$ and $n \in \mathbb{N}$. If the series $\sum^\infty_{n=1}a_n$ converges, then the series $\sum^\infty_{n=1}f_n(x)$ converges uniformly.}, since $\sum^\infty_{n=1} 1/\left(an^3\right)$ converges, then the series $f(x)$ converges uniformly.
+    
+    \item First, since the series converges uniformly on $[1/N, \infty)$, then $f(1/N)$ is well-defined. Then,
+    \begin{align*}
+        f\left(\frac{1}{N}\right) = \sum^\infty_{n=0} \frac{nN}{N^2 + n^4} = \sum^\infty_{n=0} \frac{N}{\frac{N^2}{n} + n^3} \geq \sum^\infty_{n=\sqrt{N}} \frac{N}{\frac{N^2}{n} + n^3} \geq \sum^\infty_{n=\sqrt{N}} \frac{N}{\frac{n^4}{n} + n^3} = \frac{N}{2} \sum^\infty_{n\geq \sqrt{N}} \frac{1}{n^3}.
+    \end{align*}
+    
+    Second, considering the integral form for $\sum^\infty_{n\geq \sqrt{N}} 1/n^3$ gives
+    \begin{align*}
+        f\left(\frac{1}{N}\right) \geq \frac{N}{2} \int^\infty_{\sqrt{N}} \frac{1}{x^3}\, dx \cdot 1 = \frac{N}{2} \frac{1}{2N} = \frac{1}{4},
+    \end{align*}
+    where $1$ is the length of the partition of the interval $[\sqrt{N}, \infty)$. 
+    
+    Finally, if the series $f(x)$ converges uniformly on $\mathbb{R}$, then $f(x)$ is continuous at $0$. Then,
+    \begin{align*}
+        \frac{1}{4} \leq \lim_{N \to \infty} f\left(\frac{1}{N^2}\right) = \lim_{x\to 0} f(x) = f(0) = 0,
+    \end{align*}
+    which is a contradiction. Thus, the series does not converge uniformly on $\mathbb{R}$.
+\end{enumerate}
+\end{proof}
+
+\begin{proof}[Second Proof of (a)]\footnote{This proof is similar to the first one, since it is exactly the method used to prove Weierstrass $M$-test.} Since for $x \geq a$ and $n \geq 0$,
+\begin{align*}
+    \left|\frac{nx}{1 + n^4x^2}\right| \leq \frac{1}{an^3},
+\end{align*}
+then it suffice to show that the partial sums of the sequence is Cauchy sequence\footnote{Let $A$ be any set and $f_n:A \to \mathbb{R}$ be a sequence of functions. The pointwise and uniform convergence of the series $\sum^\infty_{n=1}f_n(x)$ is defined respectively as the pointwise and the uniform convergence of the sequence of partial sums $s_k(x) = \sum^k_{n=1}f_n(x)$.}. Indeed, since $\sum^\infty_{n=1} 1/\left(an^3\right)$ converges, then there exists $N \in \mathbb{N}$ such that 
+\begin{align*}
+    \sum^\infty_{n=N} \frac{1}{an^3} < \varepsilon.
+\end{align*}
+Then for $m > k \geq N$ and any $x \geq a$,
+\begin{align*}
+    \left|\sum^m_{n=0} \frac{nx}{1 + n^4x^2} - \sum^k_{n=0} \frac{nx}{1 + n^4x^2} \right| = \left|\sum^m_{n=k+1} \frac{nx}{1 + n^4x^2}  \right| \leq \sum^m_{n=k+1} \frac{1}{an^3} \leq \sum^\infty_{n=N} \frac{1}{an^3} < \varepsilon.
+\end{align*}
+Since $f(x) = \lim_{m\to\infty}\sum^m_{n=0} nx/(1 + n^4x^2)$, letting $m \to \infty$ implies that for all $k > N$ and all $x \geq a$
+\begin{align*}
+    \left|f(x) - \sum^k_{n=0} \frac{nx}{1 + n^4x^2} \right| < \varepsilon.
+\end{align*}
+Thus this means that the series $f(x)$ converges uniformly.
+\end{proof}
+
+\medskip
+
+\begin{exercise}
+For $n \geq 1$, suppose $f:\mathbb{R}^n \to \mathbb{R}$ is second-differentiable, and $\left(D^2f\right)_p$  is positive semidefinite for all $p$, i.e., $\left(D^2f\right)_p(\mathbf{v}, \mathbf{v}) \geq 0$ for all $\mathbf{v} \in \mathbb{R}^n$. Show that $f$ is convex in the sense that for any $p, q \in \mathbb{R}^n$ and $t \in [0,1]$,
+\begin{align*}
+    f((1-t)p + tq) \leq (1 - t)f(p) + tf(q).
+\end{align*}
+In particular, you must show this for $n = 1$. \\
+{\bf Hint:} In the general case, reduce to the case when $n = 1$.
+\end{exercise}
+\begin{proof}
+~\begin{enumerate}[label=(\alph*)]
+    \item When $n = 1$, without losing generality, suppose $p < q$, and by mean value theorem, there exists $x_1 \in [p, (1-t)p + tq]$ and $x_2 \in [(1-t)p + tq, q]$ such that 
+    \begin{align*}
+        f((1-t)p + tq) - f(p) & = t(q - p) f'(x_1), \\
+        f(q) - f((1-t)p + tq) & = (1 - t)(q - p) f'(x_2).
+    \end{align*}
+    Also, by mean value theorem, since $f$ is second-differentiable, then
+    \begin{align*}
+        f((1-t)p + tq) - (1 - t)f(p) - tf(q) & = t(1 - t)(q - p)\left[f'(x_1) - f'(x_2) \right] \\
+        & = t(1 - t)(q - p)(x_1 - x_2) f''(\theta),
+    \end{align*}
+    where $\theta \in [x_1, x_2]$. 
+    
+    Now, since $f''(x) \geq 0$ for any $x \in \mathbb{R}$, then we have 
+    \begin{align*}
+        f((1-t)p + tq) - (1 - t)f(p) - tf(q) \leq 0,
+    \end{align*}
+    and hence $f$ is convex for $n = 1$.
+    
+    \item For $p, q \in \mathbb{R}^n$, let 
+    \begin{align*}
+        g(t) & = (1-t)p + tq,\\
+        h(t) & = f(g(t)).
+    \end{align*}
+    By the chain rule, we have
+    \begin{align*}
+        h'(t) & = (Df)_{g(t)}\cdot (Dg)_t = (Df)_{g(t)}\cdot (q - p), \\
+        h''(t) & = \left(D^2f\right)_{g(t)}(q - p, q - p) \geq 0.
+    \end{align*}
+    By the similar argument in (a), we have
+    \begin{align*}
+        f((1-t)p + tq) - (1 - t)f(p) - tf(q) \leq 0,
+    \end{align*}
+    and hence $f$ is convex for $n > 1$.
+\end{enumerate}
+\end{proof}
+
+\medskip
+
+\begin{exercise}
+Given $(p, q) \in \mathbb{R}^2$, let $f_{(p, q)}: \mathbb{R} \to \mathbb{R}$ be the polynomial:
+\begin{align*}
+    f_{(p, q)}(x) = x^3 - px + q.
+\end{align*}
+\begin{enumerate}[label=(\alph*)]
+    \item Prove that for any $(y,z) \in \mathbb{R}^2$, there is a unique $(p, q) \in \mathbb{R}^2$ such that $f_{(p, q)}(y) = f_{(p, q)}(z) = 0$, and that the map $\phi: \mathbb{R}^2 \to \mathbb{R}^2$ taking $(y, z)$ to this $(p, q)$ is smooth.
+    
+    \item{\rm *} Prove that $\phi$ maps at most six-to-one, and that for $(y_0, z_0) \in \mathbb{R}^2$ with $\phi(y_0, z_0) = (p_0, q_0)$, $\phi$ restricts to a diffeomorphism from a suitable neighborhood of $(x_0, y_0)$ to a neighborhood of $(p_0, q_0)$ if and only if $\phi^{-1}(p_0, q_0)$ contains exactly six points.
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+~\begin{enumerate}[label=(\alph*)]
+    \item 
+    \begin{enumerate}[label=\arabic*)]
+        \item If $y \neq z$, then $f_{(p, q)}(y) = f_{(p, q)}(z) = 0$ gives
+        \begin{align*}
+            p = z^2 + zy + y^2, \quad q = yz^2 + zy^2,
+        \end{align*}
+        that is, for any $(y,z) \in \mathbb{R}^2, y \neq z$, there is a unique $(p, q) = \left(z^2 + zy + y^2, yz^2 + zy^2\right)$ such that $f_{(p, q)}(y) = f_{(p, q)}(z) = 0$. And thus, $\phi(y, z) = \left(z^2 + zy + y^2, yz^2 + zy^2\right)$ for $y \neq z$.
+        
+        \item If $y = z$, then extend $\phi(y,z)$ defined above to $y = z$ gives $\phi(y, z) = (3y^2, 2y^3)$. Then, 
+        $$y^3 - (3y^2)y + 2y^3 = 0.$$ 
+        Thus, $\phi(y,z)$ satisfies $\phi(y, z) = \left(z^2 + zy + y^2, yz^2 + zy^2\right)$ for $y = z$.
+    \end{enumerate}
+    Hence, $\phi(y, z)$ satisfies $\phi(y, z) = \left(z^2 + zy + y^2, yz^2 + zy^2\right)$ for all $(y, z) \in \mathbb{R}^2$. And it is obvious that $\phi(y, z)$ is smooth. Indeed, $\phi(y, z)$ is differentiable everywhere.
+    
+    \item 
+    \begin{enumerate}[label=\arabic*)]
+        \item For any $(p_0, q_0)$, if $\phi(y, z) = (p_0, q_0)$, then 
+        \begin{align*}
+            z^2 + zy + y^2 = p_0, \quad yz^2 + zy^2 = q_0,
+        \end{align*}
+        which gives
+        \begin{align*}
+            y^3 - p_0 y + q_0 = 0.
+        \end{align*}
+        If $q_0 \neq 0$, then $y$ has at most three solutions. Also, $yz^2 + zy^2 = q_0$ gives
+        \begin{align*}
+            z = \frac{-y^2 \pm \sqrt{y^4 + 4q_0y}}{2y},
+        \end{align*}
+        and then $z$ has at most six solutions.
+        
+        If $q_0 = 0$, then we have solutions
+        \begin{align*}
+            \begin{cases}
+                y = 0 \\
+                z = \pm \sqrt{p_0}
+            \end{cases}, 
+            \begin{cases}
+                y = \pm \sqrt{p_0} \\
+                z = 0
+            \end{cases},
+            \begin{cases}
+                y = \pm \sqrt{p_0} \\
+                z = \mp \sqrt{p_0}
+            \end{cases},
+        \end{align*}
+        and there are also six solutions. Thus, $\phi$ maps at most six-to-one.
+        
+        \item Since $\phi(y, z) = \left(z^2 + zy + y^2, yz^2 + zy^2\right)$, then 
+        \begin{align*}
+            |D\phi| & = \det \begin{pmatrix}
+                z + 2y & y + 2z \\
+                z^2 + 2zy & y^2 + 2yz
+            \end{pmatrix} \\
+            & = (y - z)\left(2y^2 + 5yz + 2z^2\right) \\
+            & = (y - z)(z + 2y)(y + 2z).
+        \end{align*}
+        Also, $\phi$ restricts to a diffeomorphism if and only if $|D\phi| \neq 0$, that is 
+        \begin{align}\label{condition_of_diffeomorphism}
+            y \neq z, \quad z \neq -2y, \quad y \neq -2z.
+        \end{align}
+        If $\phi(y, z) = (p_0, y_0)$, then by (a) we have $f_{(p_0,q_0)}(y) = f_{(p_0,q_0)}(z) = 0$, that is, 
+        \begin{align*}
+            y^3 - p_0y + q_0 = 0, \quad z^3 - p_0z + q_0 = 0.
+        \end{align*}
+        
+        ($\Rightarrow$) If $\phi$ is a diffeomorphism, then $y \neq z, z \neq -2y, y \neq -2z$. 
+        
+        When $q_0 = 0$, then it has solution for $p_0 \geq 0$ since $y, z \in \mathbb{R}$. By (a), $p_0 > 0$ gives six solutions for $(y,z)$, which satisfy the condition (\ref{condition_of_diffeomorphism}), and $p_0 = 0$ gives $y = z$, which does not satisfy (\ref{condition_of_diffeomorphism}).
+        
+        When $q_0 \neq 0$. If $x^3 - p_0x + q_0 = 0$ has only one solution, then $y = z$, which is a contradiction. If it has two solutions, then we have two cases: if $\sqrt{y^4 + 4q_0y} = 0$, then $z = - y/2$, which is a contradiction; and if $\sqrt{y^4 + 4q_0y} > 0$, then $z$ has two solutions $\frac{-y^2 \pm \sqrt{y^4 + 4q_0y}}{2y}$, and $y$ is one of them, which is also a contradiction. If it has three solutions, then $\sqrt{y^4 + 4q_0y} > 0$, and there are six solutions for $(y,z)$.
+        
+        Thus, $\phi$ being a diffeomorphism implies that $\phi^{-1}(p_0, q_0)$ contains six points.
+        
+        ($\Leftarrow$) If $\phi^{-1}(p_0, q_0)$ contains six points.
+        
+        When $q_0 = 0$, we know that there are six solutions for $(y, z)$ if and only if $p_0 > 0$. And every solution satisfies (\ref{condition_of_diffeomorphism}). 
+        
+        When $q_0 \neq 0$, we know that $x^3 - p_0x + q_0 = 0$ must have three solutions $x_1, x_2, x_3$, and then by Vieta's formula, $\sum^3_{i=1} x_i = 0$. Also, for $i = 1,2,3$, 
+        $$x_i^4 + 4 q_0 x_i > 0.$$
+        If $x_1 = z_1^- = \frac{-x_1^2 - \sqrt{x_1^4 + 4q_0x_1}}{2x_1}$, then $2x_1^2 = -x_1^2 - \sqrt{x_1^4 + 4q_0x_1}$, where it only holds for $x_1 = 0$, which is a contradiction. If $x_1 = z_1^+ = \frac{-x_1^2 + \sqrt{x_1^4 + 4q_0x_1}}{2x_1}$, then $q_0 = 2x_1^3$, which gives $x_1 = \sqrt[3]{q_0/2}$; now we assume $x_2 = z_1^- = -2x_1$, then we have $x_3 = 0 - x_1 - x_2 = x_1$, which is also a contradiction. Then, $x^3 - p_0x + q_0 = 0$ having three solutions makes sure that $z \neq -2y, y \neq -2z$. 
+        
+        Thus, $\phi^{-1}(p_0, q_0)$ containing exactly six points implies that $|D\phi| \neq 0$, and hence $\phi$ is a diffeomorphism.
+    \end{enumerate}
+\end{enumerate}
+\end{proof}
+
+
 
 
 
