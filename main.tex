@@ -1,4 +1,4 @@
-\documentclass[11pt]{article}
+\documentclass[11pt]{amsart}
 \pagestyle{plain}
 %\documentclass{article}
 %\usepackage[utf8]{inputenc}
@@ -29,7 +29,9 @@
 \usepackage{stackengine}
 \usepackage{mathtools}
 \usepackage{nccmath}
+\usepackage{float}
 \usepackage{url}
+\usepackage{esint}
 \graphicspath{ {images/} }
 
 \usepackage{hyperref}
@@ -152,7 +154,9 @@ Let $\sigma > 0$. Let $\left\{f_k\right\}_{k\in \mathbb{N}}$ be a sequence of fu
         \end{align*}
         Now, for $N = \max\{N_1, N_2\}$, and $\forall n, m > N$, if $|x - y| < \delta$, then 
         \begin{align*}
-            \left|f_{nn}(x) - f_{mm}(x)\right| & \leq \left|f_{nn}(x) - f_{nn}(y)\right| + \left|f_{nn}(y) - f_{mm}(y)\right| + \left|f_{nn}(y) - f_{mm}(x)\right| \leq 3 \varepsilon.
+            \left|f_{nn}(x) - f_{mm}(x)\right| & \leq \left|f_{nn}(x) - f_{nn}(y)\right| + \left|f_{nn}(y) - f_{mm}(y)\right| \\
+            & + \left|f_{nn}(y) - f_{mm}(x)\right| \\
+            & \leq 3 \varepsilon.
         \end{align*}
         Hence, $\{f_{nn}(x)\}$ is convergent as a Cauchy sequence. Set $f(x) = \lim_{m\to\infty}f_{mm}(x)$, then for $x\in \mathbb{R}$, there exists $N > 0$ such that for all $n > N$, 
         \begin{align*}
@@ -1604,6 +1608,98 @@ Let $f:A \to X$ be a mapping between a dense subset $A \subset \mathbb{R}^n$ and
     however, $|x - x_n| \to 0$, then this is a contradiction and we find the example.
     \end{enumerate}
 \end{proof}
+
+\medskip
+
+\begin{exercise}
+Suppose $f(x,y)$ is a $C^2$ function on the unit disk $\mathbb{D} = \{(x,y)\,|\,x^2+y^2\leq 1\}$ such that for some $M>0$ and all $(x,y)\in\mathbb{D}$,
+$$ \left[f_{xx}(x,y)\right]^2 + 2\left[f_{xy}(x,y)\right]^2 + \left[f_{yy}(x,y)\right]^2 \leq M. $$
+If $f(0,0) = f_x(0,0) = f_y(0,0) = 0$, show that
+$$ \left\lvert \iint_{\mathbb{D}} f(x,y)\,\mathit{dx}\mathit{dy} \right\rvert \leq \frac{\pi\sqrt{M}}{4}. $$
+\end{exercise}
+\begin{proof}
+By Taylor's formula, 
+\begin{align*}
+    f(x) = f(0) + \sum^2_{i=1} \frac{\partial f}{\partial x_i}(0) x_i + \frac{1}{2} \sum^2_{i,j=1} \frac{\partial^2 f}{\partial x_i \partial x_i}(0)x_i x_j + R,
+\end{align*}
+we have that for $f(x,y)$,
+\begin{align*}
+    f(x,y) = f(0,0) + f_x(0,0)x + f_y(0,0)y + \frac{1}{2} f_{xx}(\xi,\mu) x^2 + f_{xy}(\xi,\mu) xy + \frac{1}{2} f_{yy}(\xi,\mu) y^2.
+\end{align*}
+Then, taking integral gives
+\begin{align*}
+    \left|\iint_{\mathbb{D}} f(x,y)\, dxdy \right| & \leq \iint_{\mathbb{D}} \left|f(x,y)\right|\, dxdy \\
+    & \leq \iint_{\mathbb{D}} \left| \frac{1}{2} f_{xx}(\xi,\mu) x^2 + f_{xy}(\xi,\mu) xy + \frac{1}{2} f_{yy}(\xi,\mu) y^2 \right|\, dxdy \\
+    & \leq \iint_{\mathbb{D}} \sqrt{\left[f_{xx}(x,y)\right]^2 + 2\left[f_{xy}(x,y)\right]^2 + \left[f_{yy}(x,y)\right]^2} \sqrt{\frac{x^4}{4} + \frac{x^2y^2}{2} + \frac{y^4}{4}}\, dxdy \\
+    & \leq \sqrt{M} \iint_{\mathbb{D}} \sqrt{\frac{r^4}{4}} \, dxdy \\
+    & = \sqrt{M} \int^1_0 \int^{2\pi}_0 \sqrt{\frac{r^4}{4}} r \, d\theta dr \\
+    & = \frac{\pi \sqrt{M}}{4},
+\end{align*}
+where we used Cauchy-Schwarz inequality*.
+\end{proof}
+
+\medskip
+
+\begin{exercise}
+Let $\gamma:\mathbb{R}\to\mathbb{R}^n$ and $\mathbf{v}_i:\mathbb{R}\to\mathbb{R}^n$, $i=1,2,\ldots,n-1$, be $C^\infty$ smooth functions such that
+for any $t\in\mathbb{R}$ the vectors
+$$
+\gamma'(t),\mathbf{v}_1(t),\ldots,\mathbf{v}_{n-1}(t)
+$$
+form an orthonormal basis of $\mathbb{R}^n$ (here we differentiate $\gamma$ but {\bf do not} differentiate $\mathbf{v}_i$, $i=1,2,\ldots,n-1$).
+
+Consider the mapping $\Phi:\mathbb{R}^n\to\mathbb{R}^n$ defined by
+$$
+\Phi(x_1,\ldots,x_n)=\gamma(x_n)+\sum_{i=1}^{n-1} x_i\mathbf{v}_i(x_n).
+$$
+\begin{enumerate}[label=(\alph*)]
+    \item Find the derivative $D\Phi(x_1,\ldots,x_n)$;
+    
+    \item Prove that $\Phi$ is a diffeomorphism in a neighborhood of a point of the form $(0,\ldots,0,x_n)$;
+    
+    \item Find the limit
+	$$ \lim_{r\to 0} \frac{|\Phi(B^n(0,r))|}{|B^n(0,r)|},$$
+	where $B^n(0,r)$ denotes the ball of radius $r$ centered at the origin and $|A|$ stands for the volume of the set $A$.
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+~\begin{enumerate}[label=(\alph*)]
+    \item 
+    \begin{align*}
+        D\Phi(x_1,\cdots,x_n) = \begin{pmatrix}
+            \mathbf{v}_1(x_n) &  &  &  &  \\
+            & \mathbf{v}_2(x_n) &  &  &  \\
+            &  & \ddots &  & \\
+            &  &  & \mathbf{v}_{n-1}(x_n) \\
+            &  &  &  & \gamma'(x_n) + \sum^{n-1}_{i=1}x_i \mathbf{v}_i'(x_n)
+        \end{pmatrix}.
+    \end{align*}
+    
+    \item 
+    \begin{align*}
+        D\Phi(0,\ldots, 0, x_n) = \begin{pmatrix}
+            \mathbf{v}_1(x_n) &  &  &  &  \\
+            & \mathbf{v}_2(x_n) &  &  &  \\
+            &  & \ddots &  & \\
+            &  &  & \mathbf{v}_{n-1}(x_n) \\
+            &  &  &  & \gamma'(x_n)
+        \end{pmatrix}.
+    \end{align*}
+    is an orthogonal matrix and then $\det D\Phi(0,\ldots, 0, x_n) = \pm 1 \neq 0$. Then it remains to show that $\Phi$ is bijection. And this is obvious. Thus, $\Phi$ is a diffeomorphism in a neighborhood of a point of the form $(0,\ldots,0,x_n)$.
+    
+    \item By the change of variable, we have
+    \begin{align*}
+        \left|\Phi(B^n(0,r))\right| = \int_{B^n(0,r)} |J_\Phi|\, dA
+    \end{align*}
+    and $|J_\Phi| \to 1$ as $r \to 0$, Then for any $\varepsilon > 0$, there exists $r$ such that $\left||J_\Phi| - 1\right| < \varepsilon$, and then
+    \begin{align*}
+        \left|\frac{|\Phi(B^n(0,r))|}{|B^n(0,r)|} - 1\right| = \left|\frac{\int_{B^n(0,r)} |J_\Phi|\, dA}{|B^n(0,r)|} - 1\right|< \varepsilon.
+    \end{align*}
+    Thus, the limit is equal to $1$.
+\end{enumerate}
+\end{proof}
+
+
 
 
 
