@@ -1474,7 +1474,6 @@ Given $(p, q) \in \mathbb{R}^2$, let $f_{(p, q)}: \mathbb{R} \to \mathbb{R}$ be 
 
 
 \newpage
-
 \section{August 2016 Exam}
 
 \begin{exercise}
@@ -1700,9 +1699,51 @@ $$
 \end{proof}
 
 
+\newpage
+\section{May 2016 Exam}
 
+\begin{exercise}\label{May_2016_1}
+Prove that if a sequence $\{a_n\}^\infty_{n=1}$ of real numbers is convergent to a finite limit, $\lim_{n\to\infty} a_n = g \in \mathbb{R}$, then
+\begin{align*}
+    \lim_{x\to\infty} e^{-x} \sum_{n=0}^\infty a_n\frac{x^n}{n!} = g.
+\end{align*}
+\end{exercise}
+\begin{proof}
+Since $\lim_{n\to\infty} a_n = g$, then for any $\varepsilon > 0$, there exists $N > 0$ such that for all $n > N$, $|a_n - g| < \varepsilon$. Then, we have
+\begin{align*}
+    \left|e^{-x} \sum_{n=0}^\infty a_n\frac{x^n}{n!} - g \right| & = \left|e^{-x} \sum_{n=0}^\infty (a_n - g)\frac{x^n}{n!}\right| \\
+    & = \left|e^{-x}\sum_{n=0}^N (a_n - g)\frac{x^n}{n!} + e^{-x}\sum_{n=N+1}^\infty (a_n - g)\frac{x^n}{n!} \right| \\
+    & \leq \left|e^{-x}\sum_{n=0}^N (a_n - g - \varepsilon)\frac{x^n}{n!} \right| + \left|e^{-x}\sum_{n=0}^N \varepsilon \frac{x^n}{n!} \right| + \left|e^{-x}\sum_{n=N+1}^\infty \varepsilon \frac{x^n}{n!} \right| \\
+    & = \left|e^{-x}\sum_{n=0}^N (a_n - g - \varepsilon) \frac{x^n}{n!} \right| + \left| e^{-x}\sum_{n=0}^\infty \varepsilon \frac{x^n}{n!} \right| \\
+    & = \left|e^{-x}\sum_{n=0}^N (a_n - g - \varepsilon) \frac{x^n}{n!} \right| + \varepsilon.
+\end{align*}
+For the first term on the right hand side, by the L’Hopital’s rule, we have
+\begin{align*}
+    \lim_{x \to \infty} \sum_{n=0}^N \frac{(a_n - g - \varepsilon)x^n}{e^x n!} & = \lim_{x \to \infty} \sum_{n=1}^N \frac{(a_n - g - \varepsilon) x^{n-1}}{e^x (n-1)!} \\
+    & = \lim_{x \to \infty} \sum_{n=2}^N \frac{(a_n - g - \varepsilon) x^{n-2}}{e^x (n-2)!} \\
+    & \qquad \qquad \vdots \\
+    & = \lim_{x \to \infty} \frac{(a_n - g - \varepsilon)}{e^x} = 0.
+\end{align*}
+Thus, 
+\begin{align*}
+    \lim_{x \to \infty} \left|e^{-x} \sum_{n=0}^\infty a_n\frac{x^n}{n!} - g \right| < \varepsilon.
+\end{align*}
+\end{proof}
 
+\medskip
 
+\begin{proof}[Second Proof of Exercise \ref{May_2016_1}]
+For the first term on the right hand side, we can interchange the order of limit and summation, since it is smmation of finitely numbers, that is
+\begin{align*}
+    \lim_{x\to\infty} \left|e^{-x}\sum_{n=0}^N (a_n - g - \varepsilon) \frac{x^n}{n!} \right| = \sum_{n=0}^N \lim_{x\to\infty} (a_n - g - \varepsilon) \frac{x^n}{e^x n!} = 0.
+\end{align*}
+\end{proof}
+
+\medskip
+
+\begin{exercise}
+
+\end{exercise}
 
 
 
