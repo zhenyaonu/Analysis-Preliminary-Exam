@@ -1741,9 +1741,162 @@ For the first term on the right hand side, we can interchange the order of limit
 
 \medskip
 
-\begin{exercise}
-
+\begin{exercise}{\rm *}
+Let $f: \mathbb{R} \to \mathbb{R}$ be a $C^4$ function such that for all $x, h \in \mathbb{R}$, we have
+\begin{align*}
+    f(x + h) = f(x) + f'(x)h + \frac{1}{2} f''\left(x + \frac{1}{3}h \right)h^2.
+\end{align*}
+Show that the forth derivative $f^{(4)}(x) = 0$ for any $x \in \mathbb{R}$.
 \end{exercise}
+\begin{proof}
+Taking the derivative with respect to $x$ gives
+\begin{align*}
+    f'(x + h) = f'(x) + f''(x)h + \frac{1}{2} f'''\left(x + \frac{1}{3}h \right)h^2,
+\end{align*}
+and taking the derivative with respect to $h$ gives
+\begin{align*}
+    f'(x + h) = f'(x) + \frac{1}{6} f'''\left(x + \frac{1}{3}h \right)h^2 + f''\left(x + \frac{1}{3}h \right)h.
+\end{align*}
+Then we have
+\begin{align*}
+    f''(x)h + \frac{1}{2} f'''\left(x + \frac{1}{3}h \right)h^2 = \frac{1}{6} f'''\left(x + \frac{1}{3}h \right)h^2 + f''\left(x + \frac{1}{3}h \right)h,
+\end{align*}
+and then
+\begin{align*}
+    f''\left(x + \frac{1}{3}h \right)h - f''(x)h = \frac{1}{3} f'''\left(x + \frac{1}{3}h \right)h^2,
+\end{align*}
+substituting $\frac{1}{3}h$ by $t$ gives
+\begin{align*}
+    \frac{f''(x + t) - f''(x)}{t} = f'''(x + t).
+\end{align*}
+Substitute $x$ by $x - t$ and then $t$ by $-t$, then we have
+\begin{align*}
+    \frac{f''(x + t) - f''(x)}{t} = f'''(x).
+\end{align*}
+Thus, $f'''(x + t) = f'''(x)$ for any $t$, which implies $f'''(x)$ is constant and hence $f^{(4)}(x) = 0$ for any $x \in \mathbb{R}$.
+\end{proof}
+
+\medskip
+
+\begin{exercise}{\rm *}\label{May_2016_3}
+Let $f_n: \mathbb{R}^k \to \mathbb{R}^m$ be continuous maps ($n = 1,2, \cdots$). Let $K$ be a compact subset of $\mathbb{R}^k$. Suppose $f_n \rightrightarrows f$ uniformly on $K$. Prove that $S = f(K) \cup \bigcup^\infty_{n=1} f_n(K)$ is compact.
+\end{exercise}
+\begin{proof}
+Since $f_n \rightrightarrows f$ and $f_n$ is continuous, then $f$ is also continuous. It suffices to show that $S$ is bounded and closed.
+\begin{enumerate}[label=(\alph*)]
+    \item First, we prove that $S$ is bounded. Since $f$ is continuous and $K$ is compact, then we have $f(K)$ is also compact, thus bounded. Since $f_n$ uniformly converges to $f$, then for $\forall\varepsilon > 0$, there exists $N > 0$ and $\delta > 0$ such that for $\forall n \geq N$ and $\forall x\in K$, $\|f_n(x) - f(x)\| \leq \varepsilon$. Then this also holds for $\varepsilon = 1$ for $n \geq N$. Then $\bigcup^\infty_{n = N}f_n(K)$ is also bounded since it is the set of all points that within distance $1$ to a compact set $f(K)$.  Also, $\bigcup^{N-1}_{n = 0}f_n(K)$ is also bounded since it is finite sum of compact sets.
+    
+    \item Second, we prove that $S$ is closed. For every sequence $\{y_i\}^\infty_{i=1}\in S$ such that $y_i\to y$, we need to prove that $y\in S$. If infinitely many $y_i$'s belong to $f(K)$ or $f_n(K)$ for some $n\in\mathbb{N}$, then $y_i$ converges to a point in $f(K)$ or $f_n(K)$ since both are compact sets, which implies $y\in S$. 
+    
+    Otherwise, if every $f_n(K)$ only contians finite components of $\{y_i\}$, then there is a subsequence $\{y_{i_j}\}^\infty_{j = 1}$ such that $y_{i_j}\in f_{n_{i_j}}(K)$, and $y_{i_j} = f_{n_{i_j}}(x_{i_j}), x_{i_j}\in K$. Since $K$ is compact, then $x_{i_j}$ has a convergent subsequence $\{x_{i_{j_l}}\}$ such that $x_{i_{j_l}} \to x \in K$. And since $f_n$ uniformly converges to $f$, then we have 
+    \begin{align*}
+        y\leftarrow y_{i_{j_l}} = f_{n_{i_{j_l}}}\left(x_{i_{j_l}} \right) \to f(x)\in f(K) \subset S
+    \end{align*}
+    Thus, $y = f(x)\in S$.
+\end{enumerate}
+\end{proof}
+
+\medskip
+
+\begin{proof}[Second Proof of Exercise \ref{May_2016_3}]
+Since $f_n \rightrightarrows f$ and $f_n$ is continuous, then $f$ is also continuous. Then $f(K)$ is compact. It suffices to show that every sequence in $S$ has a subsequence that converges to point in $S$. Suppose $\{y_k\} \in S$ is a sequence with $\lim_{k\to\infty} y_k = y \in \mathbb{R}^m$. 
+
+If infinitely many $y_i$'s belong to $f(K)$ or $f_n(K)$ for some $n$, then $y \in S$, since every sequence in a compact set $f(K)$ or $f_n(K)$ has a subsequence that converges to point in $f(K)$ or $f_n(K)$.
+
+If there are only finite number of $y_i$'s belong to $\bigcup^\infty_{n=m} f_n(K)$ for some $m \in \mathbb{N}$. Suppose $y_{k_1} \in f_{m_1}(K)$ for some $m_1$, then there exists $m_2 > m_1$, $k_2 > k_1$, such that $y_{k_2} \in f_{m_2}(K)$. And there exists a sequence $\{x_j\} \in K$ such that $f_{m_j}(x_j) = y_{k_j}$. Since $K$ is compact, then $\{x_j\}$ has a convergent subsequence $\{x_{n_j}\}$ which converges to a point $x \in K$. Then,
+\begin{align*}
+    |y - f(x)| & \leq \left|y - f_{m_{n_j}}(x_{n_j}) \right| + \left|f_{m_{n_j}}(x_{n_j}) - f(x_{n_j}) \right| + \left| f(x_{n_j}) - f(x) \right|, \\
+    & = \left|y - y_{k_{n_j}} \right| + \left|f_{m_{n_j}}(x_{n_j}) - f(x_{n_j}) \right| + \left| f(x_{n_j}) - f(x) \right|.
+\end{align*}
+Letting $j \to \infty$, and we can have $\left|f_{m_{n_j}}(x_{n_j}) - f(x_{n_j}) \right| \to 0$ by uniform convergence, also we have $\left| f(x_{n_j}) - f(x) \right| \to 0$ by the continuity of $f$. Then, $\left|y - f(x)\right| \leq \left|y - y_{k_{n_j}} \right| \to 0$. Thus, $y = f(x) \in f(K) \subset S$, and hence $S$ is compact.
+\end{proof}
+
+\medskip
+
+\begin{exercise}{\rm *}
+Let $D = \left\{(x, y)\, | \, x^2 + y^2 < 1\right\}$ be the unit disk in $\mathbb{R}^2$. Let $f, g \in C^2(D)$ be such that $g$ is bounded on $D$, $f(x,y) \to + \infty$ as $x^2 + y^2 \to 1$, and moreover, $\Delta f = e^f$ and $\Delta g \geq e^g$ at all points of $D$. Here $\Delta = \frac{\partial^2}{\partial x^2} + \frac{\partial^2}{\partial y^2}$ is the Laplacian. Show that $f(x, y) \geq g(x,y)$ for any $(x, y) \in D$.
+\end{exercise} 
+\begin{proof}
+Let
+\begin{align*}
+    F(x, y) = \begin{cases}
+        e^{g-f}, & x^2 + y^2 < 1 \\
+        0, & x^2 + y^2 = 1
+    \end{cases}
+\end{align*}
+then $F$ is continuous. Let $\Omega = \left\{(x, y)\, | \, x^2 + y^2 < s \right\}$ for some $0 < s < 1$ such that $F(x, y) \leq 1/2$ on $D \setminus \Omega$. Since $\overline{\Omega}$ is compact and $F$ is continuous on $\overline{\Omega}$, then $F$ attains its maximum on $\overline{\Omega}$, that is, there exists $(x_0, y_0) \in \overline{\Omega}$ such that $F(x,y) \leq F(x_0,y_0)$ for all $(x, y) \in \overline{\Omega}$.
+
+If $(x_0,y_0) \in \partial \overline{\Omega}$, then for all $(x, y) \in D$, $F(x, y) \leq F(x_0, y_0) \leq 1/2$. Thus, $e^{g - f} < 1$, which implies $f > g$ for all $(x, y) \in D$.
+
+If $(x_0,y_0) \in \Omega$, then we have
+\begin{align*}
+    F_x(x_0, y_0) = 0, \quad F_y(x_0, y_0)  = 0,
+\end{align*}
+and
+\begin{align*}
+    D^2 F(x_0, y_0) & = F_{xx}(x_0, y_0) F_{yy}(x_0, y_0) - F_{xy}^2(x_0, y_0) \geq 0, \\
+    F_{xx}(x_0, y_0) & \leq 0.
+\end{align*}
+Then we have $F_{yy}(x_0, y_0) \leq 0$. Also, since
+\begin{align*}
+    F_{xx} & = e^{g-f}(g_x - f_x)^2 + e^{g-f}(g_{xx} - f_{xx}), \\
+    F_{yy} & = e^{g-f}(g_y - f_y)^2 + e^{g-f}(g_{yy} - f_{yy}),
+\end{align*}
+then we have
+\begin{align*}
+    F_{xx}(x_0, y_0) & = e^{g-f}(g_{xx}(x_0, y_0) - f_{xx}(x_0, y_0)), \\
+    F_{yy}(x_0, y_0) & = e^{g-f}(g_{yy}(x_0, y_0) - f_{yy}(x_0, y_0)).
+\end{align*}
+Then,
+\begin{align*}
+    F_{xx}(x_0, y_0) + F_{yy}(x_0, y_0) = e^{g-f}(\Delta e^g(x_0, y_0) - \Delta f(x_0, y_0)) \leq 0.
+\end{align*}
+Since
+\begin{align*}
+    e^{g-f}(\Delta g(x_0, y_0) - \Delta f(x_0, y_0)) \geq e^{g-f}(e^{g(x_0, y_0)} - e^{f(x_0, y_0)}),
+\end{align*}
+which implies $f(x_0, y_0) \geq g(x_0, y_0)$. Then, for all $(x, y) \in \overline{\Omega}$, $e^{g-f} \leq e^0 = 1$. Thus, for all $(x, y) \in D$, $e^{g-f} \leq e^0 = 1$ and hence $f(x, y) \geq g(x, y)$.
+\end{proof}
+
+\medskip
+
+\begin{exercise}
+Let $F(x, y) = e^x y^3 + 2x^2 y^2 - y \cos x + 2 \sin x$, $(x, y) \in \mathbb{R}^2$. Prove that there exist functions $f, g, h \in C^\infty$ defined on an open neighborhood $U \subset \mathbb{R}$ of $0$, such that $F(x,f(x)) = F(x,g(x)) = F(x,h(x)) = 0$ and $f(x) < g(x) < h(x)$ for every $x \in U$. Find $f'(0), g'(0)$ and $h'(0)$.
+\end{exercise}
+\begin{proof}
+Since $F(0,y) = y^3 - y$, then $F(0,y) = 0$ has three roots $y_1 = -1, y_2 = 0, y_3 = 1$. And since $F_y(x, y) = 3e^xy^2 + 4x^2y - \cos x$, then
+\begin{align*}
+    F_y(0, y_1) = 2 > 0, \quad F_y(0, y_2) = -1 < 0, \quad F_y(0, y_3) = 2 > 0.
+\end{align*}
+By implicit function theorem, there exists an unique function $y = f(x), f \in C^\infty$ such that $F(x, f(x)) = 0$ on the neighborhood $B_1$ of $(0, -1)$. Let $U_1 = \{x \, |\, |f(x) + 1| < 1/2, (x, y) \in B_1\}$.
+
+Similarly, there exists $U_2, U_3$ and $g, h$ such that
+\begin{align*}
+    F(x, g(x)) = 0, \quad F(x, h(x)) = 0,
+\end{align*}
+and 
+\begin{align*}
+    U_2 & = \left\{x \, \Bigg|\, |g(x) - 0| < \frac{1}{2}, (x, y) \in B_2\right\}, \\
+    U_3 & = \left\{x \, \Bigg|\, |h(x) - 1| < \frac{1}{2}, (x, y) \in B_3\right\}.
+\end{align*}
+Let $U = U_1 \cap U_2 \cap U_3$, then for $x \in U$,
+\begin{align*}
+    f(x) < -\frac{1}{2} < g(x) < \frac{1}{2} < h(x).
+\end{align*}
+By the chain rule, we have
+\begin{align*}
+    F_x(x, f(x)) + F_y(x, f(x))f'(x) = 0,
+\end{align*}
+and then letting $x = 0, y = -1$ gives $f'(0) = - 1/2$. Similarly, $g'(0) = 2, h'(0) = - \frac{3}{2}$.
+\end{proof}
+
+
+
+
+
+
+
+
 
 
 
