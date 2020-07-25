@@ -1890,8 +1890,51 @@ By the chain rule, we have
 and then letting $x = 0, y = -1$ gives $f'(0) = - 1/2$. Similarly, $g'(0) = 2, h'(0) = - 3/2$.
 \end{proof}
 
+\medskip
 
-
+\begin{exercise}{\rm *}
+Suppose that smooth functions $f_k: \mathbb{R}^k \to \mathbb{R}$ are defined for $k = 1, 2, \cdots, 9$. Let $\Phi = (\phi_1, \cdots, \phi_{10}): \mathbb{R}^{10} \to \mathbb{R}^{10}$ be a mapping defined by
+\begin{align*}
+    \phi_1(x_1, \cdots, x_{10}) & = x_1 \\
+    \phi_2(x_1, \cdots, x_{10}) & = 2x_2 + f_1(x_1) \\
+    \phi_3(x_1, \cdots, x_{10}) & = 3x_3 + f_2(x_1, x_2) \\
+    & \cdots \\
+    \phi_{10}(x_1, \cdots, x_{10}) & = 10x_{10} + f_9(x_1, \cdots, x_9).
+\end{align*}
+\begin{enumerate}[label=(\alph*)]
+    \item Prove that $\Phi$ is a diffeomorphism of $\mathbb{R}^{10}$ onto an open subset of $\mathbb{R}^{10}$.
+    
+    \item Find the volume of $\Phi((-1,1)^{10})$.
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+~\begin{enumerate}[label=(\alph*)]
+    \item We have
+    \begin{align*}
+        J\Phi(x) = \begin{vmatrix}
+            1 & 0 & 0 & \cdots & 0 \\
+            \frac{\partial f_1}{\partial x_1} & 2 & 0 & \cdots & 0 \\
+            \frac{\partial f_2}{\partial x_1} & \frac{\partial f_2}{\partial x_2} & 3 & \cdots & 0 \\
+            \vdots & \vdots & \vdots & \ddots & \vdots \\
+            \frac{\partial f_9}{\partial x_1} & \frac{\partial f_9}{\partial x_2} & \frac{\partial f_9}{\partial x_3} & \cdots & 10
+        \end{vmatrix} = 10!,
+    \end{align*}
+    then $J\Phi(x) \neq 0$.
+    
+    Also, for $(x_1, \cdots, x_{10}), (y_1, \cdots, y_{10}) \in \mathbb{R}^{10}$ such that $\Phi(x_1, \cdots, x_{10}) = \Phi(y1, \cdots, y_{10})$, then by the definition of $\Phi$, we can have $(x_1, \cdots, x_{10}) = (y_1, \cdots, y_{10})$. Then, $\Phi$ is one-to-one. Therefore, $\Phi$ is invertible\footnote{Actually, by $J\Phi(x) \neq 0$, we can immediately know that $\Phi$ is a diffeomorphism and invertible in a neighborhood of any point $(x_1,\cdots, x_{10}) \in \mathbb{R}^{10}$. We do not need to check if it is one-to-one, since it is obvious.}, and thus, $\Phi$ is a diffeomorphism of $\mathbb{R}^{10}$ onto $\Phi(\mathbb{R}^{10})$.
+    
+    Since $\Phi$ is invertible in a neighborhood $U_x$ of any point $x = (x_1,\cdots, x_{10}) \in \mathbb{R}^{10}$, and $\phi^{-1}$ is continuous $\Phi(U_x)$, then $(\Phi^{-1})^{-1}(U_x) = \Phi(U_x)$ is also open. Then,
+    \begin{align*}
+        \Phi(\mathbb{R}^{10}) = \Phi \left( \bigcup_{x \in \mathbb{R}^{10}} U_x \right) = \bigcup_{x \in \mathbb{R}^{10}} \Phi \left(U_x \right)
+    \end{align*}
+    is also open.
+    
+    \item The volume of $\Phi((-1,1)^{10})$ is
+    \begin{align*}
+        V = \left| \int_{(-1,1)^{10}} |J\Phi(x)|\, dx \right| = 2^{10}10!.
+    \end{align*}
+\end{enumerate}
+\end{proof}
 
 
 
