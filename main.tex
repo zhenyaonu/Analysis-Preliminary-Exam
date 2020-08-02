@@ -2108,7 +2108,7 @@ Prove that
     
     \item It suffices to show that $g(\mathbb{R}^2)$ is open and closed.
     \begin{enumerate}[label=\arabic*)]
-        \item Since $g$ is invertible in a neighborhood $U_x$ of each point $x \in \mathbb{R}^2$, and $g^{-1}$ is continuous, then we have $g(U_x)$ is open. Thus,
+        \item Since $g$ is invertible in a neighborhood $U_x$ of each point $x \in \mathbb{R}^2$, and $g^{-1}$ is continuous, then we have $g(U_x)$ is open\footnote{By {\bf Theorem 9.25} in {\it Principle of Mathematical Analysis}, Rudin, W\cite{11}: If $f$ is a $C^1$-mapping of an open set $E \subset \mathbb{R}^n$ into $\mathbb{R}^n$ and if $Df(x)$ is invertible for every $x \in E$, then $f(W)$ is an open subset of $\mathbb{R}^n$ for every open set $W \subset E$.}. Thus,
         \begin{align*}
             g(\mathbb{R}^2) = g \left( \bigcup_{x \in \mathbb{R}^2} U_x \right) = \bigcup_{x \in \mathbb{R}^2} g(U_x)
         \end{align*}
