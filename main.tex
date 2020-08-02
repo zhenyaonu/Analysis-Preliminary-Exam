@@ -1937,6 +1937,142 @@ Suppose that smooth functions $f_k: \mathbb{R}^k \to \mathbb{R}$ are defined for
 \end{proof}
 
 
+\newpage
+\section{August 2015 Exam}
+
+\begin{exercise}{\rm *}\label{August_2015_1}
+Let $f:(-\infty, \infty) \to \mathbb{R}$ be continuous and $\lim_{x \to \infty} f(f(x)) = \infty$. Prove that $\lim_{x \to \infty} |f(x)| = \infty$.
+\end{exercise}
+\begin{proof}
+Suppose $\lim_{x\to\infty}\left|f(x)\right| \leq M <\infty$, which is finite. Then there exists a sequence $\{x_n\}\to\infty$, such that $\left|f(x)\right|\leq M$. Since the sequence $\{f(x_n)\}$ is bounded, then there exists a subsequcne $\{x_{n_k}\}\to\infty$ such that $\lim_{x_{n_k}\to\infty}f(x_{n_k}) = a$. Since $f$ is continuous, then we have $\lim_{x_{n_k}\to\infty}f(f(x_{n_k})) = f(a)$, which is a contradiction. The proof is complete.
+\end{proof}
+
+\medskip
+
+\begin{proof}[Second Proof of Exercise \ref{August_2015_1}]
+Suppose $\lim_{x\to\infty}\left|f(x)\right| \neq \infty$, that is, there exists $M > 0$ such that for all $N \in \mathbb{N}$, $\exists x > N$, $\left|f(x)\right| \leq M$. 
+
+Let $N_1 = 1$, there exists $x_1 > 1$. Let $N_2 = [x_1] + 1$, then there exists $x_2 > N_2 > x_1$. Continue this process and we have a sequence $\{x_n\} \to \infty$, such that $\left|f(x_n)\right| \leq M$. Also, $f$ is continuous, then there exists $M_1 > 0$ such that if $x \in [-M, M]$, then $\left| f(x) \right| \leq M_1$. 
+
+Since $f(x_n) \in [-M, M]$, then $f(f(x_n)) \leq M_1$, which is a contradiction.
+\end{proof}
+
+\medskip
+
+\begin{exercise}
+Let $f_n: X \to \mathbb{R}, n = 1, 2, \cdots$ be a sequence of continuous on a metric space $X$ such that the series $\sum^\infty_{n=1} f_n(x)$ converges for all $x \in X$ and
+\begin{align*}
+    \sup_{x \in X} \left( \sum^\infty_{n=1} f_n(x)^2 \right)^{\frac{1}{2}} < \infty.
+\end{align*}
+Prove that if a sequence of real numbers $c_n, n = 1, 2, \cdots$ satisfies $\sum^\infty_{n=1} c_n^2 < \infty$, then the series 
+\begin{align*}
+    \sum^\infty_{n=1} c_n f_n(x)
+\end{align*}
+converges everywhere to a continuous function.
+\end{exercise}
+\begin{proof}
+Since for all $x \in X$, 
+\begin{align*}
+    \sup_{x \in X} \left( \sum^\infty_{n=1} f_n(x)^2 \right)^{\frac{1}{2}} < \infty,
+\end{align*}
+then there exists $M > 0$ such that for all $x \in X$,
+\begin{align*}
+    \sup_{x \in X} \left( \sum^\infty_{n=1} f_n(x)^2 \right)^{\frac{1}{2}} < M.
+\end{align*}
+Also, since $\sum^\infty_{n=1} c_n^2 < \infty$, then for any $\varepsilon > 0$, there exists $N \in \mathbb{N}$ such that for all $m > n > N$, we have
+\begin{align*}
+    \left| \sum^m_{k=n} c_k^2 \right| \leq \frac{\varepsilon^2}{M}.
+\end{align*}
+
+By Cauchy-Schwarz inequality, then for any $x \in X$, we have
+\begin{align*}
+    \left| \sum^m_{k=n} c_k f_n(x) \right| \leq \left( \sum^m_{k=n} c_n^2 \right)^{\frac{1}{2}} \left( \sum^m_{k=n} f_n(x)^2 \right)^{\frac{1}{2}} < \varepsilon,
+\end{align*}
+and then $\sum^\infty_{n=1} c_n f_n(x)$ converges uniformly. Therefore, $\sum^\infty_{n=1} c_n f_n(x)$ converges to a continuous function.
+\end{proof}
+
+\medskip
+
+\begin{exercise}
+Suppose that a set $A \subset \mathbb{R}^n$ is a union of an increasing family of compact sets $A = \cup^\infty_{i=1} A_i$, $A_1 \subset A_2 \subset \cdots$, and also that there is a compact set $C \subset \mathbb{R}^n$ such that 
+\begin{align*}
+    \forall i \in \mathbb{N}, \forall x \in A \setminus A_i, d(x, C) < \frac{1}{i}.
+\end{align*}
+Prove that the closure $\overline{A}$ of $A$ satisfies $\overline{A} \subset A \cup C$.\\
+{\bf Remark.} Here $d(x, C) = \inf_{y \in C}|x - y|$.
+\end{exercise}
+\begin{proof}
+For $x \in \overline{A}$, there exists a sequence $\{x_n\} \subset A$ such that $\lim_{n\to\infty} x_n = x$.
+\begin{enumerate}[label=(\alph*)]
+    \item If there exists $m \in \mathbb{N}$ such that $\{x_n\} \subset A_m$, then since $A_m$ is compact, then there exists a subsequence $\left\{x_{n_k}\right\}$ of $\{x_n\}$ such that $\lim_{k\to\infty} x_{n_k} = x$. Then, $x \in A_m$, and hence $\overline{A} \subset A$.
+    
+    \item Otherwise, for each $m \in \mathbb{N}$, there exists $x_{n_m} \notin A_m$. And then $d\left(x_{n_m}, C\right) < 1/m$ for all $m \in \mathbb{N}$. Then we have
+    \begin{align*}
+        d(x, C) & = \inf_{y \in C} |x - y| \\
+        & = \inf_{y \in C} \left( |x - x_{n_m}| + |x_{n_m} - y| \right) \\
+        & = |x - x_{n_m}| + \inf_{y \in C} \left(|x_{n_m} - y| \right) \\
+        & < |x - x_{n_m}| + \frac{1}{m} \xrightarrow[]{m \to \infty} 0,
+    \end{align*}
+    which implies $x \in C$, and hence $\overline{A} \subset C$.
+\end{enumerate}
+By (a) and (b), we have $\overline{A} \subset A \cup C$.
+\end{proof}
+
+\medskip
+
+\begin{exercise}
+Let $n \geq 3$. Consider an $n$-times continuously differentiable function $f \in C^n(\mathbb{R})$ such that $f^{(k)}(0) = (0), k = 2, 3 \cdots, n-1$ and $f^{(n)}(0) \neq 0$. Clearly, by the mean value theorem, for $h > 0$ there is $0 < \theta(h) < h$ such that 
+\begin{align*}
+    f(h) - f(0) = h f'(\theta(h)).
+\end{align*}
+Prove that
+\begin{align*}
+    \lim_{h \to 0} \frac{\theta(h)}{h} = \left( \frac{1}{n} \right)^{\frac{1}{n-1}}.
+\end{align*}
+{\bf Hint:} Expand $f$ and $f'$ using Taylor's formula.
+\end{exercise}
+\begin{proof}
+By the Taylor's formula, we have
+\begin{align*}
+    f(h) & = f(0) + f'(0)h + \cdots + \frac{f^{(n)}(0)}{n!} h^n + h^n \psi_1(h),\\
+    f'(h) & = f'(0) + f''(0)h + \cdots + \frac{f^{n}(0)}{(n-1)!}h^{n-1} + h^{n-1} \psi_2(h),
+\end{align*}
+where $h^n \psi_1(h) = o(h^n)$, $h^{n-1} \psi_2(h) = o(h^{n-1})$. By the mean value theorem, the first equation gives
+\begin{align*}
+    f'(\theta(h)) = f'(0) + f''(0)h + \cdots + \frac{f^{(n)}(0)}{n!}h^{n-1} + h^n \psi_1(h),
+\end{align*}
+and by the Taylor's formula for $f'$, we have
+\begin{align*}
+    f'(\theta(h)) = f'(0) + f''(0)\theta(h) + \cdots + \frac{f^{(n)}(0)}{(n-1)!}\theta(h)^{n-1} + h^{n-1} \psi_2(h).
+\end{align*}
+Above two equations gives 
+\begin{align*}
+    \frac{f^{(n)}(0)}{n!}h^{n-1} + h^n \psi_1(h) = \frac{f^{(n)}(0)}{(n-1)!}\theta(h)^{n-1} + h^{n-1} \psi_2(h),
+\end{align*}
+and letting $h \to 0$ implies
+\begin{align*}
+    \lim_{h\to 0} \frac{\theta(h)^{n-1}}{h^{n-1}} = \frac{1}{n},
+\end{align*}
+and thus 
+\begin{align*}
+    \lim_{h \to 0} \frac{\theta(h)}{h} = \left( \frac{1}{n} \right)^{\frac{1}{n-1}}.
+\end{align*}
+\end{proof}
+
+\medskip
+
+\begin{exercise}{\rm *}
+Prove that $$\lim_{x\to\infty} e^{-x^2} \int^x_0 e^{t^2}\, dt = 0.$$
+\end{exercise}
+\begin{proof}
+Since $\lim_{x\to\infty}e^{-x^2} = \infty$, $\lim_{x\to\infty}e^{-x^2} \int^x_0 e^{t^2}\, dt = \infty$, then by L'Hopital's rule, we have
+\begin{align*}
+    \lim_{x\to\infty} e^{-x^2} \int^x_0 e^{t^2}\, dt = \lim_{x\to\infty} \frac{\int^x_0 e^{t^2}\, dt}{e^{-x^2}} = \lim_{x\to\infty} \frac{e^{x^2}}{2x e^{x^2}} = \lim_{x\to\infty} \frac{1}{2x} = 0.
+\end{align*}
+\end{proof}
+
+
+
 
 
 
