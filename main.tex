@@ -2071,8 +2071,44 @@ Since $\lim_{x\to\infty}e^{-x^2} = \infty$, $\lim_{x\to\infty}e^{-x^2} \int^x_0 
 \end{align*}
 \end{proof}
 
+\medskip
 
-
+\begin{exercise}{\rm *}
+Let $f \in C^1(\mathbb{R})$ be a continuously differentiable function such that $\left|f'(x)\right| \leq 1/2$ for all $x \in \mathbb{R}$. Define $g: \mathbb{R}^2 \to \mathbb{R}^2$ by
+\begin{align*}
+    g(x, y) = (x + f(y), y + f(x)).
+\end{align*}
+Prove that
+\begin{enumerate}[label=(\alph*)]
+    \item $g$ is diffeomorphism,
+    
+    \item $g(\mathbb{R}^2) = \mathbb{R}^2$,
+    
+    \item the area $\left| g([0,1]^2) \right|$ of the image of the unit square belongs to the interval $[3/4, 5/4]$.
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+~\begin{enumerate}[label=(\alph*)]
+    \item The determinant of Jordan of $g$ is
+    \begin{align*}
+        |J| = \begin{vmatrix}
+            1 & f'(y) \\
+            f'(x) & 1
+        \end{vmatrix} = 1 - f'(x)f'(y) > \frac{3}{4} \neq 0.
+    \end{align*}
+    Also, for $(x_1, y_1), (x_2, y_2) \in \mathbb{R}^2$ such that $g(x_1, y_1) = g(x_2, y_2)$, we have
+    \begin{align*}
+        |g(x_1, y_1) - g(x_2, y_2)| & = \sqrt{|x_1 + f(y_1) - x_2 - f(y_2)|^2 + |y_1 + f(x_1) - y_2 - f(x_2)|^2} \\
+        & \geq \frac{|x_1 + f(y_1) - x_2 - f(y_2)| + |y_1 + f(x_1) - y_2 - f(x_2)|}{\sqrt{2}} \\
+        & \geq \frac{|x_1 - x_2| - |f(y_1) - f(y_2)| + |y_1 - y_2| - |f(x_1) - f(x_2)|}{\sqrt{2}} \\
+        & \geq \frac{|x_1 - x_2| - \frac{1}{2}|y_1 - y_2| + |y_1 - y_2| - \frac{1}{2}|x_1 - x_2|}{\sqrt{2}} \\
+        & = \frac{1}{2\sqrt{2}} \left(|x_1 - x_2| + |y_1 - y_2| \right),
+    \end{align*}
+    which implies $(x_1, y_1) = (x_2, y_2)$. Then $g$ is one-to-one from $\mathbb{R}^2 \to g(\mathbb{R}^2)$, and thus, $g$ is diffeomorphism.
+    
+    \item 
+\end{enumerate}
+\end{proof}
 
 
 
