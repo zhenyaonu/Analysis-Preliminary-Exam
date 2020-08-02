@@ -2106,7 +2106,28 @@ Prove that
     \end{align*}
     which implies $(x_1, y_1) = (x_2, y_2)$. Then $g$ is one-to-one from $\mathbb{R}^2 \to g(\mathbb{R}^2)$, and thus, $g$ is diffeomorphism.
     
-    \item 
+    \item It suffices to show that $g(\mathbb{R}^2)$ is open and closed.
+    \begin{enumerate}[label=\arabic*)]
+        \item Since $g$ is invertible in a neighborhood $U_x$ of each point $x \in \mathbb{R}^2$, and $g^{-1}$ is continuous, then we have $g(U_x)$ is open. Thus,
+        \begin{align*}
+            g(\mathbb{R}^2) = g \left( \bigcup_{x \in \mathbb{R}^2} U_x \right) = \bigcup_{x \in \mathbb{R}^2} g(U_x)
+        \end{align*}
+        is also open.
+        
+        \item For any point $y \in \overline{g(\mathbb{R}^2)}$, there exists a sequence $\{y_k\}$ in $g(\mathbb{R}^2)$ such that $\lim_{k\to\infty} y_k = y$. Also, since $g$ is one-to-one in $\mathbb{R}^2$, then there exists a sequence $\{x_k\}$ in $\mathbb{R}^2$ such that $g(x_k) = y_k$.
+        
+        By (a), $\{x_k\}$ is a Cauchy sequence\footnote{For $(x_1, y_1), (x_2, y_2) \in \mathbb{R}^2$, $\left|x_1 - x_2\right| + \left|y_1 - y_2\right| \leq 2\sqrt{2} \left|g(x_1, y_1) - g(x_2, y_2)\right|$.}. Since $\mathbb{R}^2$ is complete, then every Cauchy sequence in $\mathbb{R}^2$ converges to a point in $\mathbb{R}^2$, that is $\lim_{k\to\infty} x_k = x \in \mathbb{R}^2$. Since $g$ is continuous, then 
+        \begin{align*}
+            y = \lim_{k\to\infty} y_k = \lim_{k\to\infty} g(x_k) = g(x) \in g(\mathbb{R}^2),
+        \end{align*}
+        and therefore $g(\mathbb{R}^2)$ is closed.
+    \end{enumerate}
+    Thus, $g(\mathbb{R}^2) = \mathbb{R}^2$.
+    
+    \item By (a), we have $|J| \in [3/4, 5/4]$. And the area $A$ of $\left| g([0,1]^2) \right|$ is
+    \begin{align*}
+        A = \left|\int_{[0,1]^2} |J|\, dx dy \right| \in \left[ \frac{3}{4}, \frac{5}{4} \right] \int_{[0,1]^2} 1 \, dx dy = \left[ \frac{3}{4}, \frac{5}{4} \right].
+    \end{align*}
 \end{enumerate}
 \end{proof}
 
