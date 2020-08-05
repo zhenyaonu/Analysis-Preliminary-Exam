@@ -2073,7 +2073,7 @@ Since $\lim_{x\to\infty}e^{-x^2} = \infty$, $\lim_{x\to\infty}e^{-x^2} \int^x_0 
 
 \medskip
 
-\begin{exercise}{\rm *}
+\begin{exercise}{\rm *}\label{August_2015_6}
 Let $f \in C^1(\mathbb{R})$ be a continuously differentiable function such that $\left|f'(x)\right| \leq 1/2$ for all $x \in \mathbb{R}$. Define $g: \mathbb{R}^2 \to \mathbb{R}^2$ by
 \begin{align*}
     g(x, y) = (x + f(y), y + f(x)).
@@ -2131,7 +2131,133 @@ Prove that
 \end{enumerate}
 \end{proof}
 
+\medskip
 
+\begin{proof}[Second Proof of Exercise \ref{August_2015_6}(a)]
+To prove the existence of a unique solution to $g(x,y) = (x_0, y_0)$, use the contraction principle. Let
+\begin{align*}
+    T(x,y) & = - g(x,y) + (x,y) + (x_0, y_0) \\
+    & = (x_0-f(y), y_0-f(x)).
+\end{align*}
+Then,
+\begin{align*}
+    T(x,y) - T(x',y') & = (x_0-f(y), y_0-f(x)) - (x_0-f(y'), y_0-f(x')) \\
+    & = (f(y') - f(y), f(x') - f(x)) \\
+    & = \left(f'(\xi)(y'-y), f'(\zeta)(x'-x)\right),
+\end{align*}
+and then 
+\begin{align*}
+    \left|T(x,y) - T(x',y')\right| & = \sqrt{|f(y') - f(y)|^2 + |f(x') - f(x)|^2} \\
+    & \leq \frac{1}{2} \sqrt{|y' - y|^2 + |x' - x|^2}.
+\end{align*}
+Thus, $T$ is a contraction and hence there is a unique fixed point $(x,y)$ of $T$ such that $(x_0-f(y), y_0-f(x)) = (x,y)$, and it follows that $$g(x,y) = (x+f(y), y+f(x)) = (x_0, y_0).$$
+\end{proof}
+
+\newpage
+\section{April 2015 Exam}
+
+\begin{exercise}
+Define $f: \mathbb{R}^2 \to \mathbb{R}$ by
+\begin{align*}
+    f(x,y) = \begin{cases}
+        \frac{x^2 (y^4 + 2x)}{x^2 + y^4}, & {\rm if}\,\, (x,y) \neq (0,0); \\
+        0, & {\rm if}\,\, (x,y) = (0,0).
+    \end{cases}
+\end{align*}
+Prove that $f$ is differentiable at $(0,0)$.
+\end{exercise}
+\begin{proof}
+We have the partial derivatives at $(0,0)$ are
+\begin{align*}
+    \frac{\partial f}{\partial x}(0,0) & = \lim_{h\to 0} \frac{f(h,0) - f(0,0)}{h} = 2, \\
+    \frac{\partial f}{\partial y}(0,0) & = \lim_{h\to 0} \frac{f(0,h) - f(0,0)}{h} = 0.
+\end{align*}
+Then we have
+\begin{align*}
+    \left| \frac{f(p,q) - f_x(0,0)p - f_y(0,0)q - f(0,0)}{\sqrt{p^2 + q^2}} \right| & = \left| \frac{pq^4 (p - 2)}{(p^2 + q^4) \sqrt{p^2 + q^2}} \right| \\
+    & \leq \left| \frac{pq^4 (p - 2)}{ 2pq^2 \sqrt{p^2 + q^2}} \right| \\
+    & \leq \left| \frac{q^2 (p - 2)}{ 2\sqrt{p^2 + q^2}} \right| \\
+    & \leq \left| \frac{q^2 (p - 2)}{2q} \right| = \left| \frac{q(p - 2)}{2} \right|,
+\end{align*}
+and therefore
+\begin{align*}
+    \lim_{(p,q) \to (0,0)} \left| \frac{f(p,q) - f_x(0,0)p - f_y(0,0)q - f(0,0)}{\sqrt{p^2 + q^2}} \right| \leq \lim_{(p,q) \to (0,0)} \left| \frac{q(p - 2)}{2} \right| = 0.
+\end{align*}
+Thus, $f$ is differentiable at $(0,0)$.
+\end{proof}
+
+\medskip
+
+\begin{exercise}\label{April_2015_2}
+A graph of mapping $f: X \to Y$ is defined as
+\begin{align*}
+    G_f = \{(x,y) \in X \times Y \,\, | \,\, y = f(x) \}.
+\end{align*}
+Prove that if $X$ is a metric space and $Y$ is a compact metric space, then a map $f: X \to Y$ is continuous if and only if $G_f$ is a closed subset of $X \times Y$.
+\end{exercise}
+\begin{proof}
+~\begin{enumerate}[label=(\alph*)]
+    \item ($\Rightarrow$) We could pick a sequence $\{x_n\}$ in $X$ such that $\lim_{n\to\infty} x_n = x \in X$. Then there exists a sequence $\{y_n\}$ in $Y$ such that $f(x_n) = y_n$. Since $Y$ is compact, then $\{y_n\}$ has a convergent subsequence $\left\{ y_{n_k} \right\}$ such that $\lim_{k\to\infty} y_{n_k} = y \in Y$. 
+    
+    Also, by continuity of $f$, we have 
+    $$f(x) = \lim_{k\to\infty} f\left(x_{n_k}\right) = \lim_{k\to\infty} y_{n_k} = y,$$ 
+    and therefore $(x, y) \in G_f$. Thus, $G_f$ is closed.
+    
+    \item ($\Leftarrow$) Since $G_f$ is closed, then the convergent sequence $\{(x_n, y_n)\}$ in $G_f$ converges to a point in $G_f$, denoted by $(x,y)$, where $y_n = f(x_n)$. Then we have $\lim_{n\to\infty}(x_n, f(x_n)) = (x, f(x))$, that is for $\varepsilon > 0$, there exits a positive integer $N \in \mathbb{N}$, such that for all $n \geq N$, $d_X(x_n, x) < \varepsilon$ and $d_Y(f(x_n), f(x)) < \varepsilon$. Then, for this $\varepsilon > 0$, there exists $\delta = \varepsilon$, such that if $d_X(x_n, x) < \delta$, then $d_Y(f(x_n), f(x)) < \varepsilon$. Thus, $f$ is continuous.
+\end{enumerate}
+\end{proof}
+
+\medskip
+
+\begin{proof}[Second Proof of Exercise \ref{April_2015_2}]{\rm *}
+~\begin{enumerate}[label=(\alph*)]
+    \item ($\Rightarrow$) For the sequence $\{(x_n, f(x_n))\}$ in $G_f$ converges to some point $(x_0, y_0) \in X \times Y$. For any $\varepsilon > 0$, there exists $N > 0$ such that if $n > N$, then 
+    \begin{align*}
+        \sqrt{d_X^2(x_n, x_0) + d_Y^2(f(x_n), y_0)} < \varepsilon,
+    \end{align*}
+    which implies $d_X(x_n, x_0) < \varepsilon$ and $d_Y(f(x_n), y_0) < \varepsilon$. 
+    
+    Since $f$ is continuous, then for the same $\varepsilon$, there exists $\delta_\varepsilon > 0$ such that if $d_X(x, x_0) < \delta_\varepsilon$, then $d_Y(f(x), f(x_0)) < \varepsilon$.
+    
+    Let $\delta = \min \{\varepsilon, \delta_\varepsilon\}$, then if $d_X(x, x_0) < \delta_\varepsilon$, we have $d_Y(f(x), f(x_0)) < \varepsilon$. 
+    
+    Now let $N$ be such that for $n > N$, $d_X(x_n, x_0) < \delta$. Then we have
+    \begin{align*}
+        d_Y(f(x), f(x_0)) < \varepsilon, \quad d_Y(f(x_n), y_0) < \varepsilon,
+    \end{align*}
+    and therefore we have
+    \begin{align*}
+        d_Y(y_0, f(x_0)) \leq d_Y(y_0, f(x_n)) + d_Y(f(x_n), f(x_0)) < 2 \varepsilon.
+    \end{align*}
+    Thus, $y_0 = f(x_0)$ and hence $(x_0, y_0) \in G_f$.
+    
+    \item ($\Leftarrow$) Let $p: X \times X \to X$ be defined by $p(x, y) = x$. Let $K$ be a closed set in $X \times Y$.
+    
+    Let $\{x_n\}$ be a sequence in $p(K)$ with limit $x_0$. We can choose $(x_n, y_n) \in K$ such that $p(x_n, y_n) = x_n$. Since $Y$ is compact, then the sequence $\{y_n\}$ has a convergent subsequence $\{y_{n_k}\}$ such that $\lim_{k\to\infty} y_{n_k} = y_0 \in Y$. Then the sequence $\{x_{n_k}, y_{n_k}\}$ converges to $(x_0, y_0)$. Since $K$ is closed, then $(x_0, y_0) \in K$. Hence, $x_0 = p(x_0; y_0) \in p(K)$, which means $p(K)$ is closed, i.e. $p$ is a closed map. 
+    
+    For a closed set $C \subset Y$, we have
+    \begin{align*}
+        f^{-1}(C) = \{x \in X\, | \, f(x) \in C\},
+    \end{align*}
+    and on the other hand 
+    \begin{align*}
+        p\left((X \times C) \bigcap G_f \right) = \{x \in X\, | \, f(x) \in C\},
+    \end{align*}
+    and therefore
+    \begin{align*}
+        f^{-1}(C) = p\left((X \times C) \bigcap G_f \right),
+    \end{align*}
+    which is the intersection of two closed sets, then $f^{-1}(C)$ is closed. Thus, $f$ is continuous.
+\end{enumerate}
+\end{proof}
+
+\medskip
+
+\begin{proof}[Third Proof of Exercise \ref{April_2015_2}(b)]
+Suppose $f$ is not continuous at some point $x_0$. Then there exists a sequence $\{x_n\}$ in $X$ converging to $x_0$ such that there exists $\varepsilon > 0$, for all $N \in \mathbb{N}$, there exists $n_k > N$ and $d_Y(f(x_{n_k}), f(x_0)) \geq 0$.
+
+Since $Y$ is compact, then the sequence $\{f(x_{n_k})\}$ has a convergent subsequence $f(x_{n_{k_l}})$ such that $\lim_{l\to\infty} f(x_{n_{k_l}}) = y_0 \in Y$. Then the sequence $\left\{ \left(x_{n_{k_l}}, f(x_{n_{k_l}}) \right) \right\}$ in $G_f$ has limit $(x_0, y_0)$. Since $G_f$ is closed, then $(x_0, y_0) \in G_f$. Therefore, $y_0 = f(x_0)$, and then $\left\{ x_{n_{k_l}} \right\}$ has the limit $f(x_0)$, which is a contradiction.
+\end{proof}
 
 
 
