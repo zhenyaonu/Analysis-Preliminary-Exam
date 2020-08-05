@@ -2300,6 +2300,103 @@ Prove that the series $$\sum^\infty_{n=1} \frac{x^\alpha}{n(n + x^2)}$$
 \end{enumerate}
 \end{proof}
 
+\medskip
+
+\begin{exercise}{\rm *}
+Find the distance between the two ellipsoids
+\begin{align*}
+    \frac{x_1^2}{a_1^2} + \frac{x_2^2}{a_2^2} + \cdots + \frac{x_n^2}{a_n^2} = 1,
+\end{align*}
+and
+\begin{align*}
+    \frac{x_1^2}{a_1^2} + \frac{x_2^2}{a_2^2} + \cdots + \frac{x_n^2}{a_n^2} = 2,
+\end{align*}
+where $a_1 > a_2 > \cdots > a_n > 0$.
+\end{exercise}
+\begin{proof}
+Let
+\begin{align*}
+    f(x_1, \cdots, x_n, y_1, \cdots, y_n) = (x_1 - y_1)^2 + \cdots + (x_n - y_n)^2,
+\end{align*}
+where $x_i, y_i$ satisfy
+\begin{align*}
+    g_1 & = \frac{x_1^2}{a_1^2} + \frac{x_2^2}{a_2^2} + \cdots + \frac{x_n^2}{a_n^2} - 1 = 0, \\
+    g_2 & = \frac{y_1^2}{a_1^2} + \frac{y_2^2}{a_2^2} + \cdots + \frac{y_n^2}{a_n^2} - 2 = 0.
+\end{align*}
+
+By Lagrange multiplier method, we know if $f$ achieves a minimum at $p$, then $\nabla f|_p$ is a linear combination of $\nabla g_1|_p$ and $\nabla g_2|_p$, that is, $\nabla f|_p = \lambda \nabla g_1|_p + \mu \nabla g_2|_p$. Then, for each $i = 1, \cdots, n$, we have
+\begin{align*}
+    2(x_i - y_i) & = 2 \lambda \frac{x_i}{a_i^2}, \\
+    2(y_i - x_i) & = 2 \lambda \frac{y_i}{a_i^2}.
+\end{align*}
+If $\lambda = 0$ or $\mu = 0$, then $x_i = y_i$, which is contradiction to $g_1 \neq g_2$. Therefore, we have $y_i = \alpha x_i$ for some $\alpha \neq 0$ and $i = 1, \cdots, n$. By the definition of $g_1$ and $g_2$, we have $|\alpha| = 2$. Then,
+\begin{align*}
+    f_{\min}^2 & = \sum^n_{i=1} (\alpha - 1)^2 x_i^2 \\
+    & \geq \sum^n_{i=1} (\sqrt{2} - 1)^2 x_i^2 \\
+    & = (\sqrt{2} - 1)^2 a_n^2 \sum^n_{i=1} \frac{x_i^2}{a_n^2} \\
+    & \geq (\sqrt{2} - 1)^2 a_n^2 \sum^n_{i=1} \frac{x_i^2}{a_i^2} = (\sqrt{2} - 1)^2 a_n^2.
+\end{align*}
+Also, when $x = (0, \cdots, 0, a_n)$, $y = (0, \cdots, 0, \sqrt{2}a_n)$, we have $f_{\min} = (\sqrt{2} - 1) a_n$.
+\end{proof}
+
+\medskip
+
+\begin{exercise}
+Let $Q: C^\infty(\mathbb{R}^n) \to \mathbb{R}$ be a linear mapping such that $Qf \geq 0$ whenever $f \in C^\infty(\mathbb{R}^n)$ satisfies $f(0) = 0$ and $f(x) \geq 0$ in a neighborhood of $0$. Prove that there are real numbers $a_{ij}, b_i$ and $c$ such that for any $g \in C^\infty(\mathbb{R}^n)$,
+\begin{align*}
+    Qg = \sum^n_{i,j=1} a_{ij} \frac{\partial^2 g}{\partial x_i \partial x_j}(0) + \sum^n_{i=1} b_i \frac{\partial g}{\partial x_i}(0) + cg(0).
+\end{align*}
+\end{exercise}
+\begin{proof}
+By Taylor formula, we have
+\begin{align*}
+    g(x) = g(0) + \sum^n_{i=1} \frac{\partial g}{\partial x_i}(0) x_i + \frac{1}{2} \sum^n_{i,j=1} \frac{\partial^2 g}{\partial x_i \partial x_j}(0) x_i x_j + h(x),
+\end{align*}
+where $h(x) = o(x^2)$.
+
+Let $Q(1) = c, Q(x_i) = b_i, Q(x_ix_j) = 2a_{ij}$, then we have
+\begin{align*}
+    Qg = \sum^n_{i,j=1} a_{ij} \frac{\partial^2 g}{\partial x_i \partial x_j}(0) + \sum^n_{i=1} b_i \frac{\partial g}{\partial x_i}(0) + cg(0) + Qh.
+\end{align*}
+
+Since $h(x) = o(x^2)$, then $\lim_{x \to \infty} h(x)/|x|^2 = 0$, that is for any $\varepsilon > 0$, there exists a neighborhood $U_0$ of $0$ such that if $x \in U_0$, 
+\begin{align*}
+    - \varepsilon < \frac{h(x)}{|x|^2} < \varepsilon,
+\end{align*}
+which is equivalent to $\varepsilon |x|^2 - h(x) \geq 0, x \in U_x$. Also, $f(x) = \varepsilon |x|^2 - h(x) \in C^\infty(\mathbb{R}^n)$ and satisfies $f(0) = 0$, and then $Qf \geq 0$. Therefore, $Qh \leq Q\left(\varepsilon |x|^2\right)$, and letting $\varepsilon \to 0$ gives $Qh \leq 0$. Similarly, $ h(x) - \varepsilon |x|^2 \geq 0$ gives $Qh \geq 0$. Thus, $Qh = 0$, and we have the desired equation.
+\end{proof}
+
+\medskip
+
+\begin{exercise}
+Let $D =\{(x, y)\in\mathbb{R}^2 : x^2 + y^2\leq 1\}$ and $f\in C^\infty(\mathbb{R}^2)$. Suppose that $f(x, y) = 1$ for all
+$(x, y)\in\partial D$. Prove that
+$$
+\iint_D \left(2f(x,y)+x\frac{\partial f}{\partial x}+y\frac{\partial f}{\partial y}\right)dA=2\pi.
+$$
+\end{exercise}
+\begin{proof}
+By Green's theorem, $\int_{\partial \Omega} P\, dx + Q\, dy = \iint_D \frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y}$, then the area of $D$ is 
+\begin{align*}
+    A = \frac{1}{2} \int_{\partial D} x\, dy - y\, dx.
+\end{align*}
+Indeed, 
+\begin{align*}
+    \frac{1}{2} \int_{\partial D} x\, dy - y\, dx = \frac{1}{2} \iint_D 2\, dA = A.
+\end{align*}
+
+Now let $P = -yf, Q = xf$, then 
+\begin{align*}
+    \frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y} = 2f + x \frac{\partial f}{\partial x} + y \frac{\partial f}{\partial y},
+\end{align*}
+and thus
+\begin{align*}
+    \iint_D \left(2f(x,y)+x\frac{\partial f}{\partial x}+y\frac{\partial f}{\partial y}\right)\, dA & = \int_{\partial D} -yf\, dx + x f\, dy \\
+    & = \int_{\partial D} -y \, dx + x \, dy \\
+    & = \iint_D 2\, dA = 2\pi.
+\end{align*}
+\end{proof}
+
 
 
 
