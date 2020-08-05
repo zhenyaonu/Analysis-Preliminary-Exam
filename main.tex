@@ -2259,6 +2259,48 @@ Suppose $f$ is not continuous at some point $x_0$. Then there exists a sequence 
 Since $Y$ is compact, then the sequence $\{f(x_{n_k})\}$ has a convergent subsequence $f(x_{n_{k_l}})$ such that $\lim_{l\to\infty} f(x_{n_{k_l}}) = y_0 \in Y$. Then the sequence $\left\{ \left(x_{n_{k_l}}, f(x_{n_{k_l}}) \right) \right\}$ in $G_f$ has limit $(x_0, y_0)$. Since $G_f$ is closed, then $(x_0, y_0) \in G_f$. Therefore, $y_0 = f(x_0)$, and then $\left\{ x_{n_{k_l}} \right\}$ has the limit $f(x_0)$, which is a contradiction.
 \end{proof}
 
+\medskip
+
+\begin{exercise}
+Prove that the series $$\sum^\infty_{n=1} \frac{x^\alpha}{n(n + x^2)}$$
+\begin{enumerate}[label=(\alph*)]
+    \item converges uniformly on $[0,\infty)$ when $\alpha = 1$,
+    
+    \item converges pointwise but not uniformly on $[0, \infty)$ when $\alpha = 2$.{\rm *}
+    \end{enumerate}
+\end{exercise}
+\begin{proof}
+~\begin{enumerate}[label=(\alph*)]
+    \item When $\alpha = 1$, we have
+    \begin{align*}
+        \sum^\infty_{n=1} \frac{x^\alpha}{n(n + x^2)} = \sum^\infty_{n=1} \frac{1}{n(\frac{n}{x} + x)} \leq \sum^\infty_{n=1} \frac{1}{2n \sqrt{\frac{n}{x}} \sqrt{x}} \leq \sum^\infty_{n=1} \frac{1}{2n^{\frac{3}{2}}},
+    \end{align*}
+    and by Weierstrass M-test, $\sum^\infty_{n=1} \frac{1}{2n^{\frac{3}{2}}}$ is convergent, and then $\sum^\infty_{n=1} \frac{1}{n(\frac{n}{x} + x)}$ is uniformly convergent on $[0,\infty)$. 
+    
+    \item When $\alpha = 2$, we have
+    \begin{align*}
+        \sum^\infty_{n=1} \frac{x^\alpha}{n(n + x^2)} = \sum^\infty_{n=1} \frac{1}{\frac{n^2}{x^2} + n} \leq \sum^\infty_{n=1} \frac{x^2}{n^2},
+    \end{align*}
+    and since $\sum^\infty_{n=1} \frac{x^2}{n^2}$ is convergent for any $x \in [0,\infty)$, then $\sum^\infty_{n=1} \frac{x^2}{n(n + x^2)}$ converges pointwise on $[0,\infty)$.
+    
+    Suppose $\sum^\infty_{n=1} \frac{x^2}{n(n + x^2)}$ converges uniformly on $[0,\infty)$, then for any $\varepsilon > 0$, there exists $N \in \mathbb{N}$ such that for all $k >m > N$ and any $x \in [0,\infty)$, we have
+    \begin{align*}
+        \left|\sum^k_{n=1} \frac{x^2}{n(n + x^2)} - \sum^m_{n=1} \frac{x^2}{n(n + x^2)} \right| < \varepsilon.
+    \end{align*}
+    Letting $\varepsilon = 1$, then for $x \in [0,\infty)$, and $k > N + 1$, we have
+    \begin{align*}
+        \left|\sum^k_{n=N+1} \frac{x^2}{n(n + x^2)} \right| < 1.
+    \end{align*}
+    
+    On the other hand, we have
+    \begin{align*}
+        \lim_{x\to\infty} \left|\sum^k_{n=N+1} \frac{x^2}{n(n + x^2)} \right| = \sum^k_{n=N+1} \lim_{x\to\infty} \frac{x^2}{n(n + x^2)} = \sum^k_{n=N+1} \frac{1}{n},
+    \end{align*}
+    and since $\sum^\infty_{n=1} \frac{1}{n}$ is divergent, then there exists $M \in \mathbb{N}$ such that $\sum^k_{n=N+1} \frac{1}{n} > 1$, which is a contradiction.
+\end{enumerate}
+\end{proof}
+
+
 
 
 
