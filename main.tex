@@ -1959,7 +1959,7 @@ Since $f(x_n) \in [-M, M]$, then $f(f(x_n)) \leq M_1$, which is a contradiction.
 
 \medskip
 
-\begin{exercise}
+\begin{exercise}\label{August_2015_2}
 Let $f_n: X \to \mathbb{R}, n = 1, 2, \cdots$ be a sequence of continuous on a metric space $X$ such that the series $\sum^\infty_{n=1} f_n(x)$ converges for all $x \in X$ and
 \begin{align*}
     \sup_{x \in X} \left( \sum^\infty_{n=1} f_n(x)^2 \right)^{\frac{1}{2}} < \infty.
@@ -1993,8 +1993,29 @@ and then $\sum^\infty_{n=1} c_n f_n(x)$ converges uniformly. Therefore, $\sum^\i
 
 \medskip
 
+\begin{proof}[Second Proof of Exercise \ref{August_2015_2}]
+Define $f(x) = \sum_{n=1}^\infty c_n f_n(x)$, and we can prove that $f(x)$ also converges for $x\in X$. Indeed, with Cauchy–Schwarz inequality, we have
+\begin{align*}
+    \sum_{n=1}^\infty c_nf_n(x) & \leq \left(\sum_{n=1}^\infty c_n^2\right)^{\frac{1}{2}} \left(\sum_{n=1}^\infty f_n(x)^2\right)^{\frac{1}{2}} \\
+    & \leq \left(\sum_{n=1}^\infty c_n^2\right)^{\frac{1}{2}} \sup_{x\in X} \left(\sum_{n=1}^\infty f_n(x)^2\right)^{\frac{1}{2}} < \infty
+\end{align*}
+
+It remains to prove that $f(x) = \lim_{n\to\infty}\sum_{n=1}^\infty c_n f_n(x)$ is a continuous function. Since $\sum_{n=1}^\infty c_nf_n(x) < \infty$, then $\lim_{n\to\infty} c_n f_n = 0$. Thus, for every $\varepsilon > 0$, there exists $N > 0$, such that for $n > N$, $\sum_{n=N+1}^\infty c_nf_n(x) < \infty$. Also, for the same $\varepsilon$, we can choose $\delta > 0$ such that if $|x - y| < \delta$, then 
+\begin{align*}
+    \left|f_n(x) - f_n(y)\right| < \frac{\varepsilon^2}{N \left(\sum_{n=1}^\infty c_n^2\right)}
+\end{align*}
+for all $n = 1,2,\cdots$. Indeed, we could find such $\delta$ since $f_n$'s are continuous functions. Thus, if $|x - y| < \delta$, we have 
+\begin{align*}
+    \left|f(x) - f(y)\right| & \leq \sum_{n=1}^\infty c_n \left|f_n(x) - f_n(y)\right|\\
+    & = \sum_{n=1}^N c_n \left|f_n(x) - f_n(y)\right| + \sum_{n=N+1}^\infty c_n \left|f_n(x) - f_n(y)\right|\\
+    & \leq \left(\sum_{n=1}^N c_n^2\right)^{\frac{1}{2}} \left(\sum_{n=1}^N \left|f_n(x) - f_n(y)\right|^2\right)^{\frac{1}{2}} + \varepsilon \\
+    & \leq 2 \varepsilon 
+\end{align*}
+Thus, $f$ is a continuous function as defined above.
+\end{proof}
+
 \begin{exercise}
-Suppose that a set $A \subset \mathbb{R}^n$ is a union of an increasing family of compact sets $A = \cup^\infty_{i=1} A_i$, $A_1 \subset A_2 \subset \cdots$, and also that there is a compact set $C \subset \mathbb{R}^n$ such that 
+Suppose that a set $A \subset \mathbb{R}^n$ is a union of an increasing family of compact sets $A = \bigcup^\infty_{i=1} A_i$, $A_1 \subset A_2 \subset \cdots$, and also that there is a compact set $C \subset \mathbb{R}^n$ such that 
 \begin{align*}
     \forall i \in \mathbb{N}, \forall x \in A \setminus A_i, d(x, C) < \frac{1}{i}.
 \end{align*}
