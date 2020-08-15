@@ -118,7 +118,7 @@ Let $\sigma > 0$. Let $\left\{f_k\right\}_{k\in \mathbb{N}}$ be a sequence of fu
     \begin{align*}
         |f(x) - f(y)| \leq A|x - y|^\sigma,
     \end{align*}
-    where $A = \liminf_{k\to\infty}A_k$.
+    where $\displaystyle A = \liminf_{k\to\infty}A_k$.
 \end{enumerate}
 \end{exercise}
 \begin{proof}
@@ -129,7 +129,7 @@ Let $\sigma > 0$. Let $\left\{f_k\right\}_{k\in \mathbb{N}}$ be a sequence of fu
     \end{align*}
     Then, $\left\{f_k\right\}_{k\in \mathbb{N}}$ is bounded.
     
-    Second, we want to prove that $\left\{f_k\right\}_{k\in \mathbb{N}}$ is equicontinuous. For $\forall \varepsilon > 0$, there exists $\delta = \left(\frac{\varepsilon}{M}\right)^{\frac{1}{\sigma}}$, then for $\forall f_k, \forall x, y \in [-a,a]$, if $|x - y| \leq \delta$, then 
+    Second, we want to prove that $\left\{f_k\right\}_{k\in \mathbb{N}}$ is equicontinuous. For $\forall \varepsilon > 0$, there exists $\delta = \left(\varepsilon/M\right)^{1/\sigma}$, then for $\forall f_k, \forall x, y \in [-a,a]$, if $|x - y| \leq \delta$, then 
     \begin{align*}
         \left|f_k(x) - f_k(y)\right| \leq A_k |x - y|^\sigma \leq M \frac{\varepsilon}{M} = \varepsilon.
     \end{align*}
@@ -158,17 +158,17 @@ Let $\sigma > 0$. Let $\left\{f_k\right\}_{k\in \mathbb{N}}$ be a sequence of fu
             & + \left|f_{nn}(y) - f_{mm}(x)\right| \\
             & \leq 3 \varepsilon.
         \end{align*}
-        Hence, $\{f_{nn}(x)\}$ is convergent as a Cauchy sequence. Set $f(x) = \lim_{m\to\infty}f_{mm}(x)$, then for $x\in \mathbb{R}$, there exists $N > 0$ such that for all $n > N$, 
+        Hence, $\{f_{nn}(x)\}$ is convergent as a Cauchy sequence. Set $\displaystyle f(x) = \lim_{m\to\infty}f_{mm}(x)$, then for $x\in \mathbb{R}$, there exists $N > 0$ such that for all $n > N$, 
         \begin{align*}
             \left|f_{nn}(x) - f(x)\right| \leq 3\varepsilon.
         \end{align*}
         Thus, $\{f_{nn}(x)\}$ is pointwise convergent to $f(x)$ on $\mathbb{R}$.
         
-        \item Now we have a subsequence $\{f_{k_i}\}$ of $\{f_k\}$ such that for any $x \in \mathbb{R}$, $\lim_{i\to \infty}f_{k_i}(x) = f(x)$. Then, 
+        \item Now we have a subsequence $\{f_{k_i}\}$ of $\{f_k\}$ such that for any $x \in \mathbb{R}$, $\displaystyle \lim_{i\to \infty}f_{k_i}(x) = f(x)$. Then, 
         \begin{align*}
             \left|f(x) - f(y)\right| = \lim_{i\to\infty} \left|f_{k_i}(x) - f_{k_i}(y)\right|.
         \end{align*}
-        Also, we know a proposition about $\liminf$ \footnote{This proposition states that let $\{x_n\}$ be a bounbed sequence in $\mathbb{R}$ and $a\in \mathbb{R}$, if $a > \liminf x_n$, then there exists $k \in \mathbb{N}$ such that for all $n \geq k$, $x_n > a$.} that if $H > \liminf_{k\to\infty} A_k$, then there exists $N > 0$, for all $k > N$, such that $A_k < H$\cite{1}. Then we take $H = \liminf_{k\to\infty}A_k + \varepsilon$ and let $\varepsilon \to 0$, then we have $\lim_{i\to\infty} \left|f_{k_i}(x) - f_{k_i}(y)\right| \leq \liminf_{k\to\infty}A_k |x - y|^\sigma$.
+        Also, we know a proposition about $\liminf$ \footnote{This proposition states that let $\{x_n\}$ be a bounbed sequence in $\mathbb{R}$ and $a\in \mathbb{R}$, if $a > \liminf x_n$, then there exists $k \in \mathbb{N}$ such that for all $n \geq k$, $x_n > a$.} that if $\displaystyle H > \liminf_{k\to\infty} A_k$, then there exists $N > 0$, for all $k > N$, such that $A_k < H$\cite{1}. Then we take $\displaystyle H = \liminf_{k\to\infty}A_k + \varepsilon$ and let $\varepsilon \to 0$, then we have $\displaystyle \lim_{i\to\infty} \left|f_{k_i}(x) - f_{k_i}(y)\right| \leq \liminf_{k\to\infty}A_k |x - y|^\sigma$.
     \end{enumerate}
 \end{enumerate}
 \end{proof}
@@ -177,16 +177,16 @@ Let $\sigma > 0$. Let $\left\{f_k\right\}_{k\in \mathbb{N}}$ be a sequence of fu
 
 
 \begin{exercise}{\rm *}
-Prove that if $X$ is a metric space and $f:X \times [0,1] \to \mathbb{R}$ is a continuous function, then $g:X \to \mathbb{R}$, defined by $g(x) = \sup_{t\in [0,1]}f(x,t)$ is also continuous. 
+Prove that if $X$ is a metric space and $f:X \times [0,1] \to \mathbb{R}$ is a continuous function, then $g:X \to \mathbb{R}$, defined by $\displaystyle g(x) = \sup_{t\in [0,1]}f(x,t)$ is also continuous. 
 \end{exercise}
 \begin{proof}
-Prove by contradiction and suppose $g$ is not continuous. Then there exists $\varepsilon > 0$, for all $\delta > 0$, there exists $x_0 \in X$ such that if $d_X(x,x_0) < \delta$, then $|g(x) - g(x_0)| > \varepsilon$. 
+Prove by contradiction and suppose $g$ is not continuous. Then there exists $\varepsilon > 0$, for all $\delta > 0$, there exists $x_0 \in X$ such that if $d_X(x,x_0) < \delta$, then $\left|g(x) - g(x_0)\right| > \varepsilon$. 
 
 Fix such $\varepsilon$ and pick $\delta = 1/n$, then there exists $x_n \in X$ such that if $d_X(x_n, x_0) < \delta$, then $|g(x_n, x_0)| > \varepsilon$, i.e., 
 \begin{align*}
     \left|\sup_{t}f(x_n,t) - \sup_{t}f(x_0,t)\right| > \varepsilon.
 \end{align*}
-Also, there exists $t_n, t_0 \in [0,1]$ such that $f(x_n, t_n) = \sup_{t}f(x_n,t)$ and $f(x_n, t_0) = \sup_{t}f(x_0,t)$. Then, we have 
+Also, there exists $t_n, t_0 \in [0,1]$ such that $\displaystyle f(x_n, t_n) = \sup_{t}f(x_n,t)$ and $\displaystyle f(x_n, t_0) = \sup_{t}f(x_0,t)$. Then, we have 
 \begin{align*}
     \left|f(x_n,t_n) - f(x_0,t_0)\right| > \varepsilon,
 \end{align*}
@@ -236,7 +236,7 @@ Assume also that the limits
 exist and define continuous functions $g, h$ on the domain $D = \{(u,v): u > 0, 0 < v < \pi\}$. Prove that the function $f$ is differentiable on $\mathbb{R}^2_+$.
 \end{exercise}
 \begin{proof}
-Define $M(u,v) = f(u\cos v, v\sin v) = f(x,y)$, where $u > 0, 0 < v < \pi$. And by assumption, $\frac{\partial M}{\partial u}$ and $\frac{\partial M}{\partial v}$ exist and are continuous. Then, for any $(u_1, v_1), (u_2, v_2) \in D$, there exist $\xi \in (u_1, u_2)$ and $\zeta \in (v_1,v_2)$ such that
+Define $M(u,v) = f(u\cos v, v\sin v) = f(x,y)$, where $u > 0, 0 < v < \pi$. And by assumption, $\displaystyle \frac{\partial M}{\partial u}$ and $\displaystyle \frac{\partial M}{\partial v}$ exist and are continuous. Then, for any $(u_1, v_1), (u_2, v_2) \in D$, there exist $\xi \in (u_1, u_2)$ and $\zeta \in (v_1,v_2)$ such that
 \begin{align*}
     M(u_2,v_2) - M(u_1,v_1) & = M(u_2,v_2) - M(u_1,v_2) + M(u_1,v_2) - M(u_1,v_1) \\
     & = \frac{\partial M}{\partial u}(\xi, v_2)(u_2 - u_1) + \frac{\partial M}{\partial v}(u_1, \zeta)(v_2 - v_1).
@@ -290,7 +290,7 @@ Let $\Delta f = \sum_{i=1}^n \partial^2f/\partial x_i^2$ be the Laplace operator
 ~\begin{enumerate}
     \item[(a)] Local maximum requires that $H_{x_0}(f)$ is positive semidefinitely, which means the trace $\partial^2f/\partial x_i^2, i = 1,2,\cdots,n$ of $H_{x_0}(f)$ are not positive. This is a contradiction with the fact $\Delta f(x_0) \geq \varepsilon$, then $f$ has no local maximum at $x_0$.
     
-    \item[(b)] With (a), we can know that $f$ has no local maximum in $\Omega \setminus \partial \Omega$. Thus, $\sup_{\Omega} f = \sup_{\partial \Omega} f$.
+    \item[(b)] With (a), we can know that $f$ has no local maximum in $\Omega \setminus \partial \Omega$. Thus, $\displaystyle \sup_{\Omega} f = \sup_{\partial \Omega} f$.
     
     \item[(c)] Let $f_\varepsilon(x) = f(x) + \varepsilon |x|^2$, then $\Delta f_\varepsilon(x) = \Delta f(x) + 2 \varepsilon n$. Then, we have
     \begin{align*}
@@ -357,7 +357,7 @@ Prove that if $f: [a,b] \to \mathbb{R}$ is continuous, the
 \end{exercise}
 \begin{proof}
 ~\begin{enumerate}[label=(\alph*)]
-    \item Since $f$ is continuous on compact space $[a,b]$, then $f$ attains its maximum at some point $c \in [a,b]$ such that $|f(c)| = \sup_{x\in[a,b]} |f(x)| = M$. Then\footnote{We cannot use $\lim$ here since we could use it unless the limit exists. However, we do not know the limit exists. Thus, we use $\liminf$ and $\limsup$.},
+    \item Since $f$ is continuous on compact space $[a,b]$, then $f$ attains its maximum at some point $c \in [a,b]$ such that $\displaystyle \left|f(c)\right| = \sup_{x\in[a,b]} \left|f(x)\right| = M$. Then\footnote{We cannot use $\lim$ here since we could use it unless the limit exists. However, we do not know the limit exists. Thus, we use $\liminf$ and $\limsup$.},
     \begin{align*}
         \limsup_{n\to\infty} \sqrt[n]{\int^b_a |f(x)|^n\, dx} & \leq \limsup_{n\to\infty} M (b - a)^{\frac{1}{n}} = \sup_{x\in[a,b]} |f(x)|.
     \end{align*}
@@ -481,7 +481,7 @@ Since $g_n \rightrightarrows f$, then $g_n' \rightrightarrows f$, and thus $f$ i
 \begin{align*}
     f(x) - f(0) \leftarrow g_n(x) - g_n(0) = \int^x_0 g_n'(t)\, dt \to \int^x_0 f_n'(t)\, dt,
 \end{align*}
-and then $f(x) - f(0) = \int^x_0 f_n'(t)\, dt$. Thus, $f'(x) = f(x)$ for $x \in [0,1]$, and hence $f(x) = Ce^x$ for some $C \in \mathbb{R}$. Indeed, 
+and then $\displaystyle f(x) - f(0) = \int^x_0 f_n'(t)\, dt$. Thus, $f'(x) = f(x)$ for $x \in [0,1]$, and hence $f(x) = Ce^x$ for some $C \in \mathbb{R}$. Indeed, 
 \begin{align*}
     \left(f e^{-x} \right)' = f' e^{-x} - f e^{-x} = 0,
 \end{align*}
@@ -566,7 +566,7 @@ With above results, we have $\left\|A^{-1}\right\| |\det A|= \|A\|$, and the abo
 Prove that every real-valued function, continuous on the real interval $[0,1]$, is the uniform limit of continuous piecewise linear functions.
 \end{exercise}
 \begin{proof}
-For any continuous function $f:[0,1] \to \mathbb{R}$, we can separate $[0,1]$ into $n$ pieces, with step length $1/n$. Denote by $[x_j, x_{j+1}], 1 \leq j \leq n$ the interval $\left[\frac{j-1}{n}, \frac{j}{n}\right]$. We define linear function $f_j: [x_j, x_{j+1}] \to \mathbb{R}$ by
+For any continuous function $f:[0,1] \to \mathbb{R}$, we can separate $[0,1]$ into $n$ pieces, with step length $1/n$. Denote by $[x_j, x_{j+1}], 1 \leq j \leq n$ the interval $\left[j-1/n, j/n\right]$. We define linear function $f_j: [x_j, x_{j+1}] \to \mathbb{R}$ by
 \begin{align*}
     f_j(x) = f(x_j) + \frac{f(x_{j+1}) - f(x_j)}{1/n} x,
 \end{align*}
@@ -616,23 +616,23 @@ where in the last step, we used the continuity of linear function $f_j(x)$ in th
     \item Suppose that $f_n:(a,b) \to \mathbb{R}$ has continuous derivatives on $(a,b)$ and \footnote{\begin{intheorem}{\rm \cite{10}}
     Suppose that $f_n:[a,b] \to \mathbb{R}$ has continuous derivatives on $[a,b]$ and further that
     \begin{enumerate}[label=(\alph*)]
-        \item the series $\sum^\infty_{n=1} f_n(x)$ converges at some point $x_0 \in (a, b)$,
+        \item the series $\displaystyle \sum^\infty_{n=1} f_n(x)$ converges at some point $x_0 \in (a, b)$,
         
-        \item the series of derivatives $\sum^\infty_{n=1} f_n'(x)$ converges uniformly on $[a,b]$.
+        \item the series of derivatives $\displaystyle \sum^\infty_{n=1} f_n'(x)$ converges uniformly on $[a,b]$.
     \end{enumerate}
     Then,
     \begin{enumerate}[label=(\alph*)]
-        \item the series $\sum^\infty_{n=1} f_n(x)$ converges at every $x \in [a,b]$ and the sum $\sum^\infty_{n=1} f_n(x)$ is differentiable with $\left( \sum^\infty_{n=1} f_n(x) \right)' = \sum^\infty_{n=1} f_n'(x)$ for each $x \in [a,b]$,
+        \item the series $\displaystyle \sum^\infty_{n=1} f_n(x)$ converges at every $x \in [a,b]$ and the sum $\displaystyle \sum^\infty_{n=1} f_n(x)$ is differentiable with $\displaystyle \left( \sum^\infty_{n=1} f_n(x) \right)' = \sum^\infty_{n=1} f_n'(x)$ for each $x \in [a,b]$,
         
-        \item the convergence of $\sum^\infty_{n=1} f_n(x)$ is uniform on $[a,b]$.
+        \item the convergence of $\displaystyle \sum^\infty_{n=1} f_n(x)$ is uniform on $[a,b]$.
     \end{enumerate}
     \end{intheorem}}
     \begin{enumerate}[label=\arabic*)]
-        \item the series $\sum^\infty_{n=1} f_n(x)$ converges at some point $x_0 \in (a, b)$,
+        \item the series $\displaystyle \sum^\infty_{n=1} f_n(x)$ converges at some point $x_0 \in (a, b)$,
         
-        \item the series of derivative $\sum^\infty_{n=1} f_n'(x)$ converges uniformly on $(a,b)$.
+        \item the series of derivative $\displaystyle \sum^\infty_{n=1} f_n'(x)$ converges uniformly on $(a,b)$.
     \end{enumerate}
-    Then the series $\sum^\infty_{n=1} f_n(x)$ converges at every $x \in (a,b)$ and
+    Then the series $\displaystyle \sum^\infty_{n=1} f_n(x)$ converges at every $x \in (a,b)$ and
     \begin{align*}
         \left(\sum^\infty_{n=1}f_n(x) \right)' = \sum^\infty_{n=1} f_n'(x).
     \end{align*}
@@ -641,17 +641,17 @@ where in the last step, we used the continuity of linear function $f_j(x)$ in th
     \begin{align*}
         \lim_{n\to\infty} \frac{\frac{(\log n)^k}{n^{1+2b}}}{\frac{1}{n^{1+b}}} = \lim_{n\to\infty} \frac{(\log n)^k}{n^b} = 0,
     \end{align*}
-    and to see the last step, we could assume $f(x) = \frac{(\log x)^k}{x^b}$. Since 
+    and to see the last step, we could assume $f(x) = (\log x)^k / x^b$. Since 
     \begin{align*}
         f'(x) = x^{-b-1} (\log x)^{k-1} (k - b \log x),
     \end{align*}
-    then letting $x \to \infty$ gives $f'(x) < 0$, which implies that $f(x)$ is decreasing and thus $\lim_{x} f(x) = 0$, which gives $\lim_{n\to\infty} \frac{(\log n)^k}{n^b} = 0$. Now, since $\sum \frac{1}{n^{1+b}}$ converges, so does $\sum \frac{(\log n)^k}{n^a}$.
+    then letting $x \to \infty$ gives $f'(x) < 0$, which implies that $f(x)$ is decreasing and thus $\lim_{x} f(x) = 0$, which gives $\lim_{n\to\infty} (\log n)^k / n^b = 0$. Now, since $\displaystyle \sum \frac{1}{n^{1+b}}$ converges, so does $\displaystyle \sum \frac{(\log n)^k}{n^a}$.
     
     \item For $x > 1$, 
     \begin{align*}
         \sum^\infty_{n=1} \frac{1}{n^x} < 1 + \sum^\infty_{n=2} \frac{(\log n)^k}{n^x} < \infty,
     \end{align*}
-    then $\sum \frac{1}{n^x}$ converges for $x \in (1, \infty)$. Also, since $\left(\frac{1}{n^x}\right)' = - n^{-x} \log n$, then considering in $k = 1$ and $a = x > 1$ part (b) gives
+    then $\displaystyle \sum \frac{1}{n^x}$ converges for $x \in (1, \infty)$. Also, since $\displaystyle \left(\frac{1}{n^x}\right)' = - n^{-x} \log n$, then considering in $k = 1$ and $a = x > 1$ part (b) gives
     \begin{align*}
         \sum^\infty_{n=1} \left|\frac{\log n}{n^x} \right| < \infty.
     \end{align*}
@@ -664,20 +664,20 @@ where in the last step, we used the continuity of linear function $f_j(x)$ in th
     \begin{align*}
         \left(\sum^\infty_{n=1} \frac{1}{n^x}\right)^{(n)} = \sum^\infty_{n=1} \left(\frac{1}{n^x}\right)^{(n)},
     \end{align*}
-    and since $\frac{1}{n^x}$ is infinitely differentiable, so does $\zeta(x)$.
+    and since $\displaystyle \frac{1}{n^x}$ is infinitely differentiable, so does $\zeta(x)$.
 \end{enumerate}
 \end{proof}
 
 \medskip
 
 \begin{exercise}
-Let $f: \mathbb{Q}^n \to \mathbb{R}$ be a function defined on the set $\mathbb{Q}^n \subset \mathbb{R}^n$ consisting of points whose coordinates are rational numbers. Prove that if $f$ satisfies the inequality $|f(x) - f(y)|^{2018} \leq 2018 |x - y|$ for all $x, y \in \mathbb{Q}^n$, then there is a unique continuous function $F: \mathbb{R}^n \to \mathbb{R}$ such that $F(x) = f(x)$ for all $x \in \mathbb{Q}^n$. Provide a direct proof without referring to any deep results \footnote{This problem is similar to the following one: Let $f:A\to X$ be a mapping between a dense subset $A \subset \mathbb{R}^n$ and a complete metric space $(X,d)$. Assume that $d(f(x),f(y))\leq |x-y|$ for all $x,y\in A$. Prove that there is a mapping $F:\mathbb{R}^n\to X$ such that $d(F(x),F(y))\leq |x-y|$ for all $x,y\in \mathbb{R}^n$ and $F(x)=f(x)$ whenever $x\in A$.}.
+Let $f: \mathbb{Q}^n \to \mathbb{R}$ be a function defined on the set $\mathbb{Q}^n \subset \mathbb{R}^n$ consisting of points whose coordinates are rational numbers. Prove that if $f$ satisfies the inequality $\left|f(x) - f(y)\right|^{2018} \leq 2018 \left|x - y\right|$ for all $x, y \in \mathbb{Q}^n$, then there is a unique continuous function $F: \mathbb{R}^n \to \mathbb{R}$ such that $F(x) = f(x)$ for all $x \in \mathbb{Q}^n$. Provide a direct proof without referring to any deep results \footnote{This problem is similar to the following one: Let $f:A\to X$ be a mapping between a dense subset $A \subset \mathbb{R}^n$ and a complete metric space $(X,d)$. Assume that $d(f(x),f(y))\leq |x-y|$ for all $x,y\in A$. Prove that there is a mapping $F:\mathbb{R}^n\to X$ such that $d(F(x),F(y))\leq |x-y|$ for all $x,y\in \mathbb{R}^n$ and $F(x)=f(x)$ whenever $x\in A$.}.
 \end{exercise}
 \begin{proof}
-Since $\mathbb{Q}^n$ is dense in $\mathbb{R}^n$, then for any point $x$ in $\mathbb{R}^n$, we can find a sequence $\{x_n\}^\infty_{n=1}$ of points in $\mathbb{Q}^n$ such that $\lim_{n\to\infty} x_n = x$. Now we define $F(x)$ as
+Since $\mathbb{Q}^n$ is dense in $\mathbb{R}^n$, then for any point $x$ in $\mathbb{R}^n$, we can find a sequence $\{x_n\}^\infty_{n=1}$ of points in $\mathbb{Q}^n$ such that $\displaystyle \lim_{n\to\infty} x_n = x$. Now we define $F(x)$ as
 \begin{align*}
     F(x) = \begin{cases}
-        \lim_{n\to\infty} f(x_n), & x \notin \mathbb{Q}^n,  x_n \in \mathbb{Q}^n, \lim_{n\to\infty} x_n = x, \\
+        \displaystyle \lim_{n\to\infty} f(x_n), & \displaystyle  x \notin \mathbb{Q}^n,  x_n \in \mathbb{Q}^n, \lim_{n\to\infty} x_n = x, \\
         f(x), & x \in \mathbb{Q}^n.
     \end{cases}
 \end{align*}
@@ -753,7 +753,7 @@ $$
 \int_{x^2 + y^2 + z^2 \le 1} f(x, y, z)\hspace{1.5pt} dx\hspace{1.5pt}  dy \hspace{1.5pt} dz =
 \frac{4\pi f((0, 0, 0)) }{3} +  \frac{2\pi \left(\Delta f\right)((0, 0, 0))}{15}.
 $$
-Here $\displaystyle{\Delta = \frac{\partial^2}{\partial x^2} + \frac{\partial^2}{\partial y^2} + \frac{\partial^2}{\partial z^2}}$ is the Laplacian operator on $\mathbb{R}^3$.
+Here $\displaystyle \Delta = \frac{\partial^2}{\partial x^2} + \frac{\partial^2}{\partial y^2} + \frac{\partial^2}{\partial z^2}$ is the Laplacian operator on $\mathbb{R}^3$.
 \end{exercise}
 \begin{proof}
 By Taylor's formula, 
@@ -866,7 +866,7 @@ For any closed subset $X$ of $\mathbb{R}^n$, prove that there is a countable sub
 \begin{proof}
 Let $\{B_k\}$ be the family of open balls, whose centers have rational numbers, with radius $1/k, k \in \mathbb{N}$. Then, $B_k$ is countable, since the set of rational numbers is countable.
 
-For certain $B \in \{B_k\}$ such that $B \cap X \neq \varnothing$, let $X_k = \{x: x \in B \cap X\}$. Then $\{X_k\}$ is countable, therefore $S = \bigcup^\infty_{k=1} X_k$ is a countable subset of $X$.
+For certain $B \in \{B_k\}$ such that $B \cap X \neq \varnothing$, let $X_k = \{x: x \in B \cap X\}$. Then $\{X_k\}$ is countable, therefore $\displaystyle S = \bigcup^\infty_{k=1} X_k$ is a countable subset of $X$.
 
 Since $X$ is closed, then $\overline{S} \subset X$. Also, for any $x \in X$, there exists $k \in \mathbb{N}$, such that $x$ belongs to a certain $B \in \{B_k\}$, and $B$ contains a point $\widetilde{x}$ of $X_k$, hence of $S$. Since $k$ is arbitrary, then there exists a sequence $\{\widetilde{x}_k\} \in S$ such that $\lim_{k\to\infty} \widetilde{x}_k = x$, then $x \in \overline{S}$. Thus, $X \subset \overline{S}$. 
 
@@ -876,7 +876,7 @@ Thus, $X = \overline{S}$, and every continuous function $f: X \to \mathbb{R}$ is
 \medskip
 
 \begin{exercise}{\rm *}
-Let $f(x) = \frac{\ln x}{x}$, defined for any real number $x > 0$.
+Let $\displaystyle f(x) = \ln x / x$, defined for any real number $x > 0$.
 \begin{enumerate}[label=(\alph*)]
     \item Find the coefficients $h_n$ of the Taylor series of $f$, centered at $x = 1$:
     \begin{align*}
@@ -884,12 +884,12 @@ Let $f(x) = \frac{\ln x}{x}$, defined for any real number $x > 0$.
     \end{align*}
     and determine, with proof, all open intervals on which the series $\mathcal{T}(f)$ converges uniformly to $f$.
     
-    \item Does $\mathcal{T}(f)(2) = \sum^\infty_{n = 0}$ converges to $\frac{\ln 2}{2}$?
+    \item Does $\displaystyle \mathcal{T}(f)(2) = \sum^\infty_{n = 0} h_n$ converges to $\ln 2 / 2$?
 \end{enumerate}
 \end{exercise}
 \begin{proof}
 ~\begin{enumerate}[label=(\alph*)]
-    \item Since $f(x) = \frac{\ln x}{x}$, then $xf(x) = \ln x$. Then, taking derivative on both sides gives,
+    \item Since $f(x) = \ln x / x$, then $xf(x) = \ln x$. Then, taking derivative on both sides gives,
     \begin{align*}
         & xf(x) + x^2 f'(x) = 1, \\
         & f(x) + 3x f'(x) + x^2 f''(x) = 0, \\
@@ -940,7 +940,7 @@ Let $f(x) = \frac{\ln x}{x}$, defined for any real number $x > 0$.
     \begin{align*}
         \mathcal{T}(f)(2) = \sum^\infty_{n=0} h_n,
     \end{align*}
-    and since $\lim_{n\to\infty} h_n = \infty$, then $\sum^\infty_{n=1} h_n$ does not converges. 
+    and since $\displaystyle \lim_{n\to\infty} h_n = \infty$, then $\displaystyle \sum^\infty_{n=1} h_n$ does not converges. 
 \end{enumerate}
 \end{proof}
 
@@ -956,8 +956,8 @@ Let $f(x) = \left\lfloor x \right\rfloor$ be the greatest integer function, deno
 Define $g_k$ for any $k \in \mathbb{N}$ by
 \begin{align*}
     g_k(x) = \begin{cases}
-        n, & x \in [n, n+1-\frac{1}{k}), \\
-        kx - (k-1)(n+1), & x \in [n+1-\frac{1}{k}, n+1],
+        n, & \displaystyle  x \in \left[n, n+1-\frac{1}{k}\right), \\
+        kx - (k-1)(n+1), & \displaystyle  x \in \left[n+1-\frac{1}{k}, n+1\right],
     \end{cases}
 \end{align*}
 and it is easy to see that $g_k(x)$ is continuous on $\mathbb{R}$. By Weierstrass theorem, for any $k \in \mathbb{N}$, there is a polynomial $p_k$ such that 
@@ -992,7 +992,7 @@ where $m > 0$ is arbitrary. These $p_k$ form a sequence $\{p_k\}$.
 For a fixed $k \in \mathbb{N}$, define $f_k: \mathbb{R}^2 \to \mathbb{R}$ by
 \begin{align*}
     f_k(x,y) = \begin{cases}
-        \frac{x^2(x + y^2)}{x^2 + y^{2k}}, & {\rm if}\,\, (x,y) \neq (0,0), \\
+        \displaystyle \frac{x^2(x + y^2)}{x^2 + y^{2k}}, & {\rm if}\,\, (x,y) \neq (0,0), \\
         0, & {\rm if}\,\, (x,y) = (0,0).
     \end{cases}
 \end{align*}
@@ -1038,14 +1038,14 @@ The quaternionic square of $\mathbf{x} = (x,y,z,w) \in \mathbb{R}^4$ is
 \begin{align*}
     s(\mathbf{x}) = \left( x^2 - y^2 - z^2 - w^2, 2xy, 2xz, 2xw \right).
 \end{align*}
-For any $\mathbf{b} \in \mathbb{R}^4$ such that $|\mathbf{b}| \leq 1/16$, prove that the equation
+For any $\mathbf{b} \in \mathbb{R}^4$ such that $\left|\mathbf{b}\right| \leq 1/16$, prove that the equation
 \begin{align*}
     s(\mathbf{x}) - \mathbf{x} + \mathbf{b} = 0
 \end{align*}
-has a unique solution $\mathbf{x}$ such that $|\mathbf{x}| \leq 1/8$.
+has a unique solution $\mathbf{x}$ such that $\left|\mathbf{x}\right| \leq 1/8$.
 \end{exercise}
 \begin{proof}
-If $|\mathbf{x}| \leq 1/16$  and $|\mathbf{b}| \leq 1/16$, then 
+If $\left|\mathbf{x}\right| \leq 1/16$  and $\left|\mathbf{b}\right| \leq 1/16$, then 
 \begin{align*}
     |s(\mathbf{x}) + \mathbf{b}| & \leq |s(\mathbf{x})| + |\mathbf{b}| \\
     & = \sqrt{(x^2 + y^2 + z^2 + w^2)^2 - 4(y^2z^2 + y^2w^2 + z^2w^2)} + |\mathbf{b}| \\
@@ -1058,7 +1058,7 @@ Now define $f:B(1/8) \to B(1/8)$ by
 \begin{align*}
     f(\mathbf{x}) = s(\mathbf{x}) + b,
 \end{align*}
-where $B(1/8) = \left\{ \mathbf{x} \in \mathbb{R}^4 : |\mathbf{x}| \leq 1/8 \right\}$. And $f$ is well defined from above inequality, since $B(1/8)$ is a closed subset of $\mathbb{R}^4$ and then $(B(1/8), d)$ is complete. 
+where $B(1/8) = \left\{ \mathbf{x} \in \mathbb{R}^4 : \left|\mathbf{x}\right| \leq 1/8 \right\}$. And $f$ is well defined from above inequality, since $B(1/8)$ is a closed subset of $\mathbb{R}^4$ and then $(B(1/8), d)$ is complete. 
 
 For any $\mathbf{x} = (x,y,z,w) \in B(1/8)$,
 \begin{align*}
@@ -1069,7 +1069,7 @@ For any $\mathbf{x} = (x,y,z,w) \in B(1/8)$,
         2w & 0   & 0   & 2x   
     \end{pmatrix},
 \end{align*}
-and $x^2 + y^2 + z^2 + w^2 \leq 1/64$. Also, for $\mathbf{y} = (a, b, c, d), |\mathbf{y}|=1$, we have
+and $x^2 + y^2 + z^2 + w^2 \leq 1/64$. Also, for $\mathbf{y} = (a, b, c, d), \left|\mathbf{y}\right|=1$, we have
 \begin{align*}
     \left\|(Ds)(\mathbf{x}) \right\| = & \sup_{|\mathbf{y}|=1} \left|(Ds)(\mathbf{x}) \cdot \mathbf{y}\right| \\
     = & \sup_{|\mathbf{y}|=1} 2 \sqrt{(ax - by - cz - dw)^2 + (ay + bx)^2 + (az + cx)^2 + (aw + dx)^2} \\
@@ -1080,13 +1080,13 @@ and $x^2 + y^2 + z^2 + w^2 \leq 1/64$. Also, for $\mathbf{y} = (a, b, c, d), |\m
 \end{align*}
 Then, for any $\mathbf{x}, \mathbf{y} \in B(1/8)$, by mean value theorem,
 \begin{align*}
-    |f(\mathbf{x}) - f(\mathbf{y})| = |s(\mathbf{x}) - s(\mathbf{y})| \leq \sup_{\mathbf{x} \in B(1/8)} \left\|(Ds)(\mathbf{x}) \right\| \cdot |\mathbf{x} - \mathbf{y}| \leq \frac{11}{16} |\mathbf{x} - \mathbf{y}|,
+    \left|f(\mathbf{x}) - f(\mathbf{y})\right| = \left|s(\mathbf{x}) - s(\mathbf{y})\right| \leq \sup_{\mathbf{x} \in B(1/8)} \left\|(Ds)(\mathbf{x}) \right\| \cdot \left|\mathbf{x} - \mathbf{y}\right| \leq \frac{11}{16} \left|\mathbf{x} - \mathbf{y}\right|,
 \end{align*}
-which means $f$ is a contraction. By the Banach Fixed-Point Theorem, $f(\mathbf{x}) = \mathbf{x}$ has a unique solution. That is, for any $\mathbf{b} \in \mathbb{R}^4$ such that $|\mathbf{b}| \leq 1/16$, the equation
+which means $f$ is a contraction. By the Banach Fixed-Point Theorem, $f(\mathbf{x}) = \mathbf{x}$ has a unique solution. That is, for any $\mathbf{b} \in \mathbb{R}^4$ such that $\left|\mathbf{b}\right| \leq 1/16$, the equation
 \begin{align*}
     s(\mathbf{x}) - \mathbf{x} + \mathbf{b} = 0
 \end{align*}
-has a unique solution $\mathbf{x}$ such that $|\mathbf{x}| \leq 1/8$.
+has a unique solution $\mathbf{x}$ such that $\left|\mathbf{x}\right| \leq 1/8$.
 \end{proof}
 
 
@@ -1096,13 +1096,13 @@ has a unique solution $\mathbf{x}$ such that $|\mathbf{x}| \leq 1/8$.
 \section{May 2017 Exam}
 
 \begin{exercise}{\rm *}\label{May_2017_1}
-Suppose $f:[1, \infty) \to \mathbb{R}$ is Riemann integrable on $[1, A]$ for every $A > 1$, and $\lim_{x \to \infty} xf(x) = 1$. Prove that
+Suppose $f:[1, \infty) \to \mathbb{R}$ is Riemann integrable on $[1, A]$ for every $A > 1$, and $\displaystyle \lim_{x \to \infty} xf(x) = 1$. Prove that
 \begin{align*}
     \lim_{t \to \infty} \frac{1}{t} \int^{e^t}_{1} f(x)\, dx = 1.
 \end{align*}
 \end{exercise}
 \begin{proof}
-Since $\lim_{x \to \infty} xf(x) = 1$, then for any $\varepsilon > 0$, there exists $x_0 > 1$ such that for $x > x_0$, $|xf(x) - 1| < \varepsilon$.
+Since $\displaystyle \lim_{x \to \infty} xf(x) = 1$, then for any $\varepsilon > 0$, there exists $x_0 > 1$ such that for $x > x_0$, $|xf(x) - 1| < \varepsilon$.
 
 Now let
 \begin{align*}
@@ -1137,7 +1137,7 @@ Thus, we have
 \begin{proof}
 ~\begin{enumerate}[label=(\alph*)]
     \item \begin{enumerate}[label=\arabic*)]
-        \item $\Rightarrow$ Since $\left\{f_n\right\}$ converges pointwise to a function $f$, then for any $x \in [0,1]$ and any $\varepsilon > 0$, there exists $N_{x, \varepsilon} \in \mathbb{N}$ such that for all $n > N_{x, \varepsilon}$, 
+        \item ($\Rightarrow$) Since $\left\{f_n\right\}$ converges pointwise to a function $f$, then for any $x \in [0,1]$ and any $\varepsilon > 0$, there exists $N_{x, \varepsilon} \in \mathbb{N}$ such that for all $n > N_{x, \varepsilon}$, 
         \begin{align*}
             \left| f_n(x) - f(x) \right| < \frac{\varepsilon}{3}.
         \end{align*}
@@ -1146,7 +1146,7 @@ Thus, we have
             |f(x) - f(y)| & \leq \left|f(x) - f_{N_{x,y}}(x)\right| + \left|f_{N_{x,y}}(x) - f_{N_{x,y}}(y)\right| + \left|f_{N_{x,y}}(y) - f(y)\right| \\
             & < \frac{\varepsilon}{3} + K |x - y| + \frac{\varepsilon}{3} = \frac{2 \varepsilon}{3} + K |x - y|.
         \end{align*}
-        And if $y \in \left(x - \frac{\varepsilon}{3K}, x + \frac{\varepsilon}{3K} \right)$, then for $n > N_{x,y}$, we have 
+        And if $y \in \left(x - \varepsilon / (3K), x + \varepsilon / (3K) \right)$, then for $n > N_{x,y}$, we have 
         \begin{align*}
             |f(x) - f(y)| < \frac{2 \varepsilon}{3} + K \frac{\varepsilon}{3K} = \varepsilon.
         \end{align*}
@@ -1155,16 +1155,16 @@ Thus, we have
         \begin{align*}
             [0,1] \subset \bigcup^M_{j=1} B \left(x_j, \frac{\varepsilon}{3K} \right),
         \end{align*}
-        where $B \left(x_j, \frac{\varepsilon}{3K}\right) = \left(x_j - \frac{\varepsilon}{3K}, x_j + \frac{\varepsilon}{3K} \right)$ and $x_j \in [0,1]$.
+        where $B \left(x_j, \varepsilon / (3K)\right) = \left(x_j - \varepsilon / (3K), x_j + \varepsilon / (3K) \right)$ and $x_j \in [0,1]$.
     
-        Now, for any $\varepsilon > 0$, let $N = \max \left\{ N_{x_j, \varepsilon} \right\}, j = 1, \cdots, M$, then for any $x \in [0,1]$, there exists some $i$ such that $x \in B \left(x_i, \frac{\varepsilon}{3K}\right)$. Then, for all $n > N$, we have
+        Now, for any $\varepsilon > 0$, let $N = \max \left\{ N_{x_j, \varepsilon} \right\}, j = 1, \cdots, M$, then for any $x \in [0,1]$, there exists some $i$ such that $x \in B \left(x_i, \varepsilon / (3K)\right)$. Then, for all $n > N$, we have
         \begin{align*}
             |f_n(x) - f(x)| & \leq |f_n(x) - f_n(x_j)| + |f_n(x_j) - f(x_j)| + |f(x_j) - f(x)| \\
             & < K \frac{\varepsilon}{3K} + \frac{\varepsilon}{3} + \frac{\varepsilon}{3} = \varepsilon.
         \end{align*}
         Thus, $\left\{f_n\right\}$ converges uniformly to a function $f$.
         
-        \item $\Leftarrow$ If $\left\{f_n\right\}$ converges uniformly to a function $f$, then it is obvious that $\left\{f_n\right\}$ converges pointwise to $f$.
+        \item ($\Leftarrow$) If $\left\{f_n\right\}$ converges uniformly to a function $f$, then it is obvious that $\left\{f_n\right\}$ converges pointwise to $f$.
     \end{enumerate}
     
     \item Let $f_n(x) = n \log \left(1 + \frac{x}{n}\right)$, and for any $x \in [0,1]$,
@@ -1193,7 +1193,7 @@ Show that the Hilbert cube
 \begin{align*}
     \mathcal{H} = \left\{(x_1, x_2, \cdots) | 0 \leq x_n \leq 2^{-n}, n \in \mathbb{N} \right\}
 \end{align*}
-is compact when it is equipped with the metric $d(\mathbf{x}, \mathbf{y}) = \sup \{|x_n - y_n| | n \in \mathbb{N}\}$, where $\mathbf{x} = (x_1, x_2, \cdots)$ and $\mathbf{y} = (y_1, y_2, \cdots)$.\\
+is compact when it is equipped with the metric $d(\mathbf{x}, \mathbf{y}) = \sup \{\left|x_n - y_n\right|\, |\, n \in \mathbb{N}\}$, where $\mathbf{x} = (x_1, x_2, \cdots)$ and $\mathbf{y} = (y_1, y_2, \cdots)$.\\
 {\bf Hint:} Use a diagonal argument.
 \end{exercise}
 \begin{proof}
@@ -1240,7 +1240,7 @@ It suffice to show that $\mathcal{H}$ is complete and totally bounded.
     \begin{align*}
         \left[0, 2^{-n}\right] \subset \bigcup_{x \in \left[0, 2^{-i}\right]} B(x, \varepsilon),
     \end{align*}
-    and since $\left[0, 2^{-i}\right]$ is compact, then there exist finite coverings $\bigcup^{K_n}_{i=1} B(x_{n, i}, \varepsilon)$, where $K_n \in \mathbb{N}$ such that 
+    and since $\left[0, 2^{-i}\right]$ is compact, then there exist finite coverings $\displaystyle \bigcup^{K_n}_{i=1} B(x_{n, i}, \varepsilon)$, where $K_n \in \mathbb{N}$ such that 
     \begin{align*}
         \left[0, 2^{-n}\right] \subset \bigcup^{K_n}_{i=1} B \left(x^{(n)}_i, \varepsilon \right),
     \end{align*}
@@ -1255,7 +1255,7 @@ It suffice to show that $\mathcal{H}$ is complete and totally bounded.
         d(\mathbf{x}, \mathbf{y}) & = \max \left\{\sup_{i = 1, \cdots, M} \left|x_i - x^{(i)}_{k_i} \right|, \sup_{i > M} \left| x_i \right| \right\} \\
         & < \max \left\{\varepsilon, 2^{-M} \right\} \leq \varepsilon.
     \end{align*}
-    Then, $\mathcal{H}$ is covered by a finite coverings $\{B(\mathbf{x}, \varepsilon) | \mathbf{x} \in H_\varepsilon\}$, since $H_\varepsilon$ has $\prod^M_{n=1} K_n$ elements. Thus, $\mathcal{H}$ is totally bounded.
+    Then, $\mathcal{H}$ is covered by a finite coverings $\{B(\mathbf{x}, \varepsilon) | \mathbf{x} \in H_\varepsilon\}$, since $H_\varepsilon$ has $\displaystyle \prod^M_{n=1} K_n$ elements. Thus, $\mathcal{H}$ is totally bounded.
 \end{enumerate}
 Hence, since $\mathcal{H}$ is complete and totally bounded, it is compact with the metric defined above.
 \end{proof}
@@ -1283,14 +1283,14 @@ Hence, since $\mathcal{H}$ is complete and totally bounded, it is compact with t
     \begin{align*}
         \left|\frac{nx}{1 + n^4x^2}\right| \leq \frac{nx}{n^4x^2} = \frac{1}{n^3x} \leq \frac{1}{an^3},
     \end{align*}
-    and by Weierstrass $M$-test\footnote{{\bf Weierstrass $M$-test:} Suppose that $f_n: A \to \mathbb{R}$, $A \subset \mathbb{R}$, is a sequence of function such that $|f_n(x)| \leq a_n$ for all $x \in A$ and $n \in \mathbb{N}$. If the series $\sum^\infty_{n=1}a_n$ converges, then the series $\sum^\infty_{n=1}f_n(x)$ converges uniformly.}, since $\sum^\infty_{n=1} 1/\left(an^3\right)$ converges, then the series $f(x)$ converges uniformly.
+    and by Weierstrass $M$-test\footnote{{\bf Weierstrass $M$-test:} Suppose that $f_n: A \to \mathbb{R}$, $A \subset \mathbb{R}$, is a sequence of function such that $|f_n(x)| \leq a_n$ for all $x \in A$ and $n \in \mathbb{N}$. If the series $\displaystyle \sum^\infty_{n=1}a_n$ converges, then the series $\displaystyle \sum^\infty_{n=1}f_n(x)$ converges uniformly.}, since $\displaystyle \sum^\infty_{n=1} \frac{1}{an^3}$ converges, then the series $f(x)$ converges uniformly.
     
     \item First, since the series converges uniformly on $[1/N, \infty)$, then $f(1/N)$ is well-defined. Then,
     \begin{align*}
         f\left(\frac{1}{N}\right) = \sum^\infty_{n=0} \frac{nN}{N^2 + n^4} = \sum^\infty_{n=0} \frac{N}{\frac{N^2}{n} + n^3} \geq \sum^\infty_{n=\sqrt{N}} \frac{N}{\frac{N^2}{n} + n^3} \geq \sum^\infty_{n=\sqrt{N}} \frac{N}{\frac{n^4}{n} + n^3} = \frac{N}{2} \sum^\infty_{n\geq \sqrt{N}} \frac{1}{n^3}.
     \end{align*}
     
-    Second, considering the integral form for $\sum^\infty_{n\geq \sqrt{N}} 1/n^3$ gives
+    Second, considering the integral form for $\displaystyle \sum^\infty_{n\geq \sqrt{N}} \frac{1}{n^3}$ gives
     \begin{align*}
         f\left(\frac{1}{N}\right) \geq \frac{N}{2} \int^\infty_{\sqrt{N}} \frac{1}{x^3}\, dx \cdot 1 = \frac{N}{2} \frac{1}{2N} = \frac{1}{4},
     \end{align*}
@@ -1308,7 +1308,7 @@ Hence, since $\mathcal{H}$ is complete and totally bounded, it is compact with t
 \begin{align*}
     \left|\frac{nx}{1 + n^4x^2}\right| \leq \frac{1}{an^3},
 \end{align*}
-then it suffice to show that the partial sums of the sequence is Cauchy sequence\footnote{Let $A$ be any set and $f_n:A \to \mathbb{R}$ be a sequence of functions. The pointwise and uniform convergence of the series $\sum^\infty_{n=1}f_n(x)$ is defined respectively as the pointwise and the uniform convergence of the sequence of partial sums $s_k(x) = \sum^k_{n=1}f_n(x)$.}. Indeed, since $\sum^\infty_{n=1} 1/\left(an^3\right)$ converges, then there exists $N \in \mathbb{N}$ such that 
+then it suffice to show that the partial sums of the sequence is Cauchy sequence\footnote{Let $A$ be any set and $f_n:A \to \mathbb{R}$ be a sequence of functions. The pointwise and uniform convergence of the series $\displaystyle \sum^\infty_{n=1}f_n(x)$ is defined respectively as the pointwise and the uniform convergence of the sequence of partial sums $s_k(x) = \displaystyle \sum^k_{n=1}f_n(x)$.}. Indeed, since $\displaystyle \sum^\infty_{n=1} \frac{1}{an^3}$ converges, then there exists $N \in \mathbb{N}$ such that 
 \begin{align*}
     \sum^\infty_{n=N} \frac{1}{an^3} < \varepsilon.
 \end{align*}
@@ -1316,7 +1316,7 @@ Then for $m > k \geq N$ and any $x \geq a$,
 \begin{align*}
     \left|\sum^m_{n=0} \frac{nx}{1 + n^4x^2} - \sum^k_{n=0} \frac{nx}{1 + n^4x^2} \right| = \left|\sum^m_{n=k+1} \frac{nx}{1 + n^4x^2}  \right| \leq \sum^m_{n=k+1} \frac{1}{an^3} \leq \sum^\infty_{n=N} \frac{1}{an^3} < \varepsilon.
 \end{align*}
-Since $f(x) = \lim_{m\to\infty}\sum^m_{n=0} nx/(1 + n^4x^2)$, letting $m \to \infty$ implies that for all $k > N$ and all $x \geq a$
+Since $\displaystyle f(x) = \lim_{m\to\infty}\sum^m_{n=0} \frac{nx}{1 + n^4x^2}$, letting $m \to \infty$ implies that for all $k > N$ and all $x \geq a$
 \begin{align*}
     \left|f(x) - \sum^k_{n=0} \frac{nx}{1 + n^4x^2} \right| < \varepsilon.
 \end{align*}
@@ -1493,7 +1493,7 @@ Given $x_0 > 0$, define a sequence $\{x_n\}$ recursively by $x_n = 3 \left(\sqrt
     
     \item If $x_0 \in (0,3)$, then $x_n \in (0,3)$ for all $n = 1, 2, \cdots$. Also, by the similar argument in (b), we have $x_n - x_{n-1} > 0$. Then, when $x_0 \in (0,3)$, $\{x_n\}$ is a increasing sequence with upper bound $3$, and thus it is convergent.
 \end{enumerate}
-Then, for all $x_0 > 0$, $\{x_n\}$ is a convergent sequence. Now, since $x_n = 3 \left(\sqrt{x_{n-1} + 1} - 1\right)$, letting $n \to \infty$ and assuming $\lim_{n\to\infty} x_n = k$ would gives 
+Then, for all $x_0 > 0$, $\{x_n\}$ is a convergent sequence. Now, since $x_n = 3 \left(\sqrt{x_{n-1} + 1} - 1\right)$, letting $n \to \infty$ and assuming $\displaystyle \lim_{n\to\infty} x_n = k$ would gives 
 \begin{align*}
     k = 3 \left(\sqrt{k + 1} - 1\right),
 \end{align*}
@@ -1519,15 +1519,15 @@ Using diagonal argument, we choose $n_{k,k}$, then we have $n_{k,k} > n_{k-1, k-
 For $n \geq 2$, define $f_n: [0,1] \to [0,1]$ by
 \begin{align*}
     f_n(x) = \begin{cases}
-        nx, & 0 \leq x \leq \frac{1}{n}, \\
-        \frac{n}{n-1}(1 - x), & \frac{1}{n} \leq x \leq 1.
+        nx, & 0 \displaystyle \leq x \leq \frac{1}{n}, \\
+        \displaystyle \frac{n}{n-1}(1 - x), & \displaystyle \frac{1}{n} \leq x \leq 1.
     \end{cases}
 \end{align*}
-Prove that $\sum^\infty_{n=2} [f_n(x)]^n$ converges pointwise on $[0,1]$ to a function $f(x)$ that is continuous on $(0,1]$, but that the improper integral $\int^1_0 f(x)\, dx$ diverges (the integral is improper at $0$). 
+Prove that $\displaystyle \sum^\infty_{n=2} [f_n(x)]^n$ converges pointwise on $[0,1]$ to a function $f(x)$ that is continuous on $(0,1]$, but that the improper integral $\displaystyle \int^1_0 f(x)\, dx$ diverges (the integral is improper at $0$). 
 \end{exercise}
 \begin{proof}
 ~\begin{enumerate}[label=(\alph*)]
-    \item For $x = 0$, then $\sum^\infty_{n=2} [f_n(x)]^n = 0$. For any $x \in (0,1]$, there exists $N \in \mathbb{N}$ such that $\frac{1}{N+1} \leq x \leq \frac{1}{N}$. Then,
+    \item For $x = 0$, then $\displaystyle \sum^\infty_{n=2} [f_n(x)]^n = 0$. For any $x \in (0,1]$, there exists $N \in \mathbb{N}$ such that $1 / (N+1) \leq x \leq 1 / N$. Then,
     \begin{align*}
         \sum^\infty_{n=2} [f_n(x)]^n & = \sum^N_{n = 2} \left( \frac{x}{n} \right)^n + \sum^\infty_{n=N+1} \left( \frac{n}{n - 1} (1-x) \right)^n,
     \end{align*}
@@ -1535,19 +1535,18 @@ Prove that $\sum^\infty_{n=2} [f_n(x)]^n$ converges pointwise on $[0,1]$ to a fu
     \begin{align*}
         \lim_{n \to \infty} \sqrt[n]{\left( \frac{n(1 - x)}{n} \right)^n} = 1 - x < 1,
     \end{align*}
-    and then the second term converges. Then, $\sum^\infty_{n=2} [f_n(x)]^n$ converges pointwise on $[0,1]$ to a function $f(x)$.
+    and then the second term converges. Then, $\displaystyle \sum^\infty_{n=2} [f_n(x)]^n$ converges pointwise on $[0,1]$ to a function $f(x)$.
     
-    
-    It remains to show that $f(x)$ is continuous on $(0,1]$, and we need to show that $\sum^\infty_{n=2} [f_n(x)]^n$ converges uniformly on $(0,1]$. For any $x \in (0,1]$, there exists a $K \in \mathbb{N}$ such that $\frac{1}{K} \leq x \leq \frac{1}{K+1}$. Then, 
+    It remains to show that $f(x)$ is continuous on $(0,1]$, and we need to show that $\displaystyle \sum^\infty_{n=2} [f_n(x)]^n$ converges uniformly on $(0,1]$. For any $x \in (0,1]$, there exists a $K \in \mathbb{N}$ such that $1 / (K+1) \leq x \leq 1 / K$. Then, 
     \begin{align*}
         \left| \sum^K_{n=2} [f_n(x)]^n - \sum^\infty_{n=2} [f_n(x)]^n \right| & = \left| \sum^\infty_{n=K+1} [f_n(x)]^n\right| \\
         & = \left| \sum^\infty_{n=K+1} \left( \frac{n}{n - 1} (1-x) \right)^n \right|,
     \end{align*}
-    and by the previous argument, the series $\sum^\infty_{n=2} \left(\frac{n(1-x)}{n-1}\right)^n$ converges. Then, 
+    and by the previous argument, the series $\displaystyle \sum^\infty_{n=2} \left(\frac{n(1-x)}{n-1}\right)^n$ converges. Then, 
     \begin{align*}
         \lim_{K \to \infty} \left| \sum^K_{n=2} [f_n(x)]^n - \sum^\infty_{n=2} [f_n(x)]^n \right| = 0,
     \end{align*}
-    which implies that $\sum^\infty_{n=2} [f_n(x)]^n$ converges uniformly on $[1/K, 1]$. Thus, $f(x)$ is continuous on $(0,1]$.
+    which implies that $\displaystyle \sum^\infty_{n=2} [f_n(x)]^n$ converges uniformly on $[1/K, 1]$. Thus, $f(x)$ is continuous on $(0,1]$.
     
     \item For any $k \in \mathbb{N}$, $k \geq 2$, we have
     \begin{align*}
@@ -1556,7 +1555,7 @@ Prove that $\sum^\infty_{n=2} [f_n(x)]^n$ converges pointwise on $[0,1]$ to a fu
         & \geq 0 + \sum^k_{n=2} \frac{n-1}{n(n+1)} + 0 \geq \sum^k_{n=2} \frac{1}{(n-1) + 3 + \frac{2}{n-1}} \\
         & \geq \sum^k_{n=2} \frac{1}{n-1},
     \end{align*}
-    and since $\sum^\infty_{n=2} \frac{1}{n-1}$ diverges, the integral diverges.
+    and since $\displaystyle \sum^\infty_{n=2} \frac{1}{n-1}$ diverges, the integral diverges.
 \end{enumerate}
 \end{proof}
 
@@ -1574,11 +1573,11 @@ Let $f:A \to X$ be a mapping between a dense subset $A \subset \mathbb{R}^n$ and
 ~\begin{enumerate}[label=(\alph*)]
     \item Since $A$ is dense in $\mathbb{R}^n$, then for any $x \in \mathbb{R}^n$, there is a sequence $\{x_n\} \subset A$ such that
     $$\lim_{n \to \infty} x_n = x.$$
-    Now define for any $x \in \mathbb{R}^n$ and $\lim_{n \to \infty} x_n = x$, 
+    Now define for any $x \in \mathbb{R}^n$ and $\displaystyle \lim_{n \to \infty} x_n = x$, 
     \begin{align*}
         F(x) = \lim_{n\to\infty} f(x_n).
     \end{align*}
-    Then, for any $x, y \in \mathbb{R}^n$, there exist $\{y_n\} \subset A$ such that $\lim_{n\to\infty}y_n = y$, and then we have
+    Then, for any $x, y \in \mathbb{R}^n$, there exist $\{y_n\} \subset A$ such that $\displaystyle \lim_{n\to\infty}y_n = y$, and then we have
     \begin{align*}
         d(F(x), F(y)) \leq d(F(x), f(x_n)) + d(f(x_n), f(y_n)) + d(f(y_n), F(y)).
     \end{align*}
@@ -1600,11 +1599,11 @@ Let $f:A \to X$ be a mapping between a dense subset $A \subset \mathbb{R}^n$ and
         d(f(x), f(y)) = |x_1 - y_1| \leq |x - y|.
     \end{align*}
     
-    For $x = (\sqrt{2}, 0, \cdots, 0) \in \mathbb{R}^n$, we have a sequence $\{x_n = (a_n, 0, \cdots, 0)\} \subset A$ such that $\lim_{n \to \infty} a_n = \sqrt{2}$. For $F:\mathbb{R}^n \to X = \mathbb{Q}$, then we have $F(x) = q$ for some $q \in \mathbb{Q}$. Then, we have
+    For $x = (\sqrt{2}, 0, \cdots, 0) \in \mathbb{R}^n$, we have a sequence $\{x_n = (a_n, 0, \cdots, 0)\} \subset A$ such that $\displaystyle \lim_{n \to \infty} a_n = \sqrt{2}$. For $F:\mathbb{R}^n \to X = \mathbb{Q}$, then we have $F(x) = q$ for some $q \in \mathbb{Q}$. Then, we have
     \begin{align*}
         \lim_{n\to\infty} d(F(x), F(x_n)) & = \lim_{n\to\infty} |q - a_n| = |q - \sqrt{2}| \neq 0,
     \end{align*}
-    however, $|x - x_n| \to 0$, then this is a contradiction and we find the example.
+    however, $\left|x - x_n\right| \to 0$, then this is a contradiction and we find the example.
     \end{enumerate}
 \end{proof}
 
@@ -1709,7 +1708,7 @@ Prove that if a sequence $\{a_n\}^\infty_{n=1}$ of real numbers is convergent to
 \end{align*}
 \end{exercise}
 \begin{proof}
-Since $\lim_{n\to\infty} a_n = g$, then for any $\varepsilon > 0$, there exists $N > 0$ such that for all $n > N$, $|a_n - g| < \varepsilon$. Then, we have
+Since $\displaystyle \lim_{n\to\infty} a_n = g$, then for any $\varepsilon > 0$, there exists $N > 0$ such that for all $n > N$, $\left|a_n - g\right| < \varepsilon$. Then, we have
 \begin{align*}
     \left|e^{-x} \sum_{n=0}^\infty a_n\frac{x^n}{n!} - g \right| & = \left|e^{-x} \sum_{n=0}^\infty (a_n - g)\frac{x^n}{n!}\right| \\
     & = \left|e^{-x}\sum_{n=0}^N (a_n - g)\frac{x^n}{n!} + e^{-x}\sum_{n=N+1}^\infty (a_n - g)\frac{x^n}{n!} \right| \\
@@ -1799,7 +1798,7 @@ Since $f_n \rightrightarrows f$ and $f_n$ is continuous, then $f$ is also contin
 \medskip
 
 \begin{proof}[Second Proof of Exercise \ref{May_2016_3}]
-Since $f_n \rightrightarrows f$ and $f_n$ is continuous, then $f$ is also continuous. Then $f(K)$ is compact. It suffices to show that every sequence in $S$ has a subsequence that converges to point in $S$. Suppose $\{y_k\} \in S$ is a sequence with $\lim_{k\to\infty} y_k = y \in \mathbb{R}^m$. 
+Since $f_n \rightrightarrows f$ and $f_n$ is continuous, then $f$ is also continuous. Then $f(K)$ is compact. It suffices to show that every sequence in $S$ has a subsequence that converges to point in $S$. Suppose $\{y_k\} \in S$ is a sequence with $\displaystyle \lim_{k\to\infty} y_k = y \in \mathbb{R}^m$. 
 
 If infinitely many $y_i$'s belong to $f(K)$ or $f_n(K)$ for some $n$, then $y \in S$, since every sequence in a compact set $f(K)$ or $f_n(K)$ has a subsequence that converges to point in $f(K)$ or $f_n(K)$.
 
@@ -1814,14 +1813,14 @@ Letting $j \to \infty$, and we can have $\left|f_{m_{n_j}}(x_{n_j}) - f(x_{n_j})
 \medskip
 
 \begin{exercise}{\rm *}
-Let $D = \left\{(x, y)\, | \, x^2 + y^2 < 1\right\}$ be the unit disk in $\mathbb{R}^2$. Let $f, g \in C^2(D)$ be such that $g$ is bounded on $D$, $f(x,y) \to + \infty$ as $x^2 + y^2 \to 1$, and moreover, $\Delta f = e^f$ and $\Delta g \geq e^g$ at all points of $D$. Here $\Delta = \frac{\partial^2}{\partial x^2} + \frac{\partial^2}{\partial y^2}$ is the Laplacian. Show that $f(x, y) \geq g(x,y)$ for any $(x, y) \in D$.
+Let $D = \left\{(x, y)\, | \, x^2 + y^2 < 1\right\}$ be the unit disk in $\mathbb{R}^2$. Let $f, g \in C^2(D)$ be such that $g$ is bounded on $D$, $f(x,y) \to + \infty$ as $x^2 + y^2 \to 1$, and moreover, $\Delta f = e^f$ and $\Delta g \geq e^g$ at all points of $D$. Here $\displaystyle \Delta = \frac{\partial^2}{\partial x^2} + \frac{\partial^2}{\partial y^2}$ is the Laplacian. Show that $f(x, y) \geq g(x,y)$ for any $(x, y) \in D$.
 \end{exercise} 
 \begin{proof}
 Let
 \begin{align*}
     F(x, y) = \begin{cases}
-        e^{g-f}, & x^2 + y^2 < 1 \\
-        0, & x^2 + y^2 = 1
+        \displaystyle e^{g-f}, & \displaystyle x^2 + y^2 < 1 \\
+        0, & \displaystyle x^2 + y^2 = 1
     \end{cases}
 \end{align*}
 then $F$ is continuous. Let $\Omega = \left\{(x, y)\, | \, x^2 + y^2 < s \right\}$ for some $0 < s < 1$ such that $F(x, y) \leq 1/2$ on $D \setminus \Omega$. Since $\overline{\Omega}$ is compact and $F$ is continuous on $\overline{\Omega}$, then $F$ attains its maximum on $\overline{\Omega}$, that is, there exists $(x_0, y_0) \in \overline{\Omega}$ such that $F(x,y) \leq F(x_0,y_0)$ for all $(x, y) \in \overline{\Omega}$.
@@ -1868,7 +1867,7 @@ Since $F(0,y) = y^3 - y$, then $F(0,y) = 0$ has three roots $y_1 = -1, y_2 = 0, 
 \begin{align*}
     F_y(0, y_1) = 2 > 0, \quad F_y(0, y_2) = -1 < 0, \quad F_y(0, y_3) = 2 > 0.
 \end{align*}
-By implicit function theorem, there exists an unique function $y = f(x), f \in C^\infty$ such that $F(x, f(x)) = 0$ on the neighborhood $B_1$ of $(0, -1)$. Let $U_1 = \{x \, |\, |f(x) + 1| < 1/2, (x, y) \in B_1\}$.
+By implicit function theorem, there exists an unique function $y = f(x), f \in C^\infty$ such that $F(x, f(x)) = 0$ on the neighborhood $B_1$ of $(0, -1)$. Let $U_1 = \{x \, |\, \left|f(x) + 1\right| < 1/2, (x, y) \in B_1\}$.
 
 Similarly, there exists $U_2, U_3$ and $g, h$ such that
 \begin{align*}
@@ -1876,8 +1875,8 @@ Similarly, there exists $U_2, U_3$ and $g, h$ such that
 \end{align*}
 and 
 \begin{align*}
-    U_2 & = \left\{x \, \Bigg|\, |g(x) - 0| < \frac{1}{2}, (x, y) \in B_2\right\}, \\
-    U_3 & = \left\{x \, \Bigg|\, |h(x) - 1| < \frac{1}{2}, (x, y) \in B_3\right\}.
+    U_2 & = \left\{x \, \Bigg|\, \left|g(x) - 0\right| < \frac{1}{2}, (x, y) \in B_2\right\}, \\
+    U_3 & = \left\{x \, \Bigg|\, \left|h(x) - 1\right| < \frac{1}{2}, (x, y) \in B_3\right\}.
 \end{align*}
 Let $U = U_1 \cap U_2 \cap U_3$, then for $x \in U$,
 \begin{align*}
@@ -1941,16 +1940,16 @@ Suppose that smooth functions $f_k: \mathbb{R}^k \to \mathbb{R}$ are defined for
 \section{August 2015 Exam}
 
 \begin{exercise}{\rm *}\label{August_2015_1}
-Let $f:(-\infty, \infty) \to \mathbb{R}$ be continuous and $\lim_{x \to \infty} f(f(x)) = \infty$. Prove that $\lim_{x \to \infty} |f(x)| = \infty$.
+Let $f:(-\infty, \infty) \to \mathbb{R}$ be continuous and $\displaystyle \lim_{x \to \infty} f(f(x)) = \infty$. Prove that $\displaystyle \lim_{x \to \infty} |f(x)| = \infty$.
 \end{exercise}
 \begin{proof}
-Suppose $\lim_{x\to\infty}\left|f(x)\right| \leq M <\infty$, which is finite. Then there exists a sequence $\{x_n\}\to\infty$, such that $\left|f(x)\right|\leq M$. Since the sequence $\{f(x_n)\}$ is bounded, then there exists a subsequcne $\{x_{n_k}\}\to\infty$ such that $\lim_{x_{n_k}\to\infty}f(x_{n_k}) = a$. Since $f$ is continuous, then we have $\lim_{x_{n_k}\to\infty}f(f(x_{n_k})) = f(a)$, which is a contradiction. The proof is complete.
+Suppose $\displaystyle \lim_{x\to\infty}\left|f(x)\right| \leq M <\infty$, which is finite. Then there exists a sequence $\{x_n\}\to\infty$, such that $\left|f(x)\right|\leq M$. Since the sequence $\{f(x_n)\}$ is bounded, then there exists a subsequcne $\{x_{n_k}\}\to\infty$ such that $\displaystyle \lim_{x_{n_k}\to\infty}f(x_{n_k}) = a$. Since $f$ is continuous, then we have $\displaystyle \lim_{x_{n_k}\to\infty}f(f(x_{n_k})) = f(a)$, which is a contradiction. The proof is complete.
 \end{proof}
 
 \medskip
 
 \begin{proof}[Second Proof of Exercise \ref{August_2015_1}]
-Suppose $\lim_{x\to\infty}\left|f(x)\right| \neq \infty$, that is, there exists $M > 0$ such that for all $N \in \mathbb{N}$, $\exists x > N$, $\left|f(x)\right| \leq M$. 
+Suppose $\displaystyle \lim_{x\to\infty}\left|f(x)\right| \neq \infty$, that is, there exists $M > 0$ such that for all $N \in \mathbb{N}$, $\exists x > N$, $\left|f(x)\right| \leq M$. 
 
 Let $N_1 = 1$, there exists $x_1 > 1$. Let $N_2 = [x_1] + 1$, then there exists $x_2 > N_2 > x_1$. Continue this process and we have a sequence $\{x_n\} \to \infty$, such that $\left|f(x_n)\right| \leq M$. Also, $f$ is continuous, then there exists $M_1 > 0$ such that if $x \in [-M, M]$, then $\left| f(x) \right| \leq M_1$. 
 
@@ -1960,11 +1959,11 @@ Since $f(x_n) \in [-M, M]$, then $f(f(x_n)) \leq M_1$, which is a contradiction.
 \medskip
 
 \begin{exercise}\label{August_2015_2}
-Let $f_n: X \to \mathbb{R}, n = 1, 2, \cdots$ be a sequence of continuous on a metric space $X$ such that the series $\sum^\infty_{n=1} f_n(x)$ converges for all $x \in X$ and
+Let $f_n: X \to \mathbb{R}, n = 1, 2, \cdots$ be a sequence of continuous on a metric space $X$ such that the series $\displaystyle \sum^\infty_{n=1} f_n(x)$ converges for all $x \in X$ and
 \begin{align*}
     \sup_{x \in X} \left( \sum^\infty_{n=1} f_n(x)^2 \right)^{\frac{1}{2}} < \infty.
 \end{align*}
-Prove that if a sequence of real numbers $c_n, n = 1, 2, \cdots$ satisfies $\sum^\infty_{n=1} c_n^2 < \infty$, then the series 
+Prove that if a sequence of real numbers $c_n, n = 1, 2, \cdots$ satisfies $\displaystyle \sum^\infty_{n=1} c_n^2 < \infty$, then the series 
 \begin{align*}
     \sum^\infty_{n=1} c_n f_n(x)
 \end{align*}
@@ -1979,7 +1978,7 @@ then there exists $M > 0$ such that for all $x \in X$,
 \begin{align*}
     \sup_{x \in X} \left( \sum^\infty_{n=1} f_n(x)^2 \right)^{\frac{1}{2}} < M.
 \end{align*}
-Also, since $\sum^\infty_{n=1} c_n^2 < \infty$, then for any $\varepsilon > 0$, there exists $N \in \mathbb{N}$ such that for all $m > n > N$, we have
+Also, since $\displaystyle \sum^\infty_{n=1} c_n^2 < \infty$, then for any $\varepsilon > 0$, there exists $N \in \mathbb{N}$ such that for all $m > n > N$, we have
 \begin{align*}
     \left| \sum^m_{k=n} c_k^2 \right| \leq \frac{\varepsilon^2}{M}.
 \end{align*}
@@ -1988,19 +1987,19 @@ By Cauchy-Schwarz inequality, then for any $x \in X$, we have
 \begin{align*}
     \left| \sum^m_{k=n} c_k f_n(x) \right| \leq \left( \sum^m_{k=n} c_n^2 \right)^{\frac{1}{2}} \left( \sum^m_{k=n} f_n(x)^2 \right)^{\frac{1}{2}} < \varepsilon,
 \end{align*}
-and then $\sum^\infty_{n=1} c_n f_n(x)$ converges uniformly. Therefore, $\sum^\infty_{n=1} c_n f_n(x)$ converges to a continuous function.
+and then $\displaystyle \sum^\infty_{n=1} c_n f_n(x)$ converges uniformly. Therefore, $\displaystyle \sum^\infty_{n=1} c_n f_n(x)$ converges to a continuous function.
 \end{proof}
 
 \medskip
 
 \begin{proof}[Second Proof of Exercise \ref{August_2015_2}]
-Define $f(x) = \sum_{n=1}^\infty c_n f_n(x)$, and we can prove that $f(x)$ also converges for $x\in X$. Indeed, with Cauchy–Schwarz inequality, we have
+Define $\displaystyle f(x) = \sum_{n=1}^\infty c_n f_n(x)$, and we can prove that $f(x)$ also converges for $x\in X$. Indeed, with Cauchy–Schwarz inequality, we have
 \begin{align*}
     \sum_{n=1}^\infty c_nf_n(x) & \leq \left(\sum_{n=1}^\infty c_n^2\right)^{\frac{1}{2}} \left(\sum_{n=1}^\infty f_n(x)^2\right)^{\frac{1}{2}} \\
     & \leq \left(\sum_{n=1}^\infty c_n^2\right)^{\frac{1}{2}} \sup_{x\in X} \left(\sum_{n=1}^\infty f_n(x)^2\right)^{\frac{1}{2}} < \infty
 \end{align*}
 
-It remains to prove that $f(x) = \lim_{n\to\infty}\sum_{n=1}^\infty c_n f_n(x)$ is a continuous function. Since $\sum_{n=1}^\infty c_nf_n(x) < \infty$, then $\lim_{n\to\infty} c_n f_n = 0$. Thus, for every $\varepsilon > 0$, there exists $N > 0$, such that for $n > N$, $\sum_{n=N+1}^\infty c_nf_n(x) < \infty$. Also, for the same $\varepsilon$, we can choose $\delta > 0$ such that if $|x - y| < \delta$, then 
+It remains to prove that $\displaystyle f(x) = \lim_{n\to\infty}\sum_{n=1}^\infty c_n f_n(x)$ is a continuous function. Since $\displaystyle \sum_{n=1}^\infty c_nf_n(x) < \infty$, then $\displaystyle \lim_{n\to\infty} c_n f_n = 0$. Thus, for every $\varepsilon > 0$, there exists $N > 0$, such that for $n > N$, $\displaystyle \sum_{n=N+1}^\infty c_nf_n(x) < \infty$. Also, for the same $\varepsilon$, we can choose $\delta > 0$ such that if $|x - y| < \delta$, then 
 \begin{align*}
     \left|f_n(x) - f_n(y)\right| < \frac{\varepsilon^2}{N \left(\sum_{n=1}^\infty c_n^2\right)}
 \end{align*}
@@ -2020,12 +2019,12 @@ Suppose that a set $A \subset \mathbb{R}^n$ is a union of an increasing family o
     \forall i \in \mathbb{N}, \forall x \in A \setminus A_i, d(x, C) < \frac{1}{i}.
 \end{align*}
 Prove that the closure $\overline{A}$ of $A$ satisfies $\overline{A} \subset A \cup C$.\\
-{\bf Remark.} Here $d(x, C) = \inf_{y \in C}|x - y|$.
+{\bf Remark.} Here $\displaystyle d(x, C) = \inf_{y \in C}|x - y|$.
 \end{exercise}
 \begin{proof}
 For $x \in \overline{A}$, there exists a sequence $\{x_n\} \subset A$ such that $\lim_{n\to\infty} x_n = x$.
 \begin{enumerate}[label=(\alph*)]
-    \item If there exists $m \in \mathbb{N}$ such that $\{x_n\} \subset A_m$, then since $A_m$ is compact, then there exists a subsequence $\left\{x_{n_k}\right\}$ of $\{x_n\}$ such that $\lim_{k\to\infty} x_{n_k} = x$. Then, $x \in A_m$, and hence $\overline{A} \subset A$.
+    \item If there exists $m \in \mathbb{N}$ such that $\{x_n\} \subset A_m$, then since $A_m$ is compact, then there exists a subsequence $\left\{x_{n_k}\right\}$ of $\{x_n\}$ such that $\displaystyle \lim_{k\to\infty} x_{n_k} = x$. Then, $x \in A_m$, and hence $\overline{A} \subset A$.
     
     \item Otherwise, for each $m \in \mathbb{N}$, there exists $x_{n_m} \notin A_m$. And then $d\left(x_{n_m}, C\right) < 1/m$ for all $m \in \mathbb{N}$. Then we have
     \begin{align*}
@@ -2086,7 +2085,7 @@ and thus
 Prove that $$\lim_{x\to\infty} e^{-x^2} \int^x_0 e^{t^2}\, dt = 0.$$
 \end{exercise}
 \begin{proof}
-Since $\lim_{x\to\infty}e^{-x^2} = \infty$, $\lim_{x\to\infty}e^{-x^2} \int^x_0 e^{t^2}\, dt = \infty$, then by L'Hopital's rule, we have
+Since $\displaystyle \lim_{x\to\infty}e^{-x^2} = \infty$, $\displaystyle \lim_{x\to\infty}e^{-x^2} \int^x_0 e^{t^2}\, dt = \infty$, then by L'Hopital's rule, we have
 \begin{align*}
     \lim_{x\to\infty} e^{-x^2} \int^x_0 e^{t^2}\, dt = \lim_{x\to\infty} \frac{\int^x_0 e^{t^2}\, dt}{e^{-x^2}} = \lim_{x\to\infty} \frac{e^{x^2}}{2x e^{x^2}} = \lim_{x\to\infty} \frac{1}{2x} = 0.
 \end{align*}
@@ -2135,9 +2134,9 @@ Prove that
         \end{align*}
         is also open.
         
-        \item For any point $y \in \overline{g(\mathbb{R}^2)}$, there exists a sequence $\{y_k\}$ in $g(\mathbb{R}^2)$ such that $\lim_{k\to\infty} y_k = y$. Also, since $g$ is one-to-one in $\mathbb{R}^2$, then there exists a sequence $\{x_k\}$ in $\mathbb{R}^2$ such that $g(x_k) = y_k$.
+        \item For any point $y \in \overline{g(\mathbb{R}^2)}$, there exists a sequence $\{y_k\}$ in $g(\mathbb{R}^2)$ such that $\displaystyle \lim_{k\to\infty} y_k = y$. Also, since $g$ is one-to-one in $\mathbb{R}^2$, then there exists a sequence $\{x_k\}$ in $\mathbb{R}^2$ such that $g(x_k) = y_k$.
         
-        By (a), $\{x_k\}$ is a Cauchy sequence\footnote{For $(x_1, y_1), (x_2, y_2) \in \mathbb{R}^2$, $\left|x_1 - x_2\right| + \left|y_1 - y_2\right| \leq 2\sqrt{2} \left|g(x_1, y_1) - g(x_2, y_2)\right|$.}. Since $\mathbb{R}^2$ is complete, then every Cauchy sequence in $\mathbb{R}^2$ converges to a point in $\mathbb{R}^2$, that is $\lim_{k\to\infty} x_k = x \in \mathbb{R}^2$. Since $g$ is continuous, then 
+        By (a), $\{x_k\}$ is a Cauchy sequence\footnote{For $(x_1, y_1), (x_2, y_2) \in \mathbb{R}^2$, $\left|x_1 - x_2\right| + \left|y_1 - y_2\right| \leq 2\sqrt{2} \left|g(x_1, y_1) - g(x_2, y_2)\right|$.}. Since $\mathbb{R}^2$ is complete, then every Cauchy sequence in $\mathbb{R}^2$ converges to a point in $\mathbb{R}^2$, that is $\displaystyle \lim_{k\to\infty} x_k = x \in \mathbb{R}^2$. Since $g$ is continuous, then 
         \begin{align*}
             y = \lim_{k\to\infty} y_k = \lim_{k\to\infty} g(x_k) = g(x) \in g(\mathbb{R}^2),
         \end{align*}
@@ -2181,7 +2180,7 @@ Thus, $T$ is a contraction and hence there is a unique fixed point $(x,y)$ of $T
 Define $f: \mathbb{R}^2 \to \mathbb{R}$ by
 \begin{align*}
     f(x,y) = \begin{cases}
-        \frac{x^2 (y^4 + 2x)}{x^2 + y^4}, & {\rm if}\,\, (x,y) \neq (0,0); \\
+        \displaystyle \frac{x^2 (y^4 + 2x)}{x^2 + y^4}, & {\rm if}\,\, (x,y) \neq (0,0); \\
         0, & {\rm if}\,\, (x,y) = (0,0).
     \end{cases}
 \end{align*}
@@ -2218,13 +2217,13 @@ Prove that if $X$ is a metric space and $Y$ is a compact metric space, then a ma
 \end{exercise}
 \begin{proof}
 ~\begin{enumerate}[label=(\alph*)]
-    \item ($\Rightarrow$) We could pick a sequence $\{x_n\}$ in $X$ such that $\lim_{n\to\infty} x_n = x \in X$. Then there exists a sequence $\{y_n\}$ in $Y$ such that $f(x_n) = y_n$. Since $Y$ is compact, then $\{y_n\}$ has a convergent subsequence $\left\{ y_{n_k} \right\}$ such that $\lim_{k\to\infty} y_{n_k} = y \in Y$. 
+    \item ($\Rightarrow$) We could pick a sequence $\{x_n\}$ in $X$ such that $\displaystyle \lim_{n\to\infty} x_n = x \in X$. Then there exists a sequence $\{y_n\}$ in $Y$ such that $f(x_n) = y_n$. Since $Y$ is compact, then $\{y_n\}$ has a convergent subsequence $\left\{ y_{n_k} \right\}$ such that $\displaystyle \lim_{k\to\infty} y_{n_k} = y \in Y$. 
     
     Also, by continuity of $f$, we have 
     $$f(x) = \lim_{k\to\infty} f\left(x_{n_k}\right) = \lim_{k\to\infty} y_{n_k} = y,$$ 
     and therefore $(x, y) \in G_f$. Thus, $G_f$ is closed.
     
-    \item ($\Leftarrow$) Since $G_f$ is closed, then the convergent sequence $\{(x_n, y_n)\}$ in $G_f$ converges to a point in $G_f$, denoted by $(x,y)$, where $y_n = f(x_n)$. Then we have $\lim_{n\to\infty}(x_n, f(x_n)) = (x, f(x))$, that is for $\varepsilon > 0$, there exits a positive integer $N \in \mathbb{N}$, such that for all $n \geq N$, $d_X(x_n, x) < \varepsilon$ and $d_Y(f(x_n), f(x)) < \varepsilon$. Then, for this $\varepsilon > 0$, there exists $\delta = \varepsilon$, such that if $d_X(x_n, x) < \delta$, then $d_Y(f(x_n), f(x)) < \varepsilon$. Thus, $f$ is continuous.
+    \item ($\Leftarrow$) Since $G_f$ is closed, then the convergent sequence $\{(x_n, y_n)\}$ in $G_f$ converges to a point in $G_f$, denoted by $(x,y)$, where $y_n = f(x_n)$. Then we have $\displaystyle \lim_{n\to\infty}(x_n, f(x_n)) = (x, f(x))$, that is for $\varepsilon > 0$, there exits a positive integer $N \in \mathbb{N}$, such that for all $n \geq N$, $d_X(x_n, x) < \varepsilon$ and $d_Y(f(x_n), f(x)) < \varepsilon$. Then, for this $\varepsilon > 0$, there exists $\delta = \varepsilon$, such that if $d_X(x_n, x) < \delta$, then $d_Y(f(x_n), f(x)) < \varepsilon$. Thus, $f$ is continuous.
 \end{enumerate}
 \end{proof}
 
@@ -2254,7 +2253,7 @@ Prove that if $X$ is a metric space and $Y$ is a compact metric space, then a ma
     
     \item ($\Leftarrow$) Let $p: X \times X \to X$ be defined by $p(x, y) = x$. Let $K$ be a closed set in $X \times Y$.
     
-    Let $\{x_n\}$ be a sequence in $p(K)$ with limit $x_0$. We can choose $(x_n, y_n) \in K$ such that $p(x_n, y_n) = x_n$. Since $Y$ is compact, then the sequence $\{y_n\}$ has a convergent subsequence $\{y_{n_k}\}$ such that $\lim_{k\to\infty} y_{n_k} = y_0 \in Y$. Then the sequence $\{x_{n_k}, y_{n_k}\}$ converges to $(x_0, y_0)$. Since $K$ is closed, then $(x_0, y_0) \in K$. Hence, $x_0 = p(x_0; y_0) \in p(K)$, which means $p(K)$ is closed, i.e. $p$ is a closed map. 
+    Let $\{x_n\}$ be a sequence in $p(K)$ with limit $x_0$. We can choose $(x_n, y_n) \in K$ such that $p(x_n, y_n) = x_n$. Since $Y$ is compact, then the sequence $\{y_n\}$ has a convergent subsequence $\{y_{n_k}\}$ such that $\displaystyle \lim_{k\to\infty} y_{n_k} = y_0 \in Y$. Then the sequence $\{x_{n_k}, y_{n_k}\}$ converges to $(x_0, y_0)$. Since $K$ is closed, then $(x_0, y_0) \in K$. Hence, $x_0 = p(x_0; y_0) \in p(K)$, which means $p(K)$ is closed, i.e. $p$ is a closed map. 
     
     For a closed set $C \subset Y$, we have
     \begin{align*}
@@ -2277,7 +2276,7 @@ Prove that if $X$ is a metric space and $Y$ is a compact metric space, then a ma
 \begin{proof}[Third Proof of Exercise \ref{April_2015_2}(b)]
 Suppose $f$ is not continuous at some point $x_0$. Then there exists a sequence $\{x_n\}$ in $X$ converging to $x_0$ such that there exists $\varepsilon > 0$, for all $N \in \mathbb{N}$, there exists $n_k > N$ and $d_Y(f(x_{n_k}), f(x_0)) \geq 0$.
 
-Since $Y$ is compact, then the sequence $\{f(x_{n_k})\}$ has a convergent subsequence $f(x_{n_{k_l}})$ such that $\lim_{l\to\infty} f(x_{n_{k_l}}) = y_0 \in Y$. Then the sequence $\left\{ \left(x_{n_{k_l}}, f(x_{n_{k_l}}) \right) \right\}$ in $G_f$ has limit $(x_0, y_0)$. Since $G_f$ is closed, then $(x_0, y_0) \in G_f$. Therefore, $y_0 = f(x_0)$, and then $\left\{ x_{n_{k_l}} \right\}$ has the limit $f(x_0)$, which is a contradiction.
+Since $Y$ is compact, then the sequence $\{f(x_{n_k})\}$ has a convergent subsequence $f(x_{n_{k_l}})$ such that $\displaystyle \lim_{l\to\infty} f(x_{n_{k_l}}) = y_0 \in Y$. Then the sequence $\left\{ \left(x_{n_{k_l}}, f(x_{n_{k_l}}) \right) \right\}$ in $G_f$ has limit $(x_0, y_0)$. Since $G_f$ is closed, then $(x_0, y_0) \in G_f$. Therefore, $y_0 = f(x_0)$, and then $\left\{ x_{n_{k_l}} \right\}$ has the limit $f(x_0)$, which is a contradiction.
 \end{proof}
 
 \medskip
@@ -2296,15 +2295,15 @@ Prove that the series $$\sum^\infty_{n=1} \frac{x^\alpha}{n(n + x^2)}$$
     \begin{align*}
         \sum^\infty_{n=1} \frac{x^\alpha}{n(n + x^2)} = \sum^\infty_{n=1} \frac{1}{n(\frac{n}{x} + x)} \leq \sum^\infty_{n=1} \frac{1}{2n \sqrt{\frac{n}{x}} \sqrt{x}} \leq \sum^\infty_{n=1} \frac{1}{2n^{\frac{3}{2}}},
     \end{align*}
-    and by Weierstrass M-test, $\sum^\infty_{n=1} \frac{1}{2n^{\frac{3}{2}}}$ is convergent, and then $\sum^\infty_{n=1} \frac{1}{n(\frac{n}{x} + x)}$ is uniformly convergent on $[0,\infty)$. 
+    and by Weierstrass M-test, $\displaystyle \sum^\infty_{n=1} \frac{1}{2n^{\frac{3}{2}}}$ is convergent, and then $\displaystyle \sum^\infty_{n=1} \frac{1}{n(\frac{n}{x} + x)}$ is uniformly convergent on $[0,\infty)$. 
     
     \item When $\alpha = 2$, we have
     \begin{align*}
         \sum^\infty_{n=1} \frac{x^\alpha}{n(n + x^2)} = \sum^\infty_{n=1} \frac{1}{\frac{n^2}{x^2} + n} \leq \sum^\infty_{n=1} \frac{x^2}{n^2},
     \end{align*}
-    and since $\sum^\infty_{n=1} \frac{x^2}{n^2}$ is convergent for any $x \in [0,\infty)$, then $\sum^\infty_{n=1} \frac{x^2}{n(n + x^2)}$ converges pointwise on $[0,\infty)$.
+    and since $\displaystyle \sum^\infty_{n=1} \frac{x^2}{n^2}$ is convergent for any $x \in [0,\infty)$, then $\displaystyle \sum^\infty_{n=1} \frac{x^2}{n(n + x^2)}$ converges pointwise on $[0,\infty)$.
     
-    Suppose $\sum^\infty_{n=1} \frac{x^2}{n(n + x^2)}$ converges uniformly on $[0,\infty)$, then for any $\varepsilon > 0$, there exists $N \in \mathbb{N}$ such that for all $k >m > N$ and any $x \in [0,\infty)$, we have
+    Suppose $\displaystyle \sum^\infty_{n=1} \frac{x^2}{n(n + x^2)}$ converges uniformly on $[0,\infty)$, then for any $\varepsilon > 0$, there exists $N \in \mathbb{N}$ such that for all $k >m > N$ and any $x \in [0,\infty)$, we have
     \begin{align*}
         \left|\sum^k_{n=1} \frac{x^2}{n(n + x^2)} - \sum^m_{n=1} \frac{x^2}{n(n + x^2)} \right| < \varepsilon.
     \end{align*}
@@ -2317,7 +2316,7 @@ Prove that the series $$\sum^\infty_{n=1} \frac{x^\alpha}{n(n + x^2)}$$
     \begin{align*}
         \lim_{x\to\infty} \left|\sum^k_{n=N+1} \frac{x^2}{n(n + x^2)} \right| = \sum^k_{n=N+1} \lim_{x\to\infty} \frac{x^2}{n(n + x^2)} = \sum^k_{n=N+1} \frac{1}{n},
     \end{align*}
-    and since $\sum^\infty_{n=1} \frac{1}{n}$ is divergent, then there exists $M \in \mathbb{N}$ such that $\sum^k_{n=N+1} \frac{1}{n} > 1$, which is a contradiction.
+    and since $\displaystyle \sum^\infty_{n=1} \frac{1}{n}$ is divergent, then there exists $M \in \mathbb{N}$ such that $\displaystyle \sum^k_{n=N+1} \frac{1}{n} > 1$, which is a contradiction.
 \end{enumerate}
 \end{proof}
 
@@ -2380,7 +2379,7 @@ Let $Q(1) = c, Q(x_i) = b_i, Q(x_ix_j) = 2a_{ij}$, then we have
     Qg = \sum^n_{i,j=1} a_{ij} \frac{\partial^2 g}{\partial x_i \partial x_j}(0) + \sum^n_{i=1} b_i \frac{\partial g}{\partial x_i}(0) + cg(0) + Qh.
 \end{align*}
 
-Since $h(x) = o(x^2)$, then $\lim_{x \to \infty} h(x)/|x|^2 = 0$, that is for any $\varepsilon > 0$, there exists a neighborhood $U_0$ of $0$ such that if $x \in U_0$, 
+Since $h(x) = o(x^2)$, then $\displaystyle \lim_{x \to \infty} h(x)/|x|^2 = 0$, that is for any $\varepsilon > 0$, there exists a neighborhood $U_0$ of $0$ such that if $x \in U_0$, 
 \begin{align*}
     - \varepsilon < \frac{h(x)}{|x|^2} < \varepsilon,
 \end{align*}
@@ -2397,7 +2396,7 @@ $$
 $$
 \end{exercise}
 \begin{proof}
-By Green's theorem, $\int_{\partial \Omega} P\, dx + Q\, dy = \iint_D \frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y}$, then the area of $D$ is 
+By Green's theorem, $\displaystyle \int_{\partial \Omega} P\, dx + Q\, dy = \iint_D \frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y}$, then the area of $D$ is 
 \begin{align*}
     A = \frac{1}{2} \int_{\partial D} x\, dy - y\, dx.
 \end{align*}
@@ -2417,6 +2416,145 @@ and thus
     & = \iint_D 2\, dA = 2\pi.
 \end{align*}
 \end{proof}
+
+
+\newpage
+\section{August 2014 Exam}
+
+\begin{exercise}{\rm *}
+Let $\alpha \in \mathbb{R}$, and let $f_\alpha: \mathbb{R}^2 \to \mathbb{R}$ be given by formulas
+\begin{align*}
+    f_{\alpha}(x,y) = \begin{cases}
+        \displaystyle \frac{x^4 + y^4}{(x^2 + y^2)^{\alpha}}, & (x,y) \neq (0,0), \\
+        0, & (x, y) = (0,0).
+    \end{cases}
+\end{align*}
+Determine with proof, those values of $\alpha$ for which $f_{\alpha}$ is differentiable.
+\end{exercise}
+\begin{proof}
+~\begin{enumerate}[label=(\alph*)]
+    \item If $\alpha \leq 0$, then $f_\alpha$ is differentiable.
+    
+    \item If $\alpha \geq 2$, then $f_\alpha$ is not differentiable at $(0,0)$. Indeed, for direction $y = kx$, we have
+    \begin{align*}
+        \lim_{(x,y) \to (0,0)} \frac{x^4 + k^4x^4}{(1 + k^2)^{\alpha} x^{2\alpha}} = \lim_{x \to 0} \frac{1 + k^4}{(1 + k^2)^{\alpha} x^{2\alpha - 4}} = \pm \infty \neq 0,
+    \end{align*}
+    then $f_\alpha$ is not differentiable at $(0,0)$.
+    
+    \item If $0 < \alpha < 2$, $f_{\alpha}$ is continuous at $(0,0)$ by the similar argument in (b). Also, the partial derivatives at $(0,0)$ are given by
+    \begin{align*}
+        \frac{\partial f_{\alpha}}{\partial x}(0,0) & = \lim_{x\to 0} \frac{\frac{x^4}{x^{2\alpha}} - 0}{x} = \lim_{x\to 0} x^{3 - 2\alpha}, \\
+        \frac{\partial f_{\alpha}}{\partial y}(0,0) & = \lim_{y\to 0} \frac{\frac{y^4}{y^{2\alpha}} - 0}{y} = \lim_{y\to 0} y^{3 - 2\alpha},
+    \end{align*}
+    and they only exist if $\alpha \leq 3/2$. 
+    \begin{enumerate}[label=\arabic*)]
+        \item For $\alpha < 3/2$, we have $\displaystyle \frac{\partial f_{\alpha}}{\partial x}(0,0) = \frac{\partial f_{\alpha}}{\partial y}(0,0) = 0$, and then for $(t,s) \in \mathbb{R}^2$, 
+        \begin{align*}
+            & \lim_{(t,s)\to (0,0)} \left| \frac{f_{\alpha}(t,s) - \frac{\partial f_{\alpha}}{\partial x}(0,0)t - \frac{\partial f_{\alpha}}{\partial y}(0,0)s - f_{\alpha}(0,0)}{\sqrt{t^2 + s^2}} \right| \\
+            = & \lim_{(t,s)\to (0,0)} \left| \frac{t^4 + s^4}{(t^2 + s^2)^{\alpha + \frac{1}{2}}} \right| \\
+            \leq & \lim_{(t,s)\to (0,0)} \left| \frac{(t^2 + s^2)^2}{(t^2 + s^2)^{\alpha + \frac{1}{2}}} \right| \\
+            = & \lim_{(t,s)\to (0,0)} \left(t^2 + s^2\right)^{\frac{3}{2} - \alpha} = 0,
+        \end{align*}
+        which implies $f_{\alpha}$ is differentiable at $(0,0)$ for $0 < \alpha < 3/2$.
+        
+        \item For $\alpha = 3/2$, we have $\displaystyle \frac{\partial f_{\alpha}}{\partial x}(0,0) = \frac{\partial f_{\alpha}}{\partial y}(0,0) = 1$, then for $(t,s) \in \mathbb{R}^2$,
+        \begin{align*}
+            & \lim_{(t,s)\to (0,0)} \left| \frac{f_{\alpha}(t,s) - \frac{\partial f_{\alpha}}{\partial x}(0,0)t - \frac{\partial f_{\alpha}}{\partial y}(0,0)s - f_{\alpha}(0,0)}{\sqrt{t^2 + s^2}} \right| \\
+            = & \lim_{(t,s)\to (0,0)} \left| \frac{t^4 + s^4 - (t+s)(t^2+s^2)^{\frac{3}{2}}}{(t^2+s^2)^2} \right| \\
+            \overset{s = t}{=} & \lim_{(t,t)\to (0,0)} \left| \frac{t^4 + t^4 - (t+t)(t^2 + t^2)^{ \frac{3}{2}} }{(t^2 + t^2)^2} \right| = \frac{1 - 2^{\frac{3}{2}}}{2} \neq 0,
+        \end{align*}
+        which implies $f_{\alpha}$ is not differentiable at $(0,0)$ for $\alpha = 3/2$.
+    \end{enumerate}
+\end{enumerate}
+From all conditions, $f_{\alpha}$ is differentiable in $\mathbb{R}^2$ if and only if $\alpha < 3/2$.
+\end{proof}
+
+\medskip
+
+\begin{exercise}
+Find the area enclosed by the curve in the Euclidean plane: $\displaystyle x^{2/3} + y^{2/3} = 1$.
+\end{exercise}
+\begin{proof}
+Let $x = r^3 \cos^3 \theta$ and $y = r^3 \sin^3 \theta$, where $r \in [0,1], \theta \in [0, 2\pi]$. Then the original curve becomes $r^2 = 1$. Also, the Jacobian is
+\begin{align*}
+    J = \begin{pmatrix}
+        \displaystyle \frac{\partial x}{\partial r} & \displaystyle  \frac{\partial x}{\partial \theta} \\
+        \displaystyle \frac{\partial y}{\partial r} & \displaystyle  \frac{\partial y}{\partial \theta}
+    \end{pmatrix} =  \begin{pmatrix}
+        3r^2 \cos^3 \theta & -3r^3 \cos^2 \theta \sin \theta \\
+        3r^2 \sin^3 \theta & 3r^3 \sin^2 \theta \cos \theta 
+    \end{pmatrix},
+\end{align*}
+and thus the area can be computed as
+\begin{align*}
+    A = \int^1_0 \int^{2\pi}_0 |J|\, d\theta dr = \int^1_0 9r^5\, dr \int^{2\pi}_0 \sin^2 \theta \cos^2 \theta \, d\theta = \frac{3}{8} \pi.
+\end{align*}
+\end{proof}
+
+\medskip
+
+\begin{exercise}{\rm *}
+Let $f:[0,1] \to \mathbb{R}$ be a function. For $x \in [0,1]$, define $\displaystyle \operatorname{osc}_x(f) = \limsup_{t\to x} f(t) - \liminf_{t\to x} f(t)$. For $k \in \mathbb{R}^{+}$, let $\mathbb{D}_k = \left\{ x \in [0,1]\, |\, \operatorname{osc}_x(f) \geq k \right\}$. Prove that the set $\mathbb{D}_k$ is closed for each $k \in \mathbb{R}^{+}$. Hence, or otherwise, show that the set of points where $f$ is discontinuous cannot be the set of irrational real numbers.
+\end{exercise}
+\begin{proof}
+~\begin{enumerate}[label=(\alph*)]
+    \item  For $x \in [0,1]$, if $\operatorname{osc}_x(f) \geq k$, then there exists $k > 0$ such that for $y \in B(x,r)$, we have\footnote{Also, we could use $\operatorname{diam} f([x-r,x+r]) \geq k$.}
+    \begin{align*}
+        \left| \sup_{y\in B(x,r)} f(y) - \inf_{y\in B(x,r)} f(y) \right| \geq k.
+    \end{align*}
+    
+    For any $x_0 \notin \mathbb{D}_k$, we have
+    \begin{align*}
+        \lim_{r \to 0} \left| \sup_{y\in B(x_0,r)} f(y) - \inf_{y\in B(x_0,r)} f(y) \right| < k,
+    \end{align*}
+    then there exists $r_0 > 0$ such that for any $\Tilde{r} \leq r_0$ and any $y \in B(x_0, r_0)$, we have
+    \begin{align*}
+        \left| \sup_{y\in B(x_0,\Tilde{r})} f(y) - \inf_{y\in B(x_0,\Tilde{r})} f(y) \right| < k.
+    \end{align*}
+    Therefore, $B(x_0, r_0) \in \mathbb{D}_k^C$ is open. Thus, $\mathbb{D}_k$ is closed.
+    
+    \item Let the set of points where $f$ is discontinuous be $K$. Then,
+    \begin{align*}
+        K = \bigcup_{k\in\mathbb{N}} \mathbb{D}_{\frac{1}{k}}.
+    \end{align*}
+    Since $\mathbb{R} \setminus \mathbb{Q}$ is a set without interior, if $\mathbb{R} \setminus \mathbb{Q} = K$, it is a countable union of closed sets. By Baire's theorem\footnote{\begin{intheorem}[Baire's Theorem\cite{11}]
+    If $\displaystyle \mathbb{R}^k = \cup^\infty_{n=1} F_n$, where each $F_n$ is a closed subset of $\mathbb{R}^k$, then at least one $F_n$ has a nonempty interior. \end{intheorem}}, at least one has nonempty interior. So $\mathbb{R} \setminus \mathbb{Q}$ has nonempty interior, which is a contradiction. Hence, the set of points where $f$ is discontinuous cannot be the set of irrational real numbers.
+\end{enumerate}
+\end{proof}
+
+\medskip
+
+\begin{exercise}
+Let $F: \mathbb{R}^n \to \mathbb{R}^m$ be given by the formula, for any $x \in \mathbb{R}^n$,
+\begin{align*}
+    F(x) = A(x) + B(x,x),
+\end{align*}
+where $A: \mathbb{R}^n \to \mathbb{R}^m$ is a linear map and $B: \mathbb{R}^n \times \mathbb{R}^n \to \mathbb{R}^m$ is a symmetric bilinear form on $\mathbb{R}^n$, with values in $\mathbb{R}^m$.
+\begin{enumerate}[label=(\alph*)]
+    \item Prove that $A$ is injective if and only if $F$ is injective near the origin.
+    
+    \item Prove that if $A$ is surjective, then $F$ is surjective near the origin.
+    
+    \item Prove that $A$ is an isomorphism, if and only if $F$ is smoothly invertible near the origin.
+near the origin.
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+For all $x, u \in \mathbb{R}^n$,
+\begin{align*}
+    (DF)_x(u) & = \lim_{t\to 0} \frac{F(x + tu) - F(x)}{t} \\
+    & = \lim_{t\to 0} \frac{A(x+tu) + B(x+tu,x+tu) - A(x) - B(x,x)}{t} \\
+    & = A(u) + 2B(u,x),
+\end{align*}
+and then $(DF)_x = A$.
+~\begin{enumerate}[label=(\alph*)]
+    \item ($\Rightarrow$) If $A$ is injective, then $\rank A = n \leq m$, and hence there exist $n$ rows that form a square matrix $T$ with rank $n$. Without loss of generality, we can assume they are the first $n$ rows of $A$. 
+\end{enumerate}
+\end{proof}
+
+
+
+
 
 
 
