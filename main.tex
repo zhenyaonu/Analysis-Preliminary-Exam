@@ -2524,7 +2524,7 @@ Let $f:[0,1] \to \mathbb{R}$ be a function. For $x \in [0,1]$, define $\displays
 
 \medskip
 
-\begin{exercise}
+\begin{exercise}{\rm *}
 Let $F: \mathbb{R}^n \to \mathbb{R}^m$ be given by the formula, for any $x \in \mathbb{R}^n$,
 \begin{align*}
     F(x) = A(x) + B(x,x),
@@ -2536,7 +2536,6 @@ where $A: \mathbb{R}^n \to \mathbb{R}^m$ is a linear map and $B: \mathbb{R}^n \t
     \item Prove that if $A$ is surjective, then $F$ is surjective near the origin.
     
     \item Prove that $A$ is an isomorphism, if and only if $F$ is smoothly invertible near the origin.
-near the origin.
 \end{enumerate}
 \end{exercise}
 \begin{proof}
@@ -2548,15 +2547,103 @@ For all $x, u \in \mathbb{R}^n$,
 \end{align*}
 and then $(DF)_x = A$.
 ~\begin{enumerate}[label=(\alph*)]
-    \item ($\Rightarrow$) If $A$ is injective, then $\rank A = n \leq m$, and hence there exist $n$ rows that form a square matrix $T$ with rank $n$. Without loss of generality, we can assume they are the first $n$ rows of $A$. 
+    \item ($\Rightarrow$) If $A$ is injective, then $\rank A = n \leq m$, and hence there exist $n$ rows of $A$ that form a square matrix $T$ with rank $n$. Without loss of generality, we can assume they are the first $n$ rows of $A$. Define $G: \mathbb{R}^n \to \mathbb{R}^n$ by
+    \begin{align*}
+        G(x) = (F_1(x), F_2(x), \cdots, F_n(x)),
+    \end{align*}
+    where $F_i$ is the $i$-th row of $F$. Then $G \in C^1$ and $(DG)_0 = T$, so $G$ is invertible. By the Implicit Function theorem, $G$ is a local diffeomorphism, that is there exists a neighborhood $U$ of the origin such that $G$ is a bijection from $U$ to $G(U)$. 
+    
+    For $x, y \in U$, if $F(x) = F(y)$, then 
+    \begin{align*}
+        \left(G(x), F_{n+1}(x), \cdots, F_m(x) \right) = \left(G(y), F_{n+1}(y), \cdots, F_m(y) \right).
+    \end{align*}
+    Since $G$ is bijection, then $x = y$, and thus $F$ is injective in the neighborhood $U$ of the origin.
+    
+    ($\Leftarrow$) If $F$ is injective near the origin, and suppose that $A$ is not injective, then there exists $v \in \mathbb{R}^n$, $v \neq 0$ such that $A(v) = 0$. Then for any $t > 0$, 
+    \begin{align*}
+        F(tv) = A(tv) + B(tv,tv) = B(-tv,-tv) = F(-tv),
+    \end{align*}
+    and this means that $F$ is not injective near the origin, which is a contradiction.
+    
+    \item If $A$ is surjective, then $\rank A = m \leq n$, and then there exists $m$ columns of $A$ such that there columns form a square matrix $S$ with rank $m$. Without loss of generality, we can assume they are the first $m$ columns of $A$. Define $Q: \mathbb{R}^m \to \mathbb{R}^m$ by
+    \begin{align*}
+        Q(x) = \left(F_1(x,0), F_2(x,0), \cdots, F_m(x,0) \right),
+    \end{align*}
+    where $F_i$ is the $i$-th row of $F$. Then $Q \in C^1$ and $(DQ)_0 = S$, so $Q$ is invertible. By the Implicit Function theorem, $Q$ is a local diffeomorphism, that is there exists a neighborhood $V$ of the origin such that $Q$ is a bijection from $V$ to $Q(V)$. 
+    
+    For $x\in Q(V) \subset \mathbb{R}^m$, there exists a unique $y \in V \subset \mathbb{R}^m$ such that $Q(y) = x$. Then, 
+    \begin{align*}
+        F(y,0) = \left(F_1(y,0), F_2(y,0), \cdots, F_m(y,0) \right) = Q(y) = x,
+    \end{align*}
+    and thus $F$ is surjective near the origin.
+    
+    \item Since $A$ is an isomorphism, then $A$ is invertible. So the derivative of $F$ near the origin $(DF)_0 = A$ is also invertible. By the Implicit Function theorem, $F$ is a local diffeomorphism, that is $F$ is smooth and invertible near the origin.
 \end{enumerate}
 \end{proof}
 
+\medskip
 
+\begin{exercise}
+Let $A: \mathbb{R}^n \to \mathbb{R}^n$ be an orthogonal linear transformation, so $\left\|Ax \right\| = \left\|x \right\|$, for any $x \in \mathbb{R}^n$. Let $u: \mathbb{R}^n \to \mathbb{R}$ be $\mathcal{C}^2$ and harmonic: $\nabla \cdot \nabla u = \nabla^2 u = 0$. Prove that the composition $u \circ A$ is also harmonic.
+\end{exercise}
+\begin{proof}
+For $x = (x_1, \cdots, x_n) \in \mathbb{R}^n$, let
+\begin{align*}
+    y = (y_1, \cdots, y_n) = Ax = \left(\sum^n_{j=1} a_{1j}x_j, \cdots, \sum^n_{j=1} a_{nj}x_j \right)^T.
+\end{align*}
+By the Chain rule, we have
+\begin{align*}
+    \frac{\partial (u \circ A)}{\partial x_i}(x) = \sum^n_{j=1} \frac{\partial u}{\partial y_j} \frac{\partial y_j}{\partial x_i} = \sum^n_{j=1} a_{ji} \frac{\partial u}{\partial y_j},
+\end{align*}
+and then 
+\begin{align*}
+    \frac{\partial^2 (u \circ A)}{\partial x_i^2}(x) & = \frac{\partial}{\partial x_i}\left(\sum^n_{j=1} a_{ji} \frac{\partial u}{\partial y_j} \right) \\
+    & = \sum^n_{j=1} a_{ji} \frac{\partial}{\partial x_i}\left(\frac{\partial u}{\partial y_j}(y) \right) \\
+    & = \sum^n_{j=1} a_{ji} \sum^n_{k=1} \frac{\partial^2 u}{\partial y_j \partial y_k} \frac{\partial y_k}{\partial x_i} \\
+    & = \sum^n_{j=1} a_{ji} \sum^n_{k=1} a_{ki} \frac{\partial^2 u}{\partial y_j \partial y_k}.
+\end{align*}
+Therefore, we have
+\begin{align*}
+    \nabla \cdot \nabla (u \circ A) & = \sum^n_{i=1} \frac{\partial^2 (u \circ A)}{\partial x_i^2}(x) \\
+    & = \sum^n_{i=1} \sum^n_{j=1} a_{ji} \sum^n_{k=1} a_{ki} \frac{\partial^2 u}{\partial y_j \partial y_k} \\
+    & = \sum^n_{i=1} \sum^n_{j=1} \sum^n_{k=1} a_{ji} a_{ki} \frac{\partial^2 u}{\partial y_j \partial y_k} \\
+    & = \sum^n_{k=1} \sum^n_{j=1} \sum^n_{i=1} (A)_{ji} \left(A^T\right)_{ik} \frac{\partial^2 u}{\partial y_j \partial y_k} \\
+    & = \sum^n_{k=1} \sum^n_{j=1} (I)_{jk} \frac{\partial^2 u}{\partial y_j \partial y_k} \\
+    & = \sum^n_{k=1} \sum^n_{j=1} \delta_{jk} \frac{\partial^2 u}{\partial y_j \partial y_k} \\
+    & = \sum^n_{j=1} \frac{\partial^2 u}{\partial y_j^2} = \nabla \cdot \nabla u = 0.
+\end{align*}
+Thus, $u \circ A$ is harmonic.
+\end{proof}
 
+\medskip
 
+\begin{exercise}{\rm *}
+Let $f: \mathbb{R} \to \mathbb{R}$ be $\mathcal{C}^2$. Suppose that $\left|f''(s) \right| \leq 1$ for all $s \in [0,2]$. Suppose also that the function $f$ has a local minimum at $s = 0$. Let $\mathbb{E}$ denote the closed unit ball, centered at the origin, in $\mathbb{R}^2$. Prove that
+\begin{align*}
+    \int_{\mathbb{E}} \int_{\mathbb{E}} \left(f(\|x\| + \|y\|) - f(\|y\|) \right)\, d^2x d^2y \leq \frac{25\pi^2}{36}.
+\end{align*}
+Here $\|(p,q)\| = \sqrt{p^2 + q^2}$, for any $(p,q) \in \mathbb{R}^2$.
+\end{exercise}
+\begin{proof}
+Since $f$ has a local minimum at $s = 0$, we have $f'(0) = 0$. By Mean Value theorem, for $x \in [0,1]$,
+\begin{align*}
+    \left|f'(x)\right| = \left|f'(x) - f'(0)\right| = \left|f''(\xi) (x - 0) \right| \leq x,
+\end{align*}
+where $\xi \in [0,x]$. Also, by Taylor formula, 
+\begin{align*}
+    f(x + h) = f(x) + f'(x)h + \frac{f''(\xi)}{2}h^2, \xi \in [x, x+ h].
+\end{align*}
 
-
+For $x = (x_1, x_2), y = (y_1, y_2) \in \mathbb{R}^2$, consider $x = (r \cos \theta, r \sin \theta), y = (s \cos \omega, s \sin \omega)$, where $r, s \in [o,1]$ and $\theta, \omega \in [0,2\pi]$, then we have
+\begin{align*}
+    & \int_{\mathbb{E}} \int_{\mathbb{E}} \left(f(\|x\| + \|y\|) - f(\|y\|) \right)\, d^2x d^2y \\
+    = & (2\pi)^2 \int^1_0 \int^1_0 \left( f(r + s) - f(s) \right) rs\, dr ds \\
+    = & 4\pi^2 \int^1_0 \int^1_0 \left( f'(s)r + \frac{f''(\xi)}{2}r^2 \right)rs \, drds \\
+    = & 4\pi^2 \int^1_0 \int^1_0 f'(s)r^2s \, drds + 2\pi^2 \int^1_0 \int^1_0 f''(\xi)r^3s\, drds \\
+    = & \frac{4\pi^2}{3} \int^1_0 f'(s)s \, ds + \frac{\pi^2}{4} \int^1_0 f''(\xi) \, ds \\
+    \leq & \frac{4\pi^2}{3} \int^1_0 s^2 \, ds + \frac{\pi^2}{4} \int^1_0 1 \, ds = \frac{25\pi^2}{36}.
+\end{align*}
+\end{proof}
 
 
 
