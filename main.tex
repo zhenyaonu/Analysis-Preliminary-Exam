@@ -2841,9 +2841,138 @@ Let $f_n(x) = e^{-nx} \left(1 + \frac{x}{n} \right)^{n^2}$, defined for any real
     
     \item Suppose $f_n$ converges uniformly to $f$, then for any $\varepsilon > 0$, there exists $N > 0$ such that for all $n > N$ and all $x \in \mathit{R}$, $\left|f_n(x) - f(x)\right| \leq \varepsilon$. However, for $\varepsilon = 1$, and for all $n \in \mathbb{N}$, there exists $x = -2n$, such that
     \begin{align*}
-        \left|f_n(-an) - f(-an)\right| = \left|e^{2n^2} (-1)^{n^2} - e^{-2n^2}\right| \geq e^{2n^2} - e^{-2n^2} > 1.
+        \left|f_n(-2n) - f(-2n)\right| = \left|e^{2n^2} (-1)^{n^2} - e^{-2n^2}\right| \geq e^{2n^2} - e^{-2n^2} > 1.
     \end{align*}
     Thus, $f_n(x)$ does not converges uniformly to $f(x)$.
+\end{enumerate}
+\end{proof}
+
+\medskip
+
+\begin{exercise}
+Let $\mathcal{F} = \{f_n: \mathbb{R} \to \mathbb{R}\}_{n \in \mathbb{N}}$ be a sequence of $\mathcal{C}^1$ functions satisfying the conditions, for each $n \in \mathbb{N}$:
+\begin{enumerate}[label=(\alph*)]
+    \item $f_n(0) = 0$.
+    
+    \item $\left|f_n'(x)\right| < \frac{n^2 + x^4}{n^2 + x^2}$, for all $x \in \mathbb{R}$.
+\end{enumerate}
+Prove that there is a continuous function $f: \mathbb{R} \to \mathbb{R}$ and a subsequence $\mathcal{G} = \left\{f_{n_k}\right\}_{k \in \mathbb{N}}$ of $\mathcal{F}$, such that for each $x \in \mathbb{R}$,
+\begin{align*}
+    \lim_{k \to \infty} f_{n_k}(x) = f(x).
+\end{align*}
+Also, prove that the convergence of the subsequence $\mathcal{G}$ to its limit is uniform on compact subsets of the reals.
+\end{exercise}
+\begin{proof}
+~\begin{enumerate}[label=(\alph*)]
+    \item \begin{enumerate}[label=\arabic*)]
+        \item     Since $f_n$ is continuous, then $f_n(x)$ is bounded on every interval $[-M, M]$, since $[-M, M]$ is compact. Indeed, for $x \in [-M, M]$, we have
+        \begin{align*}
+            \left|f_n(x)\right| & = \left|f_n(x) - f_n(0)\right| = \left|f_n'(\xi)(x - 0)\right| \\
+            & \leq M \left|\frac{n^2 + \xi^4}{n^2 + \xi^2}\right| = M \left|1 + \frac{\xi^4 - \xi^2}{n^2 + \xi^2} \right| \\
+            & \leq M \left|1 + \frac{\xi^4 - \xi^2}{2n\xi} \right| \leq M \left|1 + \frac{1}{2n} \xi^3 \right| \leq M + \frac{1}{2n} M^4,
+        \end{align*}
+        where $\xi \in [0, x]$. This implies that $f_n$ is bounded on $[-M, M]$. 
+        
+        \item Also, for any $x, y \in \mathbb{R}$, then there exists $M > 0$ such that $x,y \in [-M, M]$. Let $\delta = \varepsilon / (1 + M^3)$, if $\left|x - y\right| < \delta$, we have
+        \begin{align*}
+            \left|f_n(x) - f_n(y)\right| & \leq \left|f_n'(\xi)\right| \left|x - y\right| \\
+            & \leq \left|\frac{n^2 + \xi^4}{n^2 + \xi^2}\right| \left|x - y\right| \\
+            & \leq \left(1 + \frac{M^3}{2n} \right) \left|x - y\right| \\
+            & \leq \left(1 + M^3\right) \left|x - y\right| < \varepsilon,
+        \end{align*}
+        which implies that $f_n$ is equicontinuous on $[-M, M]$.
+    \end{enumerate}
+    By the Arzela-Ascoli theorem, $\{f_n\}$ has a uniformly convergent subsequence $\left\{f_{n_k}\right\}$ on $[-M,M]$ for every $M \in \mathbb{N}$.
+    
+    Now we use the diagonal method, consider the sequence $\{f_n(x)\}, x \in [-1,1]$, then it has uniformly convergent subsequence $\left\{f_{1k}\right\}$ on $[-1,1]$. Consider the subsequence $\left\{f_{1k}\right\}, x \in [-2,2]$, and it has uniformly convergent subsequence $\left\{f_{2k}\right\}$ on $[-2,2]$. Continue this process and we have sequences
+    \begin{align*}
+        & f_{11}, f_{12}, \cdots \\
+        & f_{21}, f_{22}, \cdots \\
+        & \cdots
+    \end{align*}
+    where the sequence in each line is a subsequence of the previous line. Select a subsequence along the diagonal $\{f_{11}, f_{22}, \cdots\}$, and the sequence $\{f_{nn}\}$ is convergent for any $x \in [-n, n]$. Letting $n \to \infty$, there exists a function $f:\mathbb{R} \to \mathbb{R}$, $f(x) = \lim_{n\to\infty} f_n(x), x \in [-n,n]$ such that $\lim_{n\to\infty}f_{nn}(x) = f(x)$. Let $f_{n_k} = f_{kk}$, then we have 
+    \begin{align*}
+        \lim_{k\to\infty} f_{n_k}(x) = \lim_{k\to\infty} f_{kk}(x) = \lim_{k\to\infty} f_{kk}(x)|_{[-k,k]} = \lim_{k\to\infty} f_k(x) = f(x).
+    \end{align*}
+    Thus there is a continuous function $f: \mathbb{R} \to \mathbb{R}$ and a subsequence $\mathcal{G} = \left\{f_{n_k}\right\}_{k \in \mathbb{N}}$ of $\mathcal{F}$, such that for each $x \in \mathbb{R}$,
+    \begin{align*}
+        \lim_{k \to \infty} f_{n_k}(x) = f(x).
+    \end{align*}
+    
+    \item For any compact set $E$ in $\mathbb{R}$, it is bounded, then there exists $M > 0$ such that $E \subset [-M,M]$. Since $\{f_{nn}\}$ is uniformly convergent to $f$ on $[-n,n]$, then it is also uniformly convergent on $E$.
+\end{enumerate}
+\end{proof}
+
+\medskip
+
+\begin{exercise}
+For $n$ a positive integer, let $u: \mathbb{R}^n \setminus \{0\} \to \mathbb{R}$ be a $\mathcal{C}^2$ function. Suppose that $u$ depends only on the variable $r = \left\|x\right\|$ and that $u$ is bounded on its domain. Also suppose that $u$ is harmonic: $\nabla^2 u = 0$. Prove that $u$ is constant.
+\end{exercise}
+\begin{proof}
+We have
+\begin{align*}
+    \frac{\partial u}{\partial x_i} = \frac{\partial u}{\partial r} \frac{\partial r}{\partial x_i} = \frac{\partial u}{\partial r} \frac{x_i}{r},
+\end{align*}
+and 
+\begin{align*}
+    \frac{\partial^2 u}{\partial x_i^2} = \frac{\partial }{\partial x_i} \left(\frac{\partial u}{\partial r} \frac{x_i}{r}\right) = \frac{\partial^2 u}{\partial r^2} \frac{x_i^2}{r^2} + \frac{\partial u}{\partial r} \left(\frac{1}{r} - \frac{x_i^2}{r^3}\right).
+\end{align*}
+Since $\nabla^2 u = 0$, then we have
+\begin{align*}
+    0 = \sum^n_{i=1} \frac{\partial^2 u}{\partial x_i^2} & = \sum^n_{i=1} \frac{\partial^2 u}{\partial r^2} \frac{x_i^2}{r^2} + \frac{\partial u}{\partial r} \left(\frac{1}{r} - \frac{x_i^2}{r^3}\right) \\
+    & = \frac{\partial^2 u}{\partial r^2} + \frac{n - 1}{r}\frac{\partial u}{\partial r} \\
+    & = r^n \frac{\partial^2 u}{\partial r^2} + (n - 1) r^{n-1} \frac{\partial u}{\partial r} \\
+    & = \dv{}{r} \left(r^n \frac{\partial u}{\partial r}\right),
+\end{align*}
+which gives $r^n \frac{\partial u}{\partial r} = C$, $C$ is a constant. Then, we have solution
+\begin{align*}
+    u = \begin{cases}
+        \frac{C}{1-n}r^{1-n} + C_1, & n \neq 1, \\
+        C \ln r + C_2, & n = 1,
+    \end{cases}
+\end{align*}
+since $u$ is bounded, then we have $C = 0$, and thus $u$ is constant.
+\end{proof}
+
+\medskip
+
+\begin{exercise}{\rm *}
+Let $(X, d)$ be a metric space. Denote by $(\mathcal{C}(X), D)$ the metric space of continuous bounded real-valued functions on $X$, equipped with the metric $D(f,g) = \sup_{x \in X}\left|f(x) - g(x)\right|$, for any $f, g \in \mathcal{C}(X)$. Denote by $a$ a fixed point of $X$. For each fixed $y \in X$ define $f_y(x) = d(x,y) - d(x,a)$ for any $x \in X$. Prove that $f_y \in \mathcal{C}(X)$ and that the map $C: X \to \mathcal{C}(X), y \to C(y) = f_y$ defined for any $y \in X$ is an isometry of $X$ into $\mathcal{C}(X)$. Is the image of the map $C$ closed?
+\end{exercise}
+\begin{proof}
+~\begin{enumerate}[label=(\alph*)]
+    \item For any $x \in X$, $\left|f_y(x)\right| = \left|d(x,y) - d(x,a)\right| \leq d(a,y)$, then $f_y$ is bounded on $X$. 
+    
+    Also, for $x \in X$, there exists a sequence $\{x_n\} \in X$ such that $\lim_{n\to\infty} x_n = x$. Then, 
+    \begin{align*}
+        \lim_{n\to\infty} \left|f_y(x_n) - f_y(x)\right| & = \lim_{n\to\infty} \left|d(x_n,y) - d(x_n,a) - d(x,y) + d(x,a)\right| \\
+        & \leq \lim_{n\to\infty} \left|d(x_n,y) - d(x,y)\right| + \left|d(x,a) - d(x_n,a)\right| \\
+        & \leq \lim_{n\to\infty} d(x_n,x) + d(x_n,x) = 0,
+    \end{align*}
+    which implies $\lim_{n\to\infty} f_y(x_n) = f_y(x)$, and hence $f_y$ is continuous. Thus, $f_y \in \mathcal{C}(X)$.
+    
+    \item For $x, y \in X$,
+    \begin{align*}
+        D(f_x,f_y) & = \sup_{s \in X} \left|f_x(s) - f_y(s)\right| \\
+        & = \sup_{s \in X} \left|d(s,x) - d(s,a) - d(s,y) + d(s,a)\right| \\
+        & = \sup_{s \in X} \left|d(s,x) - d(s,y)\right| \\
+        & \leq \sup_{s \in X} d(x,y) = d(x,y).
+    \end{align*}
+    On the other hand,
+    \begin{align*}
+        d(x,y) = \left|d(x,x) - d(x,y)\right| = \left|f_x(x) - f_y(x)\right| \leq D(f_x,f_y),
+    \end{align*}
+    thus, $D(f_x,f_y) = d(x,y)$, which implies that $C$ is an isometry.
+    
+    \item No, the image of $C$ is not closed.
+    
+    Let $X = \mathbb{Q}$ and the metric $d$ as $d(x,y) = \left|x - y\right|$ for $x, y \in X$. Let $\{y_n\}$ be a sequence in $X$ such that $\lim_{n\to\infty} y_n = \sqrt{2}$. Suppose there exists $y \in X$ such that $\lim_{n\to\infty} f_{y_n} = f_y$, then for any $\varepsilon > 0$, there exists $N > 0$ such that for all $n > N$, $D(f_{y_n},f_y) < \varepsilon$. However,
+    \begin{align*}
+        D(f_{y_n},f_y) & \geq \left|f_{y_n}(y_n) - f_y(y_n)\right| \\
+        & = \left|d(y_n,y_n) - d(y_n,a) - d(y,y_n) + d(y_n,a)\right| \\
+        & = \left|y - y_n\right|,
+    \end{align*}
+    which implies $y = \sqrt{2} \notin X$, and hence $f_y$ does not belong to the image of $C$.
 \end{enumerate}
 \end{proof}
 
